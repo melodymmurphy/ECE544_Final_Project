@@ -757,15 +757,15 @@
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ECE544_Final_Project/Hardware/i2s2/i2s2.sv</spirit:name>
+        <spirit:name>src/i2s2.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ECE544_Final_Project/Hardware/i2s2/i2s2_top.sv</spirit:name>
+        <spirit:name>src/i2s2_top.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ECE544_Final_Project/Hardware/i2s2/synchronizer.sv</spirit:name>
+        <spirit:name>src/synchronizer.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -781,15 +781,15 @@
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ECE544_Final_Project/Hardware/i2s2/i2s2.sv</spirit:name>
+        <spirit:name>src/i2s2.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ECE544_Final_Project/Hardware/i2s2/i2s2_top.sv</spirit:name>
+        <spirit:name>src/i2s2_top.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>../../ECE544_Final_Project/Hardware/i2s2/synchronizer.sv</spirit:name>
+        <spirit:name>src/synchronizer.sv</spirit:name>
         <spirit:fileType>systemVerilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
@@ -912,8 +912,8 @@
         <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
       <xilinx:displayName>i2s2_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>6</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2021-05-26T10:00:45Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>7</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2021-05-30T07:49:24Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@24acafb5_ARCHIVE_LOCATION">c:/Work/ip_repo/i2s2_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@571a2753_ARCHIVE_LOCATION">c:/Work/ip_repo/i2s2_1.0</xilinx:tag>
@@ -999,6 +999,18 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@2ecc3f51_ARCHIVE_LOCATION">c:/Work/ip_repo/i2s2_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@49f0972e_ARCHIVE_LOCATION">c:/Work/ip_repo/i2s2_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@27d535a7_ARCHIVE_LOCATION">c:/Work/ip_repo/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cd82e23_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@157b9d4d_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5edff7d_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2623bad8_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@86cab26_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4647d1d7_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a7f6d08_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76ac4876_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31488c38_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@26ccdde_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@490c5198_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1bc3878f_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/i2s2_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

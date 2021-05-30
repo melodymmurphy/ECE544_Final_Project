@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <spirit:vendor>xilinx.com</spirit:vendor>
+  <spirit:vendor>pdx.edu</spirit:vendor>
   <spirit:library>user</spirit:library>
-  <spirit:name>MIDI_processor</spirit:name>
-  <spirit:version>1.1</spirit:version>
+  <spirit:name>PmodENC544</spirit:name>
+  <spirit:version>1.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>S00_AXI</spirit:name>
@@ -173,7 +173,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>WIZ_NUM_REG</spirit:name>
-          <spirit:value spirit:format="long" spirit:id="BUSIFPARAM_VALUE.S00_AXI.WIZ_NUM_REG" spirit:minimum="4" spirit:maximum="512" spirit:rangeType="long">5</spirit:value>
+          <spirit:value spirit:format="long" spirit:id="BUSIFPARAM_VALUE.S00_AXI.WIZ_NUM_REG" spirit:minimum="4" spirit:maximum="512" spirit:rangeType="long">4</spirit:value>
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>SUPPORTS_NARROW_BURST</spirit:name>
@@ -259,14 +259,14 @@
         <spirit:displayName>Verilog Synthesis</spirit:displayName>
         <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis</spirit:envIdentifier>
         <spirit:language>verilog</spirit:language>
-        <spirit:modelName>MIDI_processor_v1_0</spirit:modelName>
+        <spirit:modelName>PmodENC544_v1_0</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_verilogsynthesis_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>cf206141</spirit:value>
+            <spirit:value>b6e652b2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -275,14 +275,14 @@
         <spirit:displayName>Verilog Simulation</spirit:displayName>
         <spirit:envIdentifier>verilogSource:vivado.xilinx.com:simulation</spirit:envIdentifier>
         <spirit:language>verilog</spirit:language>
-        <spirit:modelName>MIDI_processor_v1_0</spirit:modelName>
+        <spirit:modelName>PmodENC544_v1_0</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_verilogbehavioralsimulation_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>cf206141</spirit:value>
+            <spirit:value>b6e652b2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -296,7 +296,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>36b5ec83</spirit:value>
+            <spirit:value>3177af12</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -328,10 +328,63 @@
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_productguide</spirit:name>
+        <spirit:displayName>Product Guide</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:docs.productguide</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_productguide_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>fcd7e5ed</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
     </spirit:views>
     <spirit:ports>
       <spirit:port>
-        <spirit:name>midi_in</spirit:name>
+        <spirit:name>encA</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>encB</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>encBTN</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>encSWT</spirit:name>
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:wireTypeDefs>
@@ -387,7 +440,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH&apos;)) - 1)">4</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH&apos;)) - 1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -550,7 +603,7 @@
         <spirit:wire>
           <spirit:direction>in</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH&apos;)) - 1)">4</spirit:left>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH&apos;)) - 1)">3</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -677,7 +730,7 @@
         <spirit:name>C_S00_AXI_ADDR_WIDTH</spirit:name>
         <spirit:displayName>C S00 AXI ADDR WIDTH</spirit:displayName>
         <spirit:description>Width of S_AXI address bus</spirit:description>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH" spirit:order="4" spirit:rangeType="long">5</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S00_AXI_ADDR_WIDTH" spirit:order="4" spirit:rangeType="long">4</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
@@ -701,70 +754,54 @@
     <spirit:fileSet>
       <spirit:name>xilinx_verilogsynthesis_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>hdl/MIDI_processor_v1_0_S00_AXI.v</spirit:name>
+        <spirit:name>../../../../../Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0/src/PmodENC544_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/MIDI_processor_v1_0.v</spirit:name>
+        <spirit:name>../../../../../Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0/src/PmodENC544_v1_0_S00_AXI.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>src/MidiByteReader.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>src/MidiProcessor.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_04d8dbd4</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_7d122e92</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_verilogbehavioralsimulation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>hdl/MIDI_processor_v1_0_S00_AXI.v</spirit:name>
+        <spirit:name>../../../../../Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0/src/PmodENC544_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>hdl/MIDI_processor_v1_0.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>src/MidiByteReader.v</spirit:name>
-        <spirit:fileType>verilogSource</spirit:fileType>
-      </spirit:file>
-      <spirit:file>
-        <spirit:name>src/MidiProcessor.v</spirit:name>
+        <spirit:name>../../../../../Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0/src/PmodENC544_v1_0_S00_AXI.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
       <spirit:name>xilinx_softwaredriver_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>drivers/MIDI_processor_v1_0/data/MIDI_processor.mdd</spirit:name>
+        <spirit:name>drivers/PmodENC544_v1_0/data/PmodENC544.mdd</spirit:name>
         <spirit:userFileType>mdd</spirit:userFileType>
         <spirit:userFileType>driver_mdd</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/MIDI_processor_v1_0/data/MIDI_processor.tcl</spirit:name>
+        <spirit:name>drivers/PmodENC544_v1_0/data/PmodENC544.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>driver_tcl</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/MIDI_processor_v1_0/src/Makefile</spirit:name>
+        <spirit:name>drivers/PmodENC544_v1_0/src/Makefile</spirit:name>
         <spirit:userFileType>driver_src</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/MIDI_processor_v1_0/src/MIDI_processor.h</spirit:name>
+        <spirit:name>drivers/PmodENC544_v1_0/src/PmodENC544.h</spirit:name>
         <spirit:fileType>cSource</spirit:fileType>
         <spirit:userFileType>driver_src</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/MIDI_processor_v1_0/src/MIDI_processor.c</spirit:name>
+        <spirit:name>drivers/PmodENC544_v1_0/src/PmodENC544.c</spirit:name>
         <spirit:fileType>cSource</spirit:fileType>
         <spirit:userFileType>driver_src</spirit:userFileType>
       </spirit:file>
       <spirit:file>
-        <spirit:name>drivers/MIDI_processor_v1_0/src/MIDI_processor_selftest.c</spirit:name>
+        <spirit:name>drivers/PmodENC544_v1_0/src/PmodENC544_selftest.c</spirit:name>
         <spirit:fileType>cSource</spirit:fileType>
         <spirit:userFileType>driver_src</spirit:userFileType>
       </spirit:file>
@@ -772,7 +809,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/MIDI_processor_v1_1.tcl</spirit:name>
+        <spirit:name>xgui/PmodENC544_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_0e5443b4</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
@@ -785,8 +822,15 @@
         <spirit:fileType>tclSource</spirit:fileType>
       </spirit:file>
     </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_productguide_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>doc/pmodenc_rm.pdf</spirit:name>
+        <spirit:userFileType>pdf</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
   </spirit:fileSets>
-  <spirit:description>MIDI Input processing module</spirit:description>
+  <spirit:description>PmdENC IP block with quadrature encoder</spirit:description>
   <spirit:parameters>
     <spirit:parameter>
       <spirit:name>C_S00_AXI_DATA_WIDTH</spirit:name>
@@ -805,7 +849,7 @@
       <spirit:name>C_S00_AXI_ADDR_WIDTH</spirit:name>
       <spirit:displayName>C S00 AXI ADDR WIDTH</spirit:displayName>
       <spirit:description>Width of S_AXI address bus</spirit:description>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXI_ADDR_WIDTH" spirit:order="4" spirit:rangeType="long">5</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S00_AXI_ADDR_WIDTH" spirit:order="4" spirit:rangeType="long">4</spirit:value>
       <spirit:vendorExtensions>
         <xilinx:parameterInfo>
           <xilinx:enablement>
@@ -840,7 +884,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">MIDI_processor_v1_0</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">PmodENC544_v1_0</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>
@@ -849,127 +893,153 @@
         <xilinx:family xilinx:lifeCycle="Pre-Production">artix7</xilinx:family>
       </xilinx:supportedFamilies>
       <xilinx:taxonomies>
-        <xilinx:taxonomy>AXI_Peripheral</xilinx:taxonomy>
+        <xilinx:taxonomy>/AXI_Peripheral</xilinx:taxonomy>
+        <xilinx:taxonomy>/ECE544_IP</xilinx:taxonomy>
+        <xilinx:taxonomy>/Embedded_Processing/AXI_Peripheral/Low_Speed_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
-      <xilinx:displayName>MIDI_processor_v1.1</xilinx:displayName>
-      <xilinx:coreRevision>3</xilinx:coreRevision>
+      <xilinx:displayName>PmodENC544_v1.0</xilinx:displayName>
+      <xilinx:coreRevision>7</xilinx:coreRevision>
       <xilinx:upgrades>
-        <xilinx:canUpgradeFrom>xilinx.com:user:MIDI_processor:1.0</xilinx:canUpgradeFrom>
+        <xilinx:canUpgradeFrom>xilinx.com:user:PmodENC544:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2021-05-30T08:02:55Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2021-05-30T08:30:48Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@15cbc53c_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@328749ea_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@13f2ee7f_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@607e5fa8_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7649c79a_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@52e7bb08_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6bddab3d_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@62e1c27_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d5691fe_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@37254748_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b7a82a5_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@538e95c6_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@13155169_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b91a9ad_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ef47ce_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@43e48039_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6745cb0b_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4767d517_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@31dd2ea7_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ac4d00e_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4303a193_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@67a613fe_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7e727f8b_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@763a94bf_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2af02113_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@f9dbe30_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@20398a3_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@397c30c8_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d0a94b4_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@48779f81_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a3337bc_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@50acdc97_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d7ed561_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7f80d8cb_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@96d7a37_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b07ff8a_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@49c4e18a_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@60626bb2_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d7e6cc8_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@35070685_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@c2ecc7a_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@51834a7f_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@79cd6e3_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3c937d4d_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@311ce748_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@490880ec_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@301e61af_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@231f28d6_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@62aa4990_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@61d5183c_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b320418_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@228ddeb_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@17b72247_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b5bbcd9_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1be6d00c_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@17236053_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@f1328d0_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4262f1a9_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@390abac6_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@379e835f_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b8b715a_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2f8fb0a3_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@21b8b0ad_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@204991e3_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@27633e6_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@78a32e47_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3761cc20_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4796b63b_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@10d15406_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6fb4e982_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@69cb5ebe_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@56e1518c_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2c90861d_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@26465086_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4a90fead_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@21f42b6a_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@2bba5efb_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5bec69ec_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@9707032_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@5b798c23_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3723044a_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fcca233_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@719cb2b0_ARCHIVE_LOCATION">c:/Work/ip_repo/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@e320a8e_ARCHIVE_LOCATION">C:/Work/ip_repo</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@34570db2_ARCHIVE_LOCATION">C:/Work/ip_repo</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@38349d7c_ARCHIVE_LOCATION">C:/Work/ip_repo</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ff0ccda_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@32562f65_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ee60802_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@75b3b0c2_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@38b1d105_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@4b5a665a_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e85c790_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@48d3569b_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@717aadf9_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@3029d54c_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@18bfb7ec_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@baa854d_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@6b3f855d_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@56f2ab31_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b7d4298_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
-        <xilinx:tag xilinx:name="ui.data.coregen.dd@f7ffde4_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/MIDI_processor_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@31fba74b_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6da8e06a_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6207c9b4_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b02df9b_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54cafcd_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57667eed_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b68d60a_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3d1fc1d8_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@744a6181_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4ef6e7a6_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57d884ae_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4bc6c51d_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7b6d567d_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7aeae46d_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@533414b7_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@cec7a60_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@ca5b07c_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52ae9392_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1f5c786b_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17dfdb37_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@36189dc0_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@68bd3b6_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@20a75ee2_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2b9f1cc2_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3afb9579_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@331eb715_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c14931b_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@549e21ff_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a5af39f_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48f82779_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1a155c23_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50a437ad_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4755d52_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1b5ea3b3_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5df766ff_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39627a7c_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b7cbf0c_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d1e5579_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@30a123c6_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@25bb3e1b_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@443e6a44_ARCHIVE_LOCATION">c:/Users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5627f7cd_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2d41fa5b_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@217adc05_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@39879b8f_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7722f37e_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2814cc07_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6d3d1dec_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a5982a4_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@48382e56_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f759831_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5662d816_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@579520da_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42a648af_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ef7682c_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@514f744b_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55b45cf9_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3bd64d11_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7fe1a192_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41a1c58b_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37e2dc39_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5f3ae67e_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57804e31_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2dab5fc8_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@34f13ad4_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b874908_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@bd47fa7_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3f7c701b_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4deef101_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@512b9ee8_ARCHIVE_LOCATION">c:/users/roykr/psuproj/ece544sp21/pmodenc544_ip/ip_repo/pmodenc544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@37397e74_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1377b9e4_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@57b8213e_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7476be77_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5ceeaee7_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6454ae7_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@51044e9f_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@110b9958_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49cf1780_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@771134bf_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@75b65a8d_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e03fedb_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@54c0a77e_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2cc50336_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4800951d_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b4cff7b_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2eb74e1d_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@462c796d_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@71578ccf_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@67c53b98_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15014bdd_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3b2fd78a_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@24fcd703_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5a9df038_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@451bd514_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@df77a73_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4095f197_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6acbece6_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@196f2003_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@778db0b5_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c750fed_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1ea6c9dd_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d08086c_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@204715dd_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@593e7f81_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3a91dfda_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@500a2fa9_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@19c8447a_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@89f3790_ARCHIVE_LOCATION">c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@229590e6_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4cfb2d5b_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@50c9aa78_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@59e0d80b_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@109c4b6_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@72a3ebb7_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cf88509_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@92d4ddb_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5e6fd282_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6cfd75c5_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@646e7c9a_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@665e7654_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2ea7b854_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2a40e363_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6c78f166_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3e7a4b19_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@f1d2604_ARCHIVE_LOCATION">c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware/PmodENC544_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2019.2</xilinx:xilinxVersion>
-      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="77e219dd"/>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="7a63f3fc"/>
       <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="ed1368d5"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="2bd0d2fa"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="218c1ab1"/>
-      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="2e811c89"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="100a75c7"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="02d13180"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="7e04b9c3"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="6992ea72"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="f4df5b5a"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>
