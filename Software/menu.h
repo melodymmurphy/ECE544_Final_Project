@@ -7,6 +7,7 @@
 #include "display.h"
 #include "sequencer.h"
 #include "control.h"
+#include "luts.h"
 
 /**************************** typedefs *****************************************/
 
@@ -59,17 +60,22 @@ typedef enum {
 } _mnote;
 
 /**************************** Macros ******************************/
-#define menu_val(row,val)\
+#define menu_num(row,val)\
 	OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 8, row);\
 	OLEDrgb_PutString(&pmodOLEDrgb_inst,"    ");\
 	OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 8, row);\
 	PMDIO_putnum(&pmodOLEDrgb_inst, val,10);
-#define menu_line(msel,row,str,val)\
+#define menu_line(msel,row,str,val,type)\
 	OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 1, row);\
 	OLEDrgb_PutString(&pmodOLEDrgb_inst,str);\
-	menu_val(row,val);\
+	menu_##type(row,val);\
 	msel[row-1] = &val;\
 	row++;
+#define menu_note_to_str(row,val)\
+	OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 8, row);\
+	OLEDrgb_PutString(&pmodOLEDrgb_inst,"    ");\
+	OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 8, row);\
+	OLEDrgb_PutString(&pmodOLEDrgb_inst, note_to_str(val));
 
 #define menu_item(page,row) ((page<<4) | row)
 

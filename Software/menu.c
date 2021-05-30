@@ -71,30 +71,32 @@ void menu_nav(void) {
 			case psystem:
 				OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 0, 0);
 				OLEDrgb_PutString(&pmodOLEDrgb_inst,"system");
-				menu_line(menu_sel,r,"mode:",(*menu).system.mode);
-				menu_line(menu_sel,r,"slot:",(*menu).system.slot);
-				menu_line(menu_sel,r,"load:",(*menu).system.load);
-				menu_line(menu_sel,r,"store:",(*menu).system.store);
-				row_max = scount;
+				menu_line(menu_sel,r,"mode:",(*menu).system.mode,num);
+				menu_line(menu_sel,r,"slot:",(*menu).system.slot,num);
+				menu_line(menu_sel,r,"load:",(*menu).system.load,num);
+				menu_line(menu_sel,r,"store:",(*menu).system.store,num);
+				row_max = r-1;
 				break;
 			case psequence:
 				OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 0, 0);
 				OLEDrgb_PutString(&pmodOLEDrgb_inst,"sequence");
-				menu_line(menu_sel,r,"tempo:",(*menu).sequence.tempo);
-				menu_line(menu_sel,r,"subdiv:",(*menu).sequence.subdivision);
-				menu_line(menu_sel,r,"swing:",(*menu).sequence.swing);
-				menu_line(menu_sel,r,"volume:",(*menu).sequence.volume);
-				menu_line(menu_sel,r,"patt:",(*menu).sequence.pattern);
-				row_max = qcount;
+				menu_line(menu_sel,r,"tempo:",(*menu).sequence.tempo,num);
+				menu_line(menu_sel,r,"subdiv:",(*menu).sequence.subdivision,num);
+				menu_line(menu_sel,r,"swing:",(*menu).sequence.swing,num);
+				menu_line(menu_sel,r,"volume:",(*menu).sequence.volume,num);
+				menu_line(menu_sel,r,"patt:",(*menu).sequence.pattern,num);
+				row_max = r-1;
 				break;
 			case pnote:
 				OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 0, 0);
 				OLEDrgb_PutString(&pmodOLEDrgb_inst,"note");
-				menu_line(menu_sel,r,"vel:",(*menu).note.velocity);
-				menu_line(menu_sel,r,"freq:",(*menu).note.frequency);
-				menu_line(menu_sel,r,"dutyc:",(*menu).note.dutycycle);
-				menu_line(menu_sel,r,"state:",(*menu).note.state);
-				row_max = ncount;
+				menu_line(menu_sel,r,"vel:",(*menu).note.velocity,num);
+				menu_line(menu_sel,r,"freq:",(*menu).note.frequency,note_to_str);
+//				menu_line(menu_sel,r,"freq:",(*menu).note.frequency,num);
+//					menu_str(r-1,note_to_str((*menu).note.frequency));
+				menu_line(menu_sel,r,"dutyc:",(*menu).note.dutycycle,num);
+				menu_line(menu_sel,r,"state:",(*menu).note.state,num);
+				row_max = r-1;
 				break;
 		}
 		row = 1;
@@ -172,18 +174,26 @@ void menu_update(void) {
 			max = 4;
 			break;
 		case menu_item(pnote,nvelocity):
+		case menu_item(pnote,nfrequency):
 			min = 0;
 			max = 127;
 			break;
-		case menu_item(pnote,nfrequency):
-			min = 0;
-			max = 24000;
-			break;
+//			min = 0;
+//			max = 24000;
+//			break;
 	}
 	if (*sel<min) *sel=min;
 	else if (*sel>max) *sel=max;
 
 	// update oled value
-	menu_val(row,*sel);
+	switch (menu_item(page,row-1)) {
+		case menu_item(pnote,nfrequency):
+			menu_note_to_str(row,*sel);
+			break;
+		default:
+			menu_num(row,*sel);
+			break;
+	}
+
 	last_enc = enc;
 }
