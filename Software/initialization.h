@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #ifndef _INITIALIZTION_H
 #define _INITIALIZTION_H
 

@@ -1,42 +1,24 @@
+// Author: Mel Murphy
+
 #include "interrupts.h"
 
 uint32_t initialize_interrupts(void)
 {
 	uint32_t status;		// function return status
 
-	// initialize the interrupt controller
-	status = XIntc_Initialize(&IntrptCtlrInst, INTC_DEVICE_ID);
-	if (status != XST_SUCCESS)
-	{
-	   return XST_FAILURE;
-	}
-
-	// connect AXI timer interrupt to interrupt controller
-	status = XIntc_Connect(&IntrptCtlrInst, AXI_TIMER_INTC_VEC_ID,
-				(XInterruptHandler)Timer_Handler,
-				(void*)(&AXITimerInst));
-	if (status != XST_SUCCESS) {
-		return XST_FAILURE;
-	}
-
-	// enable AXI timer interrupts
-	XTmrCtr_EnableIntr(XPAR_AXI_TIMER_0_BASEADDR, TIMER_1);
+	xil_printf("\n\n\n=== Initializing Interrupts ===\r\n\n\n");
 
 	// connect MIDI input processor interrupt to interrupt controller
-	status = XIntc_Connect(&IntrptCtlrInst, XPAR_INTC_0_MIDI_PROCESSOR_0_VEC_ID,
-				(XInterruptHandler)MIDI_Handler,
-				NULL);
-	if (status != XST_SUCCESS) {
+	status = xPortInstallInterruptHandler(MIDI_INTERRUPT_ID, (XInterruptHandler)MIDI_Handler, NULL);
+	if (status != pdPASS) {
 		return XST_FAILURE;
 	}
 
 	MIDI_processor_enableInterrupts();	// enable MIDI input interrupts
 
 	// connect GPIO interrupt to interrupt controller
-	status = XIntc_Connect(&IntrptCtlrInst, XPAR_INTC_0_GPIO_0_VEC_ID,
-				(XInterruptHandler)GPIO_Handler,
-				NULL);
-	if (status != XST_SUCCESS) {
+	status = xPortInstallInterruptHandler(GPIO_0_INTERRUPT_ID, (XInterruptHandler)GPIO_Handler, NULL);
+	if (status != pdPASS) {
 		return XST_FAILURE;
 	}
 
@@ -44,35 +26,32 @@ uint32_t initialize_interrupts(void)
 	XGpio_InterruptGlobalEnable( &GPIO_inst );
 
 	// connect I2S transmit interrupt to interrupt controller
-	status = XIntc_Connect(&IntrptCtlrInst, XPAR_INTC_0_I2S2_0_VEC_ID,
-				(XInterruptHandler)I2S_TX_Handler,
-				NULL);
-	if (status != XST_SUCCESS) {
+	status = xPortInstallInterruptHandler(I2S_TX_INTERRUPT_ID, (XInterruptHandler)I2S_TX_Handler, NULL);
+	if (status != pdPASS) {
 		return XST_FAILURE;
 	}
 
 	// connect PMOD rotary encoder interrupt to interrupt controller
-	status = XIntc_Connect(&IntrptCtlrInst, XPAR_INTC_0_PMODENC544_0_VEC_ID,
-				(XInterruptHandler)ENC_Handler,
-				NULL);
-	if (status != XST_SUCCESS) {
+	status = xPortInstallInterruptHandler(PMODENC_INTERRUPT_ID, (XInterruptHandler)ENC_Handler, NULL);
+	if (status != pdPASS) {
 		return XST_FAILURE;
 	}
 
-	// start the interrupt controller such that interrupts are enabled for
-	// all devices that cause interrupts.
-	status = XIntc_Start(&IntrptCtlrInst, XIN_REAL_MODE);
-	if (status != XST_SUCCESS)
-	{
+	// connect AXI timer interrupt to interrupt controller
+	status = xPortInstallInterruptHandler(TIMER_INTERRUPT_ID, (XInterruptHandler)Timer_Handler, (void*)(&AXITimerInst));
+	if (status != pdPASS) {
 		return XST_FAILURE;
 	}
+
+	// enable AXI timer interrupts
+	XTmrCtr_EnableIntr(XPAR_AXI_TIMER_1_BASEADDR, TIMER_1);
 
 	// enable interrupts
-	XIntc_Enable(&IntrptCtlrInst, TIMER_INTERRUPT_ID);
-	XIntc_Enable(&IntrptCtlrInst, MIDI_INTERRUPT_ID);
-	XIntc_Enable(&IntrptCtlrInst, GPIO_0_INTERRUPT_ID);
-	XIntc_Enable(&IntrptCtlrInst, I2S_TX_INTERRUPT_ID);
-	XIntc_Enable(&IntrptCtlrInst, PMODENC_INTERRUPT_ID);
+	vPortEnableInterrupt(MIDI_INTERRUPT_ID);
+	vPortEnableInterrupt(GPIO_0_INTERRUPT_ID);
+	vPortEnableInterrupt(I2S_TX_INTERRUPT_ID);
+	vPortEnableInterrupt(PMODENC_INTERRUPT_ID);
+	vPortEnableInterrupt(TIMER_INTERRUPT_ID);
 
 	microblaze_enable_interrupts();
 
@@ -99,7 +78,6 @@ void MIDI_Handler(void)
 	// driver test
 	uint32_t reg = MIDI_processor_readInterrupts();
 	MIDI_processor_clearDisableInterrupts();
-	xil_printf("Interrupts: %x\r\n", reg);
 	bool noteOn = MIDI_processor_getNoteOn();
 	uint32_t notereg = MIDI_processor_getNote();
 	uint32_t modreg = MIDI_processor_getModulation();
@@ -108,15 +86,12 @@ void MIDI_Handler(void)
 	{
 		if (reg & NOTE_ON_MASK)	// note on
 		{
-			xil_printf("Note on %d: %d\r\n", noteOn, notereg);
 		}
 		else if (reg & NOTE_OFF_MASK)
 		{
-			xil_printf("Note on %d: %d\r\n", noteOn, notereg);
 		}
 		else if (reg & MODULATION_MASK)
 		{
-			xil_printf("Modulation: %d\r\n", modreg);
 		}
 	}
 
@@ -131,11 +106,18 @@ void GPIO_Handler(void)
 
 void I2S_TX_Handler(void)
 {
-
-	flags.sample = true;
-
-	incrementSamples();
+	int index = incrementSample();
 	sendSample();
+
+	if (index == 0)
+	{
+		xSemaphoreGiveFromISR(I2S_TX_sem_high, NULL);
+	}
+	else if (index == (BUFFER_SIZE >> 1))
+	{
+		xSemaphoreGiveFromISR(I2S_TX_sem_low, NULL);
+	}
+
 }
 
 void ENC_Handler(void)

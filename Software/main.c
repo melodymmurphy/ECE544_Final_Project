@@ -20,8 +20,19 @@
 #include "signal_generator.h"
 #include "menu.h"
 
+/************************** Variable Declarations ****************************/
 
-/************************** MAIN PROGRAM ************************************/
+sequencer_t		 	sequencer_inst;
+signal_generator_t 	sigGen_inst;
+menu_main 			menu_inst;
+
+/**************************** Function Prototypes ****************************/
+
+static void calculate_sample(void* pvParameters);
+static void display_thread(void* pvParameters);
+
+/********************************* MAIN PROGRAM ******************************/
+
 int main(void)
 {
 	flags.sample = false;		// initialize system flags
@@ -30,81 +41,133 @@ int main(void)
 	flags.button = false;
 	flags.encoder = false;
 
-    init_platform();	// initialize platform
-
-	uint32_t sts;	// return status for Xilinx driver functions
-	sts = initialize_hardware();
-	if (XST_SUCCESS != sts)
+	portBASE_TYPE xStatus;	// return status for Xilinx driver functions
+	xStatus = initialize_hardware();
+	if (XST_SUCCESS != xStatus)
 	{
 		exit(1);
 	}
 
 	xil_printf("ECE 544 Final Project build test Program\n\r");
-	xil_printf("By Mel Murphy. Apr-2021\n\n\r");
+	xil_printf("By Mel Murphy, Jonathan Law, and David Hanson. Apr-2021\n\n\r");
 
-	sequencer_t sequencer_inst;
+	vSemaphoreCreateBinary(I2S_TX_sem_low);
+	vSemaphoreCreateBinary(I2S_TX_sem_high);
+
+	// initialize software instances
 	initialize_sequencer(&sequencer_inst);
-
-	signal_generator_t sigGen_inst;
 	initializeSigGen(&sigGen_inst);
-
-	menu_main menu_inst;
 	menu_init(&menu_inst);
 
 	I2S2_Send_Sample(0);	// Send one sample to I2S output to trigger the ready interrupts
 
-	uint8_t numSignals = 2;
-	uint32_t signals[NUM_POLY];
 
-	while(!flags.quit)
+	//Create Task1
+	xTaskCreate( calculate_sample,
+				"audio sample calculation",
+				256,
+				NULL,
+				1,
+				NULL );
+
+
+	//Start the Scheduler
+	xil_printf("Starting the scheduler\r\n");
+	vTaskStartScheduler();
+
+/*	// cleanup and exit
+	shutdown_system();
+
+*/
+
+	return -1;
+}
+
+// Fill audio buffer with samples to send to I2S TX module
+void calculate_sample(void* pvParameters)
+{
+
+	int index;
+
+	while(1)
+	{
+		if (xSemaphoreTake(I2S_TX_sem_low, 10))
+		{
+			for (index = 0; index < (BUFFER_SIZE >> 1); index++)		// lower half of buffer
+			{
+				sigGen_inst.sampleBuffer[index] = pulseWave(440, 127, 127, 0);
+			}
+		}
+		if (xSemaphoreTake(I2S_TX_sem_high, 10))
+		{
+			for (index = (BUFFER_SIZE >> 1); index < BUFFER_SIZE; index++)		// upper half of buffer
+			{
+				sigGen_inst.sampleBuffer[index] = pulseWave(440, 127, 127, 0);
+			}
+		}
+		vTaskDelay(1);
+	}
+
+	vTaskDelete(NULL);
+}
+
+void display_thread(void* pvParameters)
+{
+	while(1)
 	{
 		if (flags.step == true)
 		{
 			next_step();
-			flags.step= false;
+			flags.step = false;
 		}
 		updateLEDs(sequencer_inst);
 
-		if (flags.sample == true)
-		{
-			sigGen_inst.nextSample = mixer(numSignals, signals);
-			flags.sample= false;
-		}
-
-		if ((flags.button == true) || (flags.encoder = true))
-		{
-			menu_nav();
-			flags.button = false;
-			flags.encoder = false;
-		}
-
-//		signals[0] = sawTriRampWave(110, 64, 64,  &(sigGen_inst.c[0]), 0);
-//		signals[1] = sawTriRampWave(220, 64, 192, &(sigGen_inst.c[1]), 1);
-//		signals[2] = sawTriRampWave(440, 64, 192, &(sigGen_inst.c[2]), 2);
-
-//		signals[0] = pulseWave(220,    127, 127, &(sigGen_inst.c[0]), 0);
-//		signals[1] = pulseWave(440,    127, 127, &(sigGen_inst.c[1]), 1);
-//		signals[2] = pulseWave(880,    127, 127, &(sigGen_inst.c[2]), 2);
-//		signals[3] = pulseWave(1318.5, 127, 127, &(sigGen_inst.c[3]), 3);
-
-//		signals[0] = sawtoothWave(220, 127, &(sigGen_inst.c[0]), 0);
-//		signals[1] = sawtoothWave(440, 127, &(sigGen_inst.c[1]), 1);
-//		signals[2] = sawtoothWave(880, 127, &(sigGen_inst.c[2]), 2);
-
+		vTaskDelay(1);
 	}
 
-	shutdown_system();
+	vTaskDelay(NULL);
 
-	// cleanup and exit
-    cleanup_platform();
-    exit(0);
 }
 
+/*
+// ===== circular buffer implementation =====
 
+void calculate_sample(void* pvParameters)
+{
 
+	while(1)
+	{
 
+		if (sigGen_inst.calcIndex != sigGen_inst.readIndex)		// don't cross the write pointer over the read pointer
+		{
+			sigGen_inst.sampleBuffer[sigGen_inst.calcIndex] = pulseWave(220, 127, 127, 0, sigGen_inst.calcIndex);
+			(sigGen_inst.calcIndex)++;		// increment the index around the circular buffer
+			if (sigGen_inst.calcIndex > (BUFFER_SIZE - 1))
+			{
+				sigGen_inst.calcIndex = 0;
+			}
+		}
+	}
 
+	vTaskDelete(NULL);
+}
 
+// increment index of each sample
+void incrementSample(void)
+{
+	uint16_t nextIndex = (sigGen->readIndex) + 1;
+	if (nextIndex > (BUFFER_SIZE - 1))
+	{
+		nextIndex = 0;
+	}
 
+	if (nextIndex != sigGen->calcIndex)		// don't cross read pointer over the write pointer
+	{
+		sigGen->readIndex = nextIndex;
+	}
+
+}
+
+*/
 
 

@@ -33,6 +33,8 @@ static s32 enc=0,last_enc=0;
 
 void menu_init(menu_main *menu_p) {
 
+	xil_printf("\n\nInitializing Menu...\r\n");
+
 	menu = menu_p;
 
 	OLEDrgb_SetFontColor(&pmodOLEDrgb_inst,OLEDrgb_BuildRGB(200, 12, 44));

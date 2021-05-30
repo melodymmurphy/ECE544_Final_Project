@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #include "midi.h"
 
 /************************* Variable Declarations****************************/

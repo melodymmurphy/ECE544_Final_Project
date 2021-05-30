@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #include "sequencer.h"
 
 /************************* Variable Declarations ****************************/
@@ -8,6 +10,8 @@ static sequencer_t* sequencer;						// Sequencer struct
 
 void initialize_sequencer(sequencer_t* sequencer_p)
 {
+
+	xil_printf("\n\nInitializing Sequencer...\r\n");
 
 	sequencer = sequencer_p;
 
