@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #ifndef _SIGNAL_GENERATOR_H
 #define _SIGNAL_GENERATOR_H
 
@@ -40,9 +42,9 @@ typedef struct
 
 void initializeNote(volatile note_t* note);
 void initializeSigGen(signal_generator_t* sigGen_p);
-uint32_t pulseWave(float frequency, uint8_t amplitude, uint8_t dutyCycle, volatile uint32_t* sampleIndex, uint8_t signalIndex);
-uint32_t sawtoothWave(float frequency, uint8_t amplitude, volatile uint32_t* sampleIndex, uint8_t signalIndex);
-uint32_t sawTriRampWave(uint16_t frequency, uint8_t amplitude, uint8_t riseCycle, volatile uint32_t *sampleIndex, uint8_t signalIndex);
+uint32_t pulseWave(float frequency, uint8_t amplitude, uint8_t dutyCycle, uint8_t signalIndex);
+uint32_t sawtoothWave(float frequency, uint8_t amplitude, uint8_t signalIndex);
+uint32_t sawTriRampWave(uint16_t frequency, uint8_t amplitude, uint8_t riseCycle, uint8_t signalIndex);
 uint32_t mixer(uint8_t numSignals, uint32_t signalArray[]);
 void incrementSamples(void);
 void sendSample(void);

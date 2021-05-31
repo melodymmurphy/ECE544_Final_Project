@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #ifndef _CONTROL_H
 #define _CONTROL_H
 

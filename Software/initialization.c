@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #include "initialization.h"
 
 static XUartNs550Format midi_format;

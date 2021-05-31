@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #include "control.h"
 
 /************************ Implementation Functions **************************/

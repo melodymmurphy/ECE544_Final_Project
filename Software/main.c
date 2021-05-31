@@ -53,7 +53,7 @@ int main(void)
 
 	I2S2_Send_Sample(0);	// Send one sample to I2S output to trigger the ready interrupts
 
-	uint8_t numSignals = 2;
+	uint8_t numSignals = 1;
 	uint32_t signals[NUM_POLY];
 
 	while(!flags.quit)
@@ -68,7 +68,7 @@ int main(void)
 		if (flags.sample == true)
 		{
 			sigGen_inst.nextSample = mixer(numSignals, signals);
-			flags.sample= false;
+			flags.sample = false;
 		}
 
 		if ((flags.button == true) || (flags.encoder = true))
@@ -82,14 +82,14 @@ int main(void)
 //		signals[1] = sawTriRampWave(220, 64, 192, &(sigGen_inst.c[1]), 1);
 //		signals[2] = sawTriRampWave(440, 64, 192, &(sigGen_inst.c[2]), 2);
 
-//		signals[0] = pulseWave(220,    127, 127, &(sigGen_inst.c[0]), 0);
+//		signals[0] = pulseWave(220,    127, 127, 0);
 //		signals[1] = pulseWave(440,    127, 127, &(sigGen_inst.c[1]), 1);
 //		signals[2] = pulseWave(880,    127, 127, &(sigGen_inst.c[2]), 2);
 //		signals[3] = pulseWave(1318.5, 127, 127, &(sigGen_inst.c[3]), 3);
 
-//		signals[0] = sawtoothWave(220, 127, &(sigGen_inst.c[0]), 0);
-//		signals[1] = sawtoothWave(440, 127, &(sigGen_inst.c[1]), 1);
-//		signals[2] = sawtoothWave(880, 127, &(sigGen_inst.c[2]), 2);
+		signals[0] = sawtoothWave(220, 127, 0);
+//		signals[1] = sawtoothWave(440, 127, 1);
+//		signals[2] = sawtoothWave(880, 127, 2);
 
 	}
 

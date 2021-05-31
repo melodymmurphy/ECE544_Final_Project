@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #ifndef _LUTS_H
 #define _LUTS_H
 

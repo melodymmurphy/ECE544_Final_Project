@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #include "sequencer.h"
 
 /************************* Variable Declarations ****************************/

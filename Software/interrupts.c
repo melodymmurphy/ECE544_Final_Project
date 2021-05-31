@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #include "interrupts.h"
 
 uint32_t initialize_interrupts(void)
@@ -99,7 +101,6 @@ void MIDI_Handler(void)
 	// driver test
 	uint32_t reg = MIDI_processor_readInterrupts();
 	MIDI_processor_clearDisableInterrupts();
-	xil_printf("Interrupts: %x\r\n", reg);
 	bool noteOn = MIDI_processor_getNoteOn();
 	uint32_t notereg = MIDI_processor_getNote();
 	uint32_t modreg = MIDI_processor_getModulation();
@@ -108,15 +109,12 @@ void MIDI_Handler(void)
 	{
 		if (reg & NOTE_ON_MASK)	// note on
 		{
-			xil_printf("Note on %d: %d\r\n", noteOn, notereg);
 		}
 		else if (reg & NOTE_OFF_MASK)
 		{
-			xil_printf("Note on %d: %d\r\n", noteOn, notereg);
 		}
 		else if (reg & MODULATION_MASK)
 		{
-			xil_printf("Modulation: %d\r\n", modreg);
 		}
 	}
 
@@ -134,8 +132,9 @@ void I2S_TX_Handler(void)
 
 	flags.sample = true;
 
-	incrementSamples();
+
 	sendSample();
+	incrementSamples();
 }
 
 void ENC_Handler(void)

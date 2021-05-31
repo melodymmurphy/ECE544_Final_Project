@@ -181,9 +181,9 @@ void OLEDrgb_DrawLine(PmodOLEDrgb *InstancePtr, u8 c1, u8 r1, u8 c2, u8 r2,
    cmds[2] = r1;           // Start row
    cmds[3] = c2;           // End column
    cmds[4] = r2;           // End row
-   cmds[5] = OLEDrgb_ExtractRFromRGB(lineColor);   // R
+   cmds[5] = OLEDrgb_ExtractRFromRGB(lineColor) << 1;   // R
    cmds[6] = OLEDrgb_ExtractGFromRGB(lineColor);   // G
-   cmds[7] = OLEDrgb_ExtractBFromRGB(lineColor);   // B
+   cmds[7] = OLEDrgb_ExtractBFromRGB(lineColor) << 1;   // B
 
    OLEDrgb_WriteSPI(InstancePtr, cmds, 8, NULL, 0);
 }
@@ -225,13 +225,13 @@ void OLEDrgb_DrawRectangle(PmodOLEDrgb *InstancePtr, u8 c1, u8 r1, u8 c2, u8 r2,
    cmds[5] = c2;                                   // End column
    cmds[6] = r2;                                   // End row
 
-   cmds[7] = OLEDrgb_ExtractRFromRGB(lineColor);   // R
+   cmds[7] = OLEDrgb_ExtractRFromRGB(lineColor) << 1;   // R
    cmds[8] = OLEDrgb_ExtractGFromRGB(lineColor);   // G
-   cmds[9] = OLEDrgb_ExtractBFromRGB(lineColor);   // B
+   cmds[9] = OLEDrgb_ExtractBFromRGB(lineColor) << 1;   // B
 
-   cmds[10] = OLEDrgb_ExtractRFromRGB(fillColor);  // R
+   cmds[10] = OLEDrgb_ExtractRFromRGB(fillColor << 1);  // R
    cmds[11] = OLEDrgb_ExtractGFromRGB(fillColor);  // G
-   cmds[12] = OLEDrgb_ExtractBFromRGB(fillColor);  // B
+   cmds[12] = OLEDrgb_ExtractBFromRGB(fillColor) << 1;  // B
 
    OLEDrgb_WriteSPI(InstancePtr, cmds, 13, NULL, 0);
 }
@@ -260,7 +260,7 @@ void OLEDrgb_Clear(PmodOLEDrgb *InstancePtr) {
    cmds[3] = OLEDRGB_WIDTH - 1;   // Set the finishing column coordinates;
    cmds[4] = OLEDRGB_HEIGHT - 1;  // Set the finishing row coordinates;
    OLEDrgb_WriteSPI(InstancePtr, cmds, 5, NULL, 0);
-   usleep(1000 * 5);
+//   usleep(1000 * 5);
 }
 
 /* ------------------------------------------------------------ */

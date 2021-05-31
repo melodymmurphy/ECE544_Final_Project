@@ -1,3 +1,5 @@
+// Author: Mel Murphy
+
 #ifndef _SEQUENCER_H
 #define _SEQUENCER_H
 
