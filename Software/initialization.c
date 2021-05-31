@@ -35,7 +35,7 @@ int	initialize_hardware(void)
 	OLEDrgb_begin(&pmodOLEDrgb_inst, RGBDSPLY_GPIO_BASEADDR, RGBDSPLY_SPI_BASEADDR);
 
 	// initialize the GPIO instances
-	status = XGpio_Initialize(&GPIO_inst, GPIO_0_DEVICE_ID);
+	status = (uint32_t) XGpio_Initialize(&GPIO_inst, GPIO_0_DEVICE_ID);
 	if (status != XST_SUCCESS)
 	{
 		return XST_FAILURE;
@@ -65,27 +65,27 @@ int	initialize_hardware(void)
 	XUartNs550_SetDataFormat(&UART_inst, &midi_format);
 
 	// initialize the AXI timer
-	status = AXI_Timer_initialize();
+	status = (uint32_t) AXI_Timer_initialize();
 	if (status != XST_SUCCESS)
 	{
 		return XST_FAILURE;
 	}
 
 	// initialize the MIDI input processor
-	status = MIDI_processor_initialize(MIDI_RECEIVER_BASEADDR);
+	status = (uint32_t) MIDI_processor_initialize(MIDI_RECEIVER_BASEADDR);
 	if (status != XST_SUCCESS)
 	{
 		return XST_FAILURE;
 	}
 
 	// Initialize I2S transmitter module;
-	status = I2S2_initialize(XPAR_I2S2_0_S00_AXI_BASEADDR);
+	status = (uint32_t) I2S2_initialize(XPAR_I2S2_0_S00_AXI_BASEADDR);
 	if (status != XST_SUCCESS)
 	{
 			return XST_FAILURE;
 	}
 
-	status = initialize_interrupts();
+	status = (uint32_t) initialize_interrupts();
 	if (status != XST_SUCCESS)
 	{
 			return XST_FAILURE;

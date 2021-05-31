@@ -12,14 +12,22 @@
 #include <math.h>
 #include <string.h>
 
-// Xilinx libraries and drivers
-#include "platform.h"
+// Kernel includes
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "timers.h"
+#include "semphr.h"
+
+// BSP Includes
+#include "sleep.h"
 #include "xparameters.h"
 #include "xstatus.h"
 #include "xil_types.h"
-#include "xstatus.h"
 #include "xil_io.h"
 #include "microblaze_sleep.h"
+
+// Drivers
 #include "nexys4IO.h"
 #include "PmodOLEDrgb.h"
 #include "PmodENC544.h"
@@ -31,17 +39,19 @@
 #include "i2s2.h"
 
 
-/************************** Peripheral Parameters ****************************/
+/************************** Defines ****************************/
+
+// Peripheral Parameters
 
 // Clock frequencies
 #define CPU_CLOCK_FREQ_HZ			XPAR_CPU_CORE_CLOCK_FREQ_HZ
 #define AXI_CLOCK_FREQ_HZ			XPAR_CPU_M_AXI_DP_FREQ_HZ
 
 // AXI timer parameters
-#define AXI_TIMER_DEVICE_ID			XPAR_AXI_TIMER_0_DEVICE_ID
-#define AXI_TIMER_BASEADDR			XPAR_AXI_TIMER_0_BASEADDR
-#define AXI_TIMER_HIGHADDR			XPAR_AXI_TIMER_0_HIGHADDR
-#define AXI_TIMER_INTC_VEC_ID 		XPAR_INTC_0_TMRCTR_0_VEC_ID
+#define AXI_TIMER_DEVICE_ID			XPAR_AXI_TIMER_1_DEVICE_ID
+#define AXI_TIMER_BASEADDR			XPAR_AXI_TIMER_1_BASEADDR
+#define AXI_TIMER_HIGHADDR			XPAR_AXI_TIMER_1_HIGHADDR
+#define AXI_TIMER_INTC_VEC_ID 		XPAR_INTC_0_TMRCTR_1_VEC_ID
 #define TIMER_1						0
 #define TIMER_2						1
 
@@ -88,7 +98,7 @@
 
 // Interrupt Controller parameters
 #define INTC_DEVICE_ID				XPAR_INTC_0_DEVICE_ID
-#define TIMER_INTERRUPT_ID 			XPAR_MICROBLAZE_0_AXI_INTC_AXI_TIMER_0_INTERRUPT_INTR
+#define TIMER_INTERRUPT_ID 			XPAR_MICROBLAZE_0_AXI_INTC_AXI_TIMER_1_INTERRUPT_INTR
 
 // UART output parameters
 #define UART_MIDI_TX_DEVICE_ID		XPAR_AXI_UART16550_0_DEVICE_ID
@@ -102,32 +112,33 @@
 #define I2S_TX_SAMPLE_RATE			48000
 #define I2S_TX_INTERRUPT_ID			XPAR_MICROBLAZE_0_AXI_INTC_I2S2_0_READY_INTR
 
-/*************************** Type Definitions ****************************/
+// Other defines
 
-typedef struct
-{
-	bool sample;
-	bool step;
-	bool quit;
-	bool button;
-	bool encoder;
-
-} flags_t;
-
-/************************** Variable Declarations ****************************/
-// Microblaze peripheral instances
-PmodOLEDrgb		 pmodOLEDrgb_inst;			// PMOD OLED RGB screen instance
-XGpio			 GPIO_inst;					// GPIO instance
-XIntc 			 IntrptCtlrInst;			// Interrupt Controller instance
-XTmrCtr			 AXITimerInst;				// PWM timer instance
-XUartNs550  	 UART_inst;					// UART for MIDI output
-
-flags_t			flags;						// system flags
-
-// Other values
+// Commonly used values
 #define OFF		 0
 #define ON		 1
 #define CLEAR	 0
 #define EMPTY	 0
+
+// freeRTOS values
+#define mainQUEUE_LENGTH					( 1 )
+#define mainDONT_BLOCK						( portTickType ) 0
+
+/*************************** Type Definitions ****************************/
+
+
+/************************** Variable Declarations ****************************/
+// Microblaze peripheral instances
+PmodOLEDrgb		 	pmodOLEDrgb_inst;			// PMOD OLED RGB screen instance
+XGpio			 	GPIO_inst;					// GPIO instance
+XIntc 			 	IntrptCtlrInst;			// Interrupt Controller instance
+XTmrCtr			 	AXITimerInst;				// PWM timer instance
+XUartNs550  	 	UART_inst;					// UART for MIDI output				// system flags
+
+// Semaphores
+xSemaphoreHandle I2S_TX_low_sem;
+xSemaphoreHandle I2S_TX_high_sem;
+xSemaphoreHandle step_sem;
+xSemaphoreHandle display_sem;
 
 #endif
