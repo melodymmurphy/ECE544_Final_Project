@@ -70,32 +70,32 @@ void menu_nav(void) {
 		switch (page){
 			case psystem:
 				OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 0, 0);
-				OLEDrgb_PutString(&pmodOLEDrgb_inst,"system");
-				menu_line(menu_sel,r,"mode:",(*menu).system.mode,num);
-				menu_line(menu_sel,r,"slot:",(*menu).system.slot,num);
-				menu_line(menu_sel,r,"load:",(*menu).system.load,num);
-				menu_line(menu_sel,r,"store:",(*menu).system.store,num);
+				OLEDrgb_PutString(&pmodOLEDrgb_inst,"system      ");
+				menu_line(menu_sel,r,"mode:  ",(*menu).system.mode,num);
+				menu_line(menu_sel,r,"slot:  ",(*menu).system.slot,num);
+				menu_line(menu_sel,r,"load:  ",(*menu).system.load,num);
+				menu_line(menu_sel,r,"store: ",(*menu).system.store,num);
 				row_max = r-1;
 				break;
 			case psequence:
 				OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 0, 0);
-				OLEDrgb_PutString(&pmodOLEDrgb_inst,"sequence");
-				menu_line(menu_sel,r,"tempo:",(*menu).sequence.tempo,num);
+				OLEDrgb_PutString(&pmodOLEDrgb_inst,"sequence    ");
+				menu_line(menu_sel,r,"tempo: ",(*menu).sequence.tempo,num);
 				menu_line(menu_sel,r,"subdiv:",(*menu).sequence.subdivision,num);
-				menu_line(menu_sel,r,"swing:",(*menu).sequence.swing,num);
+				menu_line(menu_sel,r,"swing: ",(*menu).sequence.swing,num);
 				menu_line(menu_sel,r,"volume:",(*menu).sequence.volume,num);
-				menu_line(menu_sel,r,"patt:",(*menu).sequence.pattern,num);
+				menu_line(menu_sel,r,"patt:  ",(*menu).sequence.pattern,num);
 				row_max = r-1;
 				break;
 			case pnote:
 				OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 0, 0);
-				OLEDrgb_PutString(&pmodOLEDrgb_inst,"note");
-				menu_line(menu_sel,r,"vel:",(*menu).note.velocity,num);
-				menu_line(menu_sel,r,"freq:",(*menu).note.frequency,note_to_str);
+				OLEDrgb_PutString(&pmodOLEDrgb_inst,"note        ");
+				menu_line(menu_sel,r,"vel:   ",(*menu).note.velocity,num);
+				menu_line(menu_sel,r,"freq:  ",(*menu).note.frequency,note_to_str);
 //				menu_line(menu_sel,r,"freq:",(*menu).note.frequency,num);
 //					menu_str(r-1,note_to_str((*menu).note.frequency));
-				menu_line(menu_sel,r,"dutyc:",(*menu).note.dutycycle,num);
-				menu_line(menu_sel,r,"state:",(*menu).note.state,num);
+				menu_line(menu_sel,r,"dutyc: ",(*menu).note.dutycycle,num);
+				menu_line(menu_sel,r,"state: ",(*menu).note.state,num);
 				row_max = r-1;
 				break;
 		}

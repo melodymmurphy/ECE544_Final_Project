@@ -229,7 +229,7 @@ void OLEDrgb_DrawRectangle(PmodOLEDrgb *InstancePtr, u8 c1, u8 r1, u8 c2, u8 r2,
    cmds[8] = OLEDrgb_ExtractGFromRGB(lineColor);   // G
    cmds[9] = OLEDrgb_ExtractBFromRGB(lineColor) << 1;   // B
 
-   cmds[10] = OLEDrgb_ExtractRFromRGB(fillColor << 1);  // R
+   cmds[10] = OLEDrgb_ExtractRFromRGB(fillColor) << 1;  // R
    cmds[11] = OLEDrgb_ExtractGFromRGB(fillColor);  // G
    cmds[12] = OLEDrgb_ExtractBFromRGB(fillColor) << 1;  // B
 
@@ -301,7 +301,7 @@ void OLEDrgb_DrawBitmap(PmodOLEDrgb *InstancePtr, u8 c1, u8 r1, u8 c2, u8 r2,
 
    OLEDrgb_WriteSPI(InstancePtr, cmds, 6, pBmp,
          (((c2 - c1 + 1) * (r2 - r1 + 1)) << 1));
-   usleep(1000 * 5);
+//   usleep(1000 * 5);
 }
 
 /* ------------------------------------------------------------ */
@@ -662,7 +662,7 @@ void OLEDrgb_SetScrolling(PmodOLEDrgb *InstancePtr, u8 scrollH, u8 scrollV,
    cmds[6] = CMD_ACTIVESCROLLING; // Set the starting row coordinates
 
    OLEDrgb_WriteSPI(InstancePtr, cmds, 7, NULL, 0);
-   usleep(1000 * 5);
+//   usleep(1000 * 5);
 }
 
 /* ------------------------------------------------------------ */
@@ -793,7 +793,7 @@ void OLEDrgb_Copy(PmodOLEDrgb *InstancePtr, u8 c1, u8 r1, u8 c2, u8 r2, u8 c3,
    cmds[6] = r3;                   // Set the new starting row coordinates
 
    OLEDrgb_WriteSPI(InstancePtr, cmds, 7, NULL, 0);
-   usleep(1000 * 5);
+//   usleep(1000 * 5);
 }
 
 /* ------------------------------------------------------------ */
