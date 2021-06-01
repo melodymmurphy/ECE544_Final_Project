@@ -157,8 +157,8 @@ uint16_t ByteSwap(uint16_t val)
 
 void updateLEDs(sequencer_t sequencer)
 {
-	uint32_t step_LED = (1 << (STEPS-1)) >> sequencer.step;
-	XGpio_DiscreteClear(&GPIO_inst, CHANNEL_2, GPIO_LEDS_MASK);
-	XGpio_DiscreteSet(&GPIO_inst, CHANNEL_2, step_LED);
+	uint32_t step_LED = (1 << (STEPS-1)) >> sequencer.step;			// LED of active sequencer step
+	XGpio_DiscreteClear(&GPIO_inst, CHANNEL_2, GPIO_LEDS_MASK);		// clear all LEDs
+	XGpio_DiscreteSet(&GPIO_inst, CHANNEL_2, step_LED);				// write just the LED we want
 
 }

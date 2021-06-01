@@ -121,24 +121,24 @@
 #define EMPTY	 0
 
 // freeRTOS values
-#define mainQUEUE_LENGTH					( 1 )
-#define mainDONT_BLOCK						( portTickType ) 0
-
-/*************************** Type Definitions ****************************/
-
+#define mainDONT_BLOCK				(portTickType) 0
+#define minimum_wait				1
 
 /************************** Variable Declarations ****************************/
 // Microblaze peripheral instances
 PmodOLEDrgb		 	pmodOLEDrgb_inst;			// PMOD OLED RGB screen instance
 XGpio			 	GPIO_inst;					// GPIO instance
-XIntc 			 	IntrptCtlrInst;			// Interrupt Controller instance
+XIntc 			 	IntrptCtlrInst;				// Interrupt Controller instance
 XTmrCtr			 	AXITimerInst;				// PWM timer instance
 XUartNs550  	 	UART_inst;					// UART for MIDI output				// system flags
 
 // Semaphores
-xSemaphoreHandle I2S_TX_low_sem;
-xSemaphoreHandle I2S_TX_high_sem;
-xSemaphoreHandle step_sem;
-xSemaphoreHandle display_sem;
+xSemaphoreHandle	I2S_TX_low_sem;
+xSemaphoreHandle 	I2S_TX_high_sem;
+xSemaphoreHandle 	step_sem;
+xSemaphoreHandle 	display_sem;
+xSemaphoreHandle 	note_on_sem;
+xSemaphoreHandle 	note_off_sem;
+xSemaphoreHandle	mod_sem;
 
 #endif
