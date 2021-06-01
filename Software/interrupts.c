@@ -64,58 +64,57 @@ void Timer_Handler(void)
 {
 	uint32_t ctlsts;
 
-	XTmrCtr_DisableIntr(AXITimerInst.BaseAddress, TIMER_1);
-	ctlsts = XTmrCtr_GetControlStatusReg(AXITimerInst.BaseAddress, TIMER_1);
+	XTmrCtr_DisableIntr(AXITimerInst.BaseAddress, TIMER_1);		// disable interrupts
+	ctlsts = XTmrCtr_GetControlStatusReg(AXITimerInst.BaseAddress, TIMER_1);	// get CSR
 
-	xSemaphoreGiveFromISR(step_sem, NULL);
+	xSemaphoreGiveFromISR(step_sem, NULL);	// notify task that sequencer should be updated
 
-	XTmrCtr_WriteReg(AXITimerInst.BaseAddress, TIMER_1, XTC_TCSR_OFFSET, ctlsts | XTC_CSR_INT_OCCURED_MASK);	// Acknowledge interrupt
-	XTmrCtr_EnableIntr(AXITimerInst.BaseAddress, TIMER_1);
+	XTmrCtr_WriteReg(AXITimerInst.BaseAddress, TIMER_1, XTC_TCSR_OFFSET, ctlsts | XTC_CSR_INT_OCCURED_MASK);
+	XTmrCtr_EnableIntr(AXITimerInst.BaseAddress, TIMER_1);	// acknowledge interrupt, re-enable interrupts, start timer
 }
 
 void MIDI_Handler(void)
 {
-	// driver test
 	uint32_t reg = MIDI_processor_readInterrupts();
 	MIDI_processor_clearDisableInterrupts();
-	bool noteOn = MIDI_processor_getNoteOn();
-	uint32_t notereg = MIDI_processor_getNote();
-	uint32_t modreg = MIDI_processor_getModulation();
 
-	if (reg & MIDI_INT_MASK)	// if active interrupt
+	if (reg & MIDI_INT_MASK)			// if active interrupt
 	{
-		if (reg & NOTE_ON_MASK)	// note on
+		if (reg & NOTE_ON_MASK)			// note on
 		{
+			xSemaphoreGiveFromISR(note_on_sem, NULL);
 		}
-		else if (reg & NOTE_OFF_MASK)
+		else if (reg & NOTE_OFF_MASK)	// note off
 		{
+			xSemaphoreGiveFromISR(note_off_sem, NULL);
 		}
-		else if (reg & MODULATION_MASK)
+		else if (reg & MODULATION_MASK)	// modukatino
 		{
+			xSemaphoreGiveFromISR(mod_sem, NULL);
 		}
 	}
 
-	MIDI_processor_enableInterrupts();	// reenable interrupts
+	MIDI_processor_enableInterrupts();
 }
 
 void GPIO_Handler(void)
 {
-	xSemaphoreGiveFromISR(display_sem, NULL);
+	xSemaphoreGiveFromISR(display_sem, NULL);			// notify display that GPIO state has changed
 	XGpio_InterruptClear( &GPIO_inst, GPIO_IN_MASK );	// clear GPIO interrupts
 }
 
 void I2S_TX_Handler(void)
 {
-	int index = incrementSample();
-	sendSample();
+	int index = incrementSample();						// move to next sample to read
+	sendSample();										// send sample to I2S module
 
-	if (index == 0)
+	if (index == 0)										// if reading low buffer
 	{
-		xSemaphoreGiveFromISR(I2S_TX_high_sem, NULL);
+		xSemaphoreGiveFromISR(I2S_TX_high_sem, NULL);	// notify task to fill high buffer
 	}
-	if (index == (BUFFER_SIZE >> 1))
+	if (index == (BUFFER_SIZE >> 1))					// if reading high buffer
 	{
-		xSemaphoreGiveFromISR(I2S_TX_low_sem, NULL);
+		xSemaphoreGiveFromISR(I2S_TX_low_sem, NULL);	// send semaphore to write low buffer
 	}
 
 
@@ -124,5 +123,5 @@ void I2S_TX_Handler(void)
 
 void ENC_Handler(void)
 {
-	xSemaphoreGiveFromISR(display_sem, NULL);
+	xSemaphoreGiveFromISR(display_sem, NULL);			// notify task encoder state has changed
 }

@@ -18,19 +18,25 @@
 #include "sequencer.h"
 #include "menu.h"
 #include "signal_generator.h"
+#include "midi.h"
 #include "menu.h"
+#include "luts.h"
 
 /************************** Variable Declarations ****************************/
 
 sequencer_t		 	sequencer_inst;
 signal_generator_t 	sigGen_inst;
+midi_rx_t			midi_rx_inst;
+midi_tx_t			midi_tx_inst;
 menu_main 			menu_inst;
+
 
 /**************************** Function Prototypes ****************************/
 
-static void calculate_sample(void* pvParameters);
+static void calculate_samples(void* pvParameters);
 static void sequence_thread(void* pvParameters);
 static void menu_thread(void* pvParameters);
+static void midi_thread(void* pvParameters);
 
 /********************************* MAIN PROGRAM ******************************/
 
@@ -51,36 +57,49 @@ int main(void)
 	vSemaphoreCreateBinary(I2S_TX_high_sem);
 	vSemaphoreCreateBinary(step_sem);
 	vSemaphoreCreateBinary(display_sem);
+	vSemaphoreCreateBinary(note_on_sem);
+	vSemaphoreCreateBinary(note_off_sem);
+	vSemaphoreCreateBinary(mod_sem);
 
 	// initialize software instances
 	initialize_sequencer(&sequencer_inst);
 	initializeSigGen(&sigGen_inst);
+	initialize_MIDI(&midi_rx_inst, &midi_tx_inst);
 	menu_init(&menu_inst);
 
 	I2S2_Send_Sample(0);	// Send one sample to I2S output to trigger the ready interrupts
 
 
 	// Create tasks
-	xTaskCreate( calculate_sample,
+	xTaskCreate(calculate_samples,
 				"Audio Sample Generation",
 				1024,
 				NULL,
 				2,
-				NULL );
+				NULL);
 
-	xTaskCreate( sequence_thread,
+	xTaskCreate(sequence_thread,
 				"Sequencer",
 				256,
 				NULL,
-				1,
-				NULL );
+				2,
+				NULL);
 
-	xTaskCreate( menu_thread,
+	xTaskCreate(menu_thread,
 				"OLED menu",
 				256,
 				NULL,
 				1,
-				NULL );
+				NULL);
+
+	xTaskCreate(midi_thread,
+				"MIDI receive",
+				256,
+				NULL,
+				2,
+				NULL);
+
+
 
 
 	//Start the Scheduler
@@ -96,36 +115,31 @@ int main(void)
 }
 
 // Fill audio buffer with samples to send to I2S TX module
-void calculate_sample(void* pvParameters)
+void calculate_samples(void* pvParameters)
 {
-
-	int index;
 	uint32_t samples[NUM_POLY];
+	float freq[NUM_POLY];
+	uint8_t activeNotes = 1;
+	uint8_t modulation;
 
 	while(1)
 	{
-		if (xSemaphoreTake(I2S_TX_low_sem, 1))
+		modulation = midi_rx_inst.modulation;
+		freq[0] = sigGen_inst.frequency[0];
+		if (xSemaphoreTake(I2S_TX_low_sem, minimum_wait))
 		{
-			for (index = 0; index < (BUFFER_SIZE >> 1); index++)		// lower half of buffer
+			for (int index = 0; index < (BUFFER_SIZE >> 1); index++)
 			{
-				samples[0] = sawtoothWave(220, 127, 0);
-				samples[1] = sawtoothWave(440, 127, 1);
-//				samples[2] = sawtoothWave(880, 127, 2);
-//				samples[1] = pulseWave(440, 127, 127, 1);
-//				samples[2] = pulseWave(880, 127, 127, 2);
-				sigGen_inst.sampleBuffer[index] = mixer(2, samples);
+				samples[0] = sawTriRampWave(freq[0], 127, modulation, 0);
+				sigGen_inst.sampleBuffer[index] = mixer(activeNotes, samples);
 			}
 		}
-		else if (xSemaphoreTake(I2S_TX_high_sem, 1))
+		else if (xSemaphoreTake(I2S_TX_high_sem, minimum_wait))
 		{
-			for (index = (BUFFER_SIZE >> 1); index < BUFFER_SIZE; index++)		// upper half of buffer
+			for (int index = (BUFFER_SIZE >> 1); index < BUFFER_SIZE; index++)
 			{
-				samples[0] = sawtoothWave(220, 127, 0);
-				samples[1] = sawtoothWave(440, 127, 1);
-//				samples[2] = sawtoothWave(880, 127, 2);
-//				samples[1] = pulseWave(440, 127, 127, 1);
-//				samples[2] = pulseWave(880, 127, 127, 2);
-				sigGen_inst.sampleBuffer[index] = mixer(2, samples);
+				samples[0] = sawTriRampWave(freq[0], 127, modulation, 0);
+				sigGen_inst.sampleBuffer[index] = mixer(activeNotes, samples);
 			}
 		}
 	}
@@ -137,9 +151,13 @@ void sequence_thread(void* pvParameters)
 {
 	while(1)
 	{
-		if (xSemaphoreTake(step_sem, 1))
+		if (xSemaphoreTake(step_sem, minimum_wait))
 		{
 			next_step();
+			play_note(&sigGen_inst);
+			stop_note();
+			vTaskDelay(1);
+			send_note();
 			updateLEDs(sequencer_inst);
 		}
 
@@ -153,7 +171,7 @@ static void menu_thread(void* pvParameters)
 {
 	while(1)
 	{
-		if (xSemaphoreTake(display_sem, 1))
+		if (xSemaphoreTake(display_sem, minimum_wait))
 		{
 			menu_nav();
 		}
@@ -164,45 +182,30 @@ static void menu_thread(void* pvParameters)
 	vTaskDelete(NULL);
 }
 
-/*
-// ===== circular buffer implementation =====
-
-void calculate_sample(void* pvParameters)
+static void midi_thread(void* pvParameters)
 {
-
+	uint8_t midiByte;
 	while(1)
 	{
-
-		if (sigGen_inst.calcIndex != sigGen_inst.readIndex)		// don't cross the write pointer over the read pointer
+		if (xSemaphoreTake(note_on_sem, minimum_wait))
 		{
-			sigGen_inst.sampleBuffer[sigGen_inst.calcIndex] = pulseWave(220, 127, 127, 0, sigGen_inst.calcIndex);
-			(sigGen_inst.calcIndex)++;		// increment the index around the circular buffer
-			if (sigGen_inst.calcIndex > (BUFFER_SIZE - 1))
-			{
-				sigGen_inst.calcIndex = 0;
-			}
+			midiByte = MIDI_processor_getNote();
+			sigGen_inst.frequency[0] = note_to_freq(midiByte);
 		}
+		else if (xSemaphoreTake(note_off_sem, minimum_wait))
+		{
+			midiByte = MIDI_processor_getNote();
+			sigGen_inst.frequency[0] = 0;
+		}
+		else if (xSemaphoreTake(mod_sem, minimum_wait))
+		{
+			midiByte = MIDI_processor_getModulation();
+			midi_rx_inst.modulation = midiByte;
+		}
+
+		vTaskDelay(1);
 	}
 
 	vTaskDelete(NULL);
 }
-
-// increment index of each sample
-void incrementSample(void)
-{
-	uint16_t nextIndex = (sigGen->readIndex) + 1;
-	if (nextIndex > (BUFFER_SIZE - 1))
-	{
-		nextIndex = 0;
-	}
-
-	if (nextIndex != sigGen->calcIndex)		// don't cross read pointer over the write pointer
-	{
-		sigGen->readIndex = nextIndex;
-	}
-
-}
-
-*/
-
 

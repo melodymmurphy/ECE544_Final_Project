@@ -8,16 +8,7 @@ static signal_generator_t* sigGen;				// Signal generator struct
 
 /************************ Implementation Functions **************************/
 
-
-void initializeNote(volatile note_t* note)
-{
-	note->velocity	= AMP_MAX;
-	note->frequency = NOTE_A4;
-	note->duty_cycle = DC_MAX / 2;
-	note->note_on = true;
-
-}
-
+// Initialize signal generator
 void initializeSigGen(signal_generator_t* sigGen_p)
 {
 	xil_printf("\n\nInitializing Signal Generator...\r\n");
@@ -26,13 +17,15 @@ void initializeSigGen(signal_generator_t* sigGen_p)
 
 	for (int index = 0; index < NUM_POLY; index++)
 	{
-		sigGen->cycle[index] = 0;
-		sigGen->high_cycle[index] = 0;
-		sigGen->low_cycle[index] = 0;
-		sigGen->rampUp[index] = 0;
-		sigGen->rampDown[index] = 0;
-		sigGen->peak[index] = 0;
-		sigGen->c[index] = 0;
+		sigGen->velocity[index] 	= 0;
+		sigGen->frequency[index] 	= 0;
+		sigGen->cycle[index] 		= 0;
+		sigGen->high_cycle[index] 	= 0;
+		sigGen->low_cycle[index] 	= 0;
+		sigGen->rampUp[index] 		= 0;
+		sigGen->rampDown[index] 	= 0;
+		sigGen->peak[index] 		= 0;
+		sigGen->c[index] 			= 0;
 	}
 
 	sigGen->calcIndex = 0;
@@ -41,19 +34,28 @@ void initializeSigGen(signal_generator_t* sigGen_p)
 	return;
 }
 
+// generate pulse wave samples
 uint32_t pulseWave(float frequency, uint8_t amplitude, uint8_t dutyCycle, uint8_t signalIndex)
 {
 	uint32_t sample;	// calculated sample value
 
+	// calculate constants only on the beginning of a cycle t save processing power
 	if (sigGen->c[signalIndex] > sigGen->cycle[signalIndex])	// reset cycle counter when at the end of a wave cycle
 	{
 		sigGen->peak[signalIndex] = (amplitude * ((1 << BIT_DEPTH) - 1)) / AMP_MAX;
-		sigGen->cycle[signalIndex] = (SAMPLE_RATE << 1) / frequency;		// length of full cycle
+		if (frequency > 0)
+		{
+			sigGen->cycle[signalIndex] = (SAMPLE_RATE << 1 ) / frequency;
+		}
 		sigGen->high_cycle[signalIndex] = (dutyCycle * sigGen->cycle[signalIndex]) / DC_MAX;	// length of high part of duty cycle
 		sigGen->c[signalIndex] = 0;
 	}
 
-	if (sigGen->c[signalIndex] <= sigGen->high_cycle[signalIndex])
+	if (frequency == 0)		// output nothing if frequency is zero
+	{
+		sample = 0;
+	}
+	else if (sigGen->c[signalIndex] <= sigGen->high_cycle[signalIndex])
 	{
 		sample = sigGen->peak[signalIndex];	// high cycle
 	}
@@ -62,7 +64,7 @@ uint32_t pulseWave(float frequency, uint8_t amplitude, uint8_t dutyCycle, uint8_
 		sample = 0x800000;		// low cycle
 	}
 
-	(sigGen->c[signalIndex])++;
+	(sigGen->c[signalIndex])++;		// increment cycle counter
 
 
 	return sample;
@@ -75,18 +77,31 @@ uint32_t sawtoothWave(float frequency, uint8_t amplitude, uint8_t signalIndex)
 
 	float sampleVal;
 
+	// calculate constants only on the beginning of a cycle t save processing power
 	if (sigGen->c[signalIndex] > sigGen->cycle[signalIndex])	// recalculate constants at beginning of cycle
 	{
 		sigGen->peak[signalIndex] = (amplitude * ((1 << BIT_DEPTH) - 1)) / AMP_MAX;
-		sigGen->cycle[signalIndex] = (SAMPLE_RATE << 1 ) / frequency;
+		if (frequency > 0)
+		{
+			sigGen->cycle[signalIndex] = (SAMPLE_RATE << 1 ) / frequency;
+		}
 		sigGen->rampUp[signalIndex] = sigGen->peak[signalIndex] / sigGen->cycle[signalIndex];
 		sigGen->c[signalIndex] = 0;
 	}
 
+		// sawtooth values are linearly scaled as the cycle progresses
 	sampleVal = sigGen->c[signalIndex] *  sigGen->rampUp[signalIndex];
-	sample = (uint32_t)sampleVal;
 
-	(sigGen->c[signalIndex])++;
+	if (frequency == 0)		// output nothing if frequency is zero
+	{
+		sample = 0;
+	}
+	else
+	{
+		sample = (uint32_t)sampleVal;
+	}
+
+	(sigGen->c[signalIndex])++;		// increment cycle counter
 
 	return sample;
 }
@@ -96,33 +111,47 @@ uint32_t sawTriRampWave(uint16_t frequency, uint8_t amplitude, uint8_t riseCycle
 
 	float sampleVal;
 
-	if (sigGen->c[signalIndex] <= sigGen->high_cycle[signalIndex])
-	{
-		sampleVal = sigGen->c[signalIndex] * sigGen->rampUp[signalIndex];
-	}
-	else
-	{
-		sampleVal = sigGen->peak[signalIndex] - (sigGen->c[signalIndex] * sigGen->rampDown[signalIndex]);
-	}
-	sample = (uint32_t)sampleVal;
-
+	// calculate constants only on the beginning of a cycle t save processing power
 	if (sigGen->c[signalIndex] > sigGen->cycle[signalIndex])	// reset cycle counter when at the end of a wave cycle
 	{
 		sigGen->peak[signalIndex] = (amplitude * ((1 << BIT_DEPTH) - 1)) / AMP_MAX;
-		sigGen->cycle[signalIndex] = (SAMPLE_RATE << 1 ) / frequency;
+		if (frequency > 0)
+		{
+			sigGen->cycle[signalIndex] = (SAMPLE_RATE << 1 ) / frequency;
+		}
 		sigGen->high_cycle[signalIndex] = (riseCycle * sigGen->cycle[signalIndex]) / RC_MAX;	// length of high part of duty cycle
 		sigGen->low_cycle[signalIndex] = sigGen->cycle[signalIndex] - sigGen->high_cycle[signalIndex];
 		sigGen->rampUp[signalIndex] = sigGen->peak[signalIndex] / sigGen->high_cycle[signalIndex];
 		sigGen->rampDown[signalIndex] = sigGen->peak[signalIndex] / sigGen->low_cycle[signalIndex];
 		sigGen->c[signalIndex] = 0;
 	}
+		// rising side of triangle wave
+	if (sigGen->c[signalIndex] <= sigGen->high_cycle[signalIndex])
+	{
+		sampleVal = sigGen->c[signalIndex] * sigGen->rampUp[signalIndex];
+	}
+		// falling side of triangle wave
+	else
+	{
+		sampleVal = sigGen->peak[signalIndex] - (sigGen->c[signalIndex] * sigGen->rampDown[signalIndex]);
+	}
 
-	(sigGen->c[signalIndex])++;
+	if (frequency == 0)		// output nothing if frequency is zero
+	{
+		sample = 0;
+	}
+	else
+	{
+		sample = (uint32_t)sampleVal;
+	}
+
+	(sigGen->c[signalIndex])++;		// increment cycle counter
 
 	return sample;
 
 }
 
+// combine multiple samples
 uint32_t mixer(uint8_t numSignals, uint32_t signalArray[])
 {
 	uint32_t mixedSignal;
@@ -130,10 +159,10 @@ uint32_t mixer(uint8_t numSignals, uint32_t signalArray[])
 
 	for (int index = 0; index < numSignals; index++)
 	{
-		signalSum += signalArray[index];
+		signalSum += signalArray[index];		// sum the signals
 	}
 
-	mixedSignal = signalSum / numSignals;
+	mixedSignal = signalSum / numSignals;		// divide to get the average
 
 	return mixedSignal;
 }
@@ -142,7 +171,7 @@ uint32_t mixer(uint8_t numSignals, uint32_t signalArray[])
 uint32_t incrementSample(void)
 {
 	(sigGen->readIndex)++;
-	if (sigGen->readIndex > (BUFFER_SIZE - 1))
+	if (sigGen->readIndex > (BUFFER_SIZE - 1))	// wrap around if past the end of the buffer
 	{
 		sigGen->readIndex = 0;
 	}
@@ -151,11 +180,7 @@ uint32_t incrementSample(void)
 
 }
 
-void play_note(void)
-{
-	return;
-}
-
+// send next sample to I2S
 void sendSample(void)
 {
 	I2S2_Send_Sample(sigGen->sampleBuffer[sigGen->readIndex]);

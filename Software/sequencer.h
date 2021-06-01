@@ -6,6 +6,8 @@
 /****************************** Includes *********************************/
 #include "main.h"
 #include "signal_generator.h"
+#include "midi.h"
+#include "luts.h"
 
 /****************************** Definitions ******************************/
 
@@ -20,9 +22,19 @@
 /**************************** Type Definitions ****************************/
 
 // Sequencer modes
-typedef enum { PLAY, RECORD, BYPASS } seq_mode_t;
-typedef enum { WHOLE, HALF, QUARTER, EIGHTH, SIXTEENTH, THIRTYSECOND, SIXTYFOURTH } note_length_t;
-typedef enum { FORWARD, BACKWARD, BOTH_DIR, RANDOM } pattern_t;
+typedef enum {PLAY, RECORD, BYPASS} seq_mode_t;
+typedef enum {WHOLE, HALF, QUARTER, EIGHTH, SIXTEENTH, THIRTYSECOND, SIXTYFOURTH} note_length_t;
+typedef enum {FORWARD, BACKWARD, BOTH_DIR, RANDOM} pattern_t;
+
+typedef struct
+{
+	uint8_t velocity;
+	uint8_t pitch;
+	uint8_t duty_cycle;
+	uint8_t rise_cycle;
+	bool note_on;
+
+} note_t;
 
 typedef struct
 {
@@ -40,8 +52,13 @@ typedef struct
 
 
 /************************** Function Prototypes ****************************/
+
+void initializeNote(volatile note_t* note, uint8_t pitch);
 void initialize_sequencer(sequencer_t* sequencer_p);
 void states_initialization(void);
 void next_step(void);
+void play_note(signal_generator_t* sigGen);
+void send_note(void);
+void stop_note(void);
 
 #endif
