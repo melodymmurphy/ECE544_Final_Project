@@ -12,6 +12,7 @@
 ******************************************************************************/
 
 #include "main.h"
+#include "system.h"
 #include "initialization.h"
 #include "interrupts.h"
 #include "display.h"
@@ -24,11 +25,8 @@
 
 /************************** Variable Declarations ****************************/
 
-sequencer_t		 	sequencer_inst;
-signal_generator_t 	sigGen_inst;
-midi_rx_t			midi_rx_inst;
-midi_tx_t			midi_tx_inst;
 menu_main 			menu_inst;
+system_t			system_inst;
 
 
 /**************************** Function Prototypes ****************************/
@@ -62,9 +60,7 @@ int main(void)
 	vSemaphoreCreateBinary(mod_sem);
 
 	// initialize software instances
-	initialize_sequencer(&sequencer_inst);
-	initializeSigGen(&sigGen_inst);
-	initialize_MIDI(&midi_rx_inst, &midi_tx_inst);
+	initialize_system(&system_inst);
 	menu_init(&menu_inst);
 
 	I2S2_Send_Sample(0);	// Send one sample to I2S output to trigger the ready interrupts
@@ -100,8 +96,6 @@ int main(void)
 				NULL);
 
 
-
-
 	//Start the Scheduler
 	xil_printf("Starting the scheduler\r\n");
 	vTaskStartScheduler();
@@ -124,14 +118,14 @@ void calculate_samples(void* pvParameters)
 
 	while(1)
 	{
-		modulation = midi_rx_inst.modulation;
-		freq[0] = sigGen_inst.frequency[0];
+		modulation = getModulationRX();
+		freq[0] = getFrequency();
 		if (xSemaphoreTake(I2S_TX_low_sem, minimum_wait))
 		{
 			for (int index = 0; index < (BUFFER_SIZE >> 1); index++)
 			{
 				samples[0] = sawTriRampWave(freq[0], 127, modulation, 0);
-				sigGen_inst.sampleBuffer[index] = mixer(activeNotes, samples);
+				bufferSample(samples[0], index);
 			}
 		}
 		else if (xSemaphoreTake(I2S_TX_high_sem, minimum_wait))
@@ -139,7 +133,7 @@ void calculate_samples(void* pvParameters)
 			for (int index = (BUFFER_SIZE >> 1); index < BUFFER_SIZE; index++)
 			{
 				samples[0] = sawTriRampWave(freq[0], 127, modulation, 0);
-				sigGen_inst.sampleBuffer[index] = mixer(activeNotes, samples);
+				bufferSample(samples[0], index);
 			}
 		}
 	}
@@ -153,12 +147,12 @@ void sequence_thread(void* pvParameters)
 	{
 		if (xSemaphoreTake(step_sem, minimum_wait))
 		{
-			next_step();
-			play_note(&sigGen_inst);
 			stop_note();
+			next_step();
+			play_note();
 			vTaskDelay(1);
 			send_note();
-			updateLEDs(sequencer_inst);
+			updateLEDs();
 		}
 
 		vTaskDelay(10);
@@ -190,17 +184,17 @@ static void midi_thread(void* pvParameters)
 		if (xSemaphoreTake(note_on_sem, minimum_wait))
 		{
 			midiByte = MIDI_processor_getNote();
-			sigGen_inst.frequency[0] = note_to_freq(midiByte);
+			setPitch(midiByte);
 		}
 		else if (xSemaphoreTake(note_off_sem, minimum_wait))
 		{
 			midiByte = MIDI_processor_getNote();
-			sigGen_inst.frequency[0] = 0;
+			clearPitch();
 		}
 		else if (xSemaphoreTake(mod_sem, minimum_wait))
 		{
 			midiByte = MIDI_processor_getModulation();
-			midi_rx_inst.modulation = midiByte;
+			setModulationRX(midiByte);
 		}
 
 		vTaskDelay(1);

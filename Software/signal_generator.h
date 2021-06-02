@@ -47,6 +47,9 @@ uint32_t sawtoothWave(float frequency, uint8_t amplitude, uint8_t signalIndex);
 uint32_t sawTriRampWave(uint16_t frequency, uint8_t amplitude, uint8_t riseCycle, uint8_t signalIndex);
 uint32_t mixer(uint8_t numSignals, uint32_t signalArray[]);
 uint32_t incrementSample(void);
+void setPitch(uint8_t pitch);
+float getFrequency(void);
+void clearPitch(void);
 void sendSample(void);
 
 #endif

@@ -112,8 +112,6 @@
 #define I2S_TX_SAMPLE_RATE			48000
 #define I2S_TX_INTERRUPT_ID			XPAR_MICROBLAZE_0_AXI_INTC_I2S2_0_READY_INTR
 
-// Other defines
-
 // Commonly used values
 #define OFF		 0
 #define ON		 1
