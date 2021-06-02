@@ -2,10 +2,6 @@
 
 #include "sequencer.h"
 
-/************************* Variable Declarations ****************************/
-
-static sequencer_t* sequencer;						// Sequencer struct
-
 /************************ Implementation Functions **************************/
 
 // initialize note values
@@ -19,35 +15,28 @@ void initializeNote(volatile note_t* note, uint8_t pitch)
 }
 
 // Initialize sequencer values
-void initialize_sequencer(sequencer_t* sequencer_p)
+void initialize_sequencer(sequencer_t* sequencer)
 {
+	initializeNote(&(sequencer->note[0]),  50);  	// Initialize to D dorian scale
+	initializeNote(&(sequencer->note[1]),  52);
+	initializeNote(&(sequencer->note[2]),  53);
+	initializeNote(&(sequencer->note[3]),  55);
+	initializeNote(&(sequencer->note[4]),  57);
+	initializeNote(&(sequencer->note[5]),  59);
+	initializeNote(&(sequencer->note[6]),  60);
+	initializeNote(&(sequencer->note[7]),  62);
+	initializeNote(&(sequencer->note[8]),  64);
+	initializeNote(&(sequencer->note[9]),  65);
+	initializeNote(&(sequencer->note[10]), 67);
+	initializeNote(&(sequencer->note[11]), 69);
+	initializeNote(&(sequencer->note[12]), 71);
+	initializeNote(&(sequencer->note[13]), 72);
+	initializeNote(&(sequencer->note[14]), 74);
+	initializeNote(&(sequencer->note[15]), 76);
 
-	xil_printf("\n\nInitializing Sequencer...\r\n");
-
-	sequencer = sequencer_p;
-
-
-	initializeNote(&sequencer->note[0],  50);  	// Initialize to D dorian scale
-	initializeNote(&sequencer->note[1],  52);
-	initializeNote(&sequencer->note[2],  53);
-	initializeNote(&sequencer->note[3],  55);
-	initializeNote(&sequencer->note[4],  57);
-	initializeNote(&sequencer->note[5],  59);
-	initializeNote(&sequencer->note[6],  60);
-	initializeNote(&sequencer->note[7],  62);
-	initializeNote(&sequencer->note[8],  64);
-	initializeNote(&sequencer->note[9],  65);
-	initializeNote(&sequencer->note[10], 67);
-	initializeNote(&sequencer->note[11], 69);
-	initializeNote(&sequencer->note[12], 71);
-	initializeNote(&sequencer->note[13], 72);
-	initializeNote(&sequencer->note[14], 74);
-	initializeNote(&sequencer->note[15], 76);
-
-	  // Initialize system states
+	  // Initialize states
 	sequencer->step			= FIRST;                		// initialize sequence step to first
 	sequencer->prevStep 	= FIRST;						// initialize previous sequencer step to first step
-	sequencer->mode 		= RECORD;               		// initialize mode to RECORD mode
 	sequencer->timer_count  = (TIMER_CLOCK / 8);    		// initialize timer count to blink 8x per second
 	sequencer->seq_timer 	= (TIMER_CLOCK / 80) * 60;  	// initialize sequence rate to 80 BPM
 	sequencer->led_toggle 	= false;           				// initialize LED to off
@@ -57,7 +46,7 @@ void initialize_sequencer(sequencer_t* sequencer_p)
 }
 
 // increment sequence step (right)
-static void stepForward(void)
+static void stepForward(sequencer_t* sequencer)
 {
 	sequencer->step++;            // increment step
 	if (sequencer->step > LAST)
@@ -67,7 +56,7 @@ static void stepForward(void)
 }
 
 // decrement sequence step (left)
-static void stepBackward(void)
+static void stepBackward(sequencer_t* sequencer)
 {
 	if (sequencer->step <= FIRST)
 	{
@@ -80,43 +69,43 @@ static void stepBackward(void)
 }
 
 // set sequence step to random step
-static void stepRandom(void)
+static void stepRandom(sequencer_t* sequencer)
 {
 	sequencer->step = rand() % STEPS;    // randomize next step
 }
 
 // Determine which sequencer step follows the current step
-void next_step(void)
+void sequence_step(sequencer_t* sequencer)
 {
 	uint8_t step = sequencer->step;
 
-	switch(sequencer->pattern)    // case statement to select next step based on pattern stored in system states
+	switch(sequencer->pattern)    // case statement to select next step based on pattern stored in states
 	{
-		case FORWARD:	stepForward();
+		case FORWARD:	stepForward(sequencer);
                     	break;
 
-		case BACKWARD:	stepBackward();
+		case BACKWARD:	stepBackward(sequencer);
                     	break;
 
 		case BOTH_DIR:	if (sequencer->step == FIRST)
 						{
-							stepForward();
+							stepForward(sequencer);
 						}
 						else if (sequencer->step == LAST)
 						{
-							stepBackward();
+							stepBackward(sequencer);
 						}
 						else if (sequencer->prevStep < sequencer->step)
 						{
-							stepForward();
+							stepForward(sequencer);
 						}
 						else if (sequencer->prevStep > sequencer->step)
 						{
-							stepBackward();
+							stepBackward(sequencer);
 						}
 						break;
 
-		case RANDOM:    stepRandom();
+		case RANDOM:    stepRandom(sequencer);
 						break;
 
 		default:        break;
@@ -127,28 +116,4 @@ void next_step(void)
 	return;
 }
 
-// play an audio signal corresponding to the current sequencer step
-void play_note(signal_generator_t* sigGen)
-{
-	note_t note = sequencer->note[sequencer->step];
-	sigGen->frequency[0] = note_to_freq(note.pitch);
-	sigGen->velocity[0] = note.velocity;
 
-	return;
-}
-
-// send a MIDI signal to play the current sequencer step
-void send_note(void)
-{
-	note_t note = sequencer->note[sequencer->step];
-	setMidiOutNote(CHANNEL_0, note.pitch, note.velocity);
-	sendMidiNoteOn();
-}
-
-// send a MIDI signal to stop the current sequencer step
-void stop_note(void)
-{
-	note_t note = sequencer->note[sequencer->step];
-	setMidiOutNote(CHANNEL_0, note.pitch, note.velocity);
-	sendMidiNoteOff();
-}

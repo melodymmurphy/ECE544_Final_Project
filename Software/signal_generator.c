@@ -180,10 +180,31 @@ uint32_t incrementSample(void)
 
 }
 
+void setPitch(uint8_t pitch)
+{
+	sigGen->frequency[0] = note_to_freq(pitch);
+}
+
+float getFrequency(void)
+{
+	return sigGen->frequency[0];
+}
+
+void clearPitch(void)
+{
+	sigGen->frequency[0] = 0;;
+}
+
 // send next sample to I2S
 void sendSample(void)
 {
 	I2S2_Send_Sample(sigGen->sampleBuffer[sigGen->readIndex]);
 
+	return;
+}
+
+void bufferSample(uint32_t sample, uint32_t index)
+{
+	sigGen->sampleBuffer[index] = sample;
 	return;
 }

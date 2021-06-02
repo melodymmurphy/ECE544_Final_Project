@@ -2,17 +2,17 @@
 
 #include "midi.h"
 
-/************************* Variable Declarations****************************/
+/************************* Variable Declarations ****************************/
 
-static midi_rx_t* midi_rx;		// MIDI input processing struct
-static midi_tx_t* midi_tx;	// MIDI output processing struct
+midi_rx_t* midi_rx;
+midi_tx_t* midi_tx;
 
 /************************ Implementation Functions **************************/
 
 void initialize_MIDI(midi_rx_t* midi_rx_p, midi_tx_t* midi_tx_p)
 {
 	// initialize MIDI receiver
-	midi_rx 			= midi_rx_p;
+	midi_rx				= midi_rx_p;
 	midi_rx->active 	= 0;
 	midi_rx->numActive 	= 0;
 	for (int index = 0; index < NUM_INST; index++)
@@ -86,4 +86,16 @@ void sendMidiModulation(void)
 	rc = XUartNs550_Send(&UART_inst, bytes, 3);		// send through UART
 
 	return;
+}
+
+void setModulationRX(midiByte)
+{
+	midi_rx->modulation = midiByte;
+
+	return;
+}
+
+uint8_t getModulationRX(void)
+{
+	return midi_rx->modulation;
 }
