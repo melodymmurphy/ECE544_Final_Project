@@ -37,6 +37,7 @@ void initialize_sequencer(sequencer_t* sequencer)
 	  // Initialize states
 	sequencer->step			= FIRST;                		// initialize sequence step to first
 	sequencer->prevStep 	= FIRST;						// initialize previous sequencer step to first step
+	sequencer->tempo 		= 80;							// initialize tempo to 80 BPM
 	sequencer->timer_count  = (TIMER_CLOCK / 8);    		// initialize timer count to blink 8x per second
 	sequencer->seq_timer 	= (TIMER_CLOCK / 80) * 60;  	// initialize sequence rate to 80 BPM
 	sequencer->led_toggle 	= false;           				// initialize LED to off
@@ -115,5 +116,3 @@ void sequence_step(sequencer_t* sequencer)
 
 	return;
 }
-
-
