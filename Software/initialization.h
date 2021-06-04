@@ -9,7 +9,7 @@
 
 /****************************** Definitions ********************************/
 
-#define TIMER_INIT 		((AXI_CLOCK_FREQ_HZ * 60) / 120)		// initialize timer value to 120 BPM
+#define TIMER_INIT 		((AXI_CLOCK_FREQ_HZ * 60) / 80)		// initialize timer value to 80 BPM
 
 /************************** Function Prototypes ****************************/
 

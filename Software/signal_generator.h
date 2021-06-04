@@ -11,8 +11,11 @@
 #define SAMPLE_RATE 	48000
 #define BIT_DEPTH		24
 #define MAX_AMP 		((1 << BIT_DEPTH) - 1)
+#define DC_MIN			0
 #define DC_MAX			127
+#define RC_MIN			0
 #define RC_MAX			127
+#define AMP_MIN			0
 #define AMP_MAX			127
 #define NOTE_A4			440		// frequency value of MIDI note A4
 #define MAX_SAW  		3

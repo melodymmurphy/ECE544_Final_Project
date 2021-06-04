@@ -16,6 +16,11 @@
 #define LAST            15        // last step of sequence
 #define STEPS           16        // number of steps of sequence
 
+#define VELOCITY_MIN	0
+#define VELOCITY_MAX	127
+#define PITCH_MIN		0
+#define PITCH_MAX		127
+
 #define TIMER_CLOCK 	AXI_CLOCK_FREQ_HZ
 
 
@@ -41,6 +46,8 @@ typedef struct
 	volatile uint8_t step;          	// sequence step
 	volatile uint8_t prevStep;			// previous sequencer step
 	volatile uint32_t timer_count;   	// value to write to timer countdown
+	volatile uint8_t tempo;				// tempo of sequence in beats per minute
+	volatile uint8_t swing;				// swing of sequence
 	volatile bool led_toggle;    		// toggle step LED on or off
 	volatile pattern_t pattern;      	// sequence pattern--forwards, backwards, random
 	volatile note_length_t subdiv;   	// note subdivisions--whole, half, quarter, etc.
