@@ -23,11 +23,15 @@ usleep(100000);
 
 /**************************** Globals *****************************************/
 static menu_main *menu;
-PmodOLEDrgb	pmodOLEDrgb_inst;
+//PmodOLEDrgb	pmodOLEDrgb_inst;
 static u8 row=1,last_row=-1,row_max=1;
 static u8 page=-1;
 static u32 *menu_sel[6];
 static s32 enc=0,last_enc=0;
+
+/**************************** string LUT ******************************/
+char* seq_op[2] = {"?","done"};
+char* mode_str[4] = {"PLAY", "REC", "BYP", "MEM"};
 
 /**************************** Functions *****************************************/
 
@@ -37,21 +41,21 @@ void menu_init(menu_main *menu_p) {
 
 	OLEDrgb_SetFontColor(&pmodOLEDrgb_inst,OLEDrgb_BuildRGB(200, 12, 44));
 
-	(*menu).system.mode = PLAY;
-	(*menu).system.slot = 1;
+	(*menu).system.volume = getVolume();
+	(*menu).system.mode = getMode();
+	(*menu).system.slot = getSlot();
 	(*menu).system.load = 0;
 	(*menu).system.store = 0;
 
-	(*menu).sequence.tempo = 60;
-	(*menu).sequence.subdivision = WHOLE;
-	(*menu).sequence.swing = 0;
-	(*menu).sequence.volume = 10;
-	(*menu).sequence.pattern = FORWARD;
+	(*menu).sequence.tempo = getTempo();
+	(*menu).sequence.subdivision = getSubdiv();
+	(*menu).sequence.swing = getSwing();
+	(*menu).sequence.pattern = getPattern();
 
-	(*menu).note.velocity = 0;
-	(*menu).note.frequency = 0;
-	(*menu).note.dutycycle = 0;
-	(*menu).note.state = 0;
+//	(*menu).note.velocity = 0;
+//	(*menu).note.frequency = 0;
+//	(*menu).note.dutycycle = 0;
+//	(*menu).note.state = 0;
 
 	PMODENC544_clearRotaryCount();
 }
@@ -71,10 +75,11 @@ void menu_nav(void) {
 			case psystem:
 				OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 0, 0);
 				OLEDrgb_PutString(&pmodOLEDrgb_inst,"system      ");
-				menu_line(menu_sel,r,"mode:  ",(*menu).system.mode,num);
+				menu_line(menu_sel,r,"volume:",(*menu).system.volume,num);
+				menu_line(menu_sel,r,"mode:  ",(*menu).system.mode,mode_str);
 				menu_line(menu_sel,r,"slot:  ",(*menu).system.slot,num);
-				menu_line(menu_sel,r,"load:  ",(*menu).system.load,num);
-				menu_line(menu_sel,r,"store: ",(*menu).system.store,num);
+				menu_line(menu_sel,r,"load:  ",(*menu).system.load,seq_op);
+				menu_line(menu_sel,r,"store: ",(*menu).system.store,seq_op);
 				row_max = r-1;
 				break;
 			case psequence:
@@ -83,21 +88,20 @@ void menu_nav(void) {
 				menu_line(menu_sel,r,"tempo: ",(*menu).sequence.tempo,num);
 				menu_line(menu_sel,r,"subdiv:",(*menu).sequence.subdivision,num);
 				menu_line(menu_sel,r,"swing: ",(*menu).sequence.swing,num);
-				menu_line(menu_sel,r,"volume:",(*menu).sequence.volume,num);
 				menu_line(menu_sel,r,"patt:  ",(*menu).sequence.pattern,num);
 				row_max = r-1;
 				break;
-			case pnote:
-				OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 0, 0);
-				OLEDrgb_PutString(&pmodOLEDrgb_inst,"note        ");
-				menu_line(menu_sel,r,"vel:   ",(*menu).note.velocity,num);
-				menu_line(menu_sel,r,"freq:  ",(*menu).note.frequency,note_to_str);
-//				menu_line(menu_sel,r,"freq:",(*menu).note.frequency,num);
-//					menu_str(r-1,note_to_str((*menu).note.frequency));
-				menu_line(menu_sel,r,"dutyc: ",(*menu).note.dutycycle,num);
-				menu_line(menu_sel,r,"state: ",(*menu).note.state,num);
-				row_max = r-1;
-				break;
+//			case pnote:
+//				OLEDrgb_SetCursor(&pmodOLEDrgb_inst, 0, 0);
+//				OLEDrgb_PutString(&pmodOLEDrgb_inst,"note        ");
+//				menu_line(menu_sel,r,"vel:   ",(*menu).note.velocity,num);
+//				menu_line(menu_sel,r,"freq:  ",(*menu).note.frequency,note_to_str);
+////				menu_line(menu_sel,r,"freq:",(*menu).note.frequency,num);
+////					menu_str(r-1,note_to_str((*menu).note.frequency));
+//				menu_line(menu_sel,r,"dutyc: ",(*menu).note.dutycycle,num);
+//				menu_line(menu_sel,r,"state: ",(*menu).note.state,num);
+//				row_max = r-1;
+//				break;
 		}
 		row = 1;
 		last_row = -1;
@@ -148,7 +152,7 @@ void menu_update(void) {
 			break;
 		case menu_item(psystem,mload):
 		case menu_item(psystem,mstore):
-		case menu_item(pnote,nstate):
+//		case menu_item(pnote,nstate):
 			min = 0;
 			max = 1;
 			break;
@@ -164,8 +168,8 @@ void menu_update(void) {
 			min = -100;
 			max = 100;
 			break;
-		case menu_item(psequence,qvolume):
-		case menu_item(pnote,ndutycycle):
+		case menu_item(psystem,svolume):
+//		case menu_item(pnote,ndutycycle):
 			min = 0;
 			max = 100;
 			break;
@@ -173,11 +177,11 @@ void menu_update(void) {
 			min = 0;
 			max = 4;
 			break;
-		case menu_item(pnote,nvelocity):
-		case menu_item(pnote,nfrequency):
-			min = 0;
-			max = 127;
-			break;
+//		case menu_item(pnote,nvelocity):
+//		case menu_item(pnote,nfrequency):
+//			min = 0;
+//			max = 127;
+//			break;
 //			min = 0;
 //			max = 24000;
 //			break;
@@ -185,14 +189,54 @@ void menu_update(void) {
 	if (*sel<min) *sel=min;
 	else if (*sel>max) *sel=max;
 
-	// update oled value
+	// update oled and system API value
 	switch (menu_item(page,row-1)) {
-		case menu_item(pnote,nfrequency):
-			menu_note_to_str(row,*sel);
+		case menu_item(psystem,mload):
+			if (!*sel) break;		// 0 skip
+			load_sequence();
+			menu_seq_op(row,*sel);		// display op done
+			*sel=min;					// reset val
 			break;
+		case menu_item(psystem,mstore):
+			if (!*sel) break;		// 0 skip
+			store_sequence();
+			menu_seq_op(row,*sel);		// display op done
+			*sel=min;					// reset val
+			break;
+		case menu_item(psystem,smode):
+			setMode(*sel);
+			menu_mode_str(row,*sel);		// display op done
+			break;
+//		case menu_item(pnote,nfrequency):
+//			menu_note_to_str(row,*sel);
+//			break;
 		default:
+			// oled number
 			menu_num(row,*sel);
-			break;
+			// set API for number value
+			switch (menu_item(page,row-1)) {
+				case menu_item(psystem,mslot):
+					setSlot(*sel);
+					break;
+				case menu_item(psequence,qtempo):
+					setTempo(*sel);
+					break;
+				case menu_item(psequence,qsubdivision):
+					setSubdiv(*sel);
+					break;
+				case menu_item(psequence,qswing):
+					setSwing(*sel);
+					break;
+				case menu_item(psystem,svolume):
+					setVolume(*sel);
+					break;
+				case menu_item(psequence,qpattern):
+					setPattern(*sel);
+					break;
+				default:
+					break;
+			}
+			break;	// outer switch default
 	}
 
 	last_enc = enc;
