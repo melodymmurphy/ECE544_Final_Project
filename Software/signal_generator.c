@@ -182,7 +182,10 @@ uint32_t incrementSample(void)
 
 void setPitch(uint8_t pitch)
 {
-	sigGen->frequency[0] = note_to_freq(pitch);
+	if (pitch > 0)
+	{
+		sigGen->frequency[0] = note_to_freq(pitch);
+	}
 }
 
 float getFrequency(void)
@@ -192,7 +195,7 @@ float getFrequency(void)
 
 void clearPitch(void)
 {
-	sigGen->frequency[0] = 0;;
+	sigGen->frequency[0] = 0;
 }
 
 // send next sample to I2S

@@ -19,6 +19,7 @@
 #include "sequencer.h"
 #include "menu.h"
 #include "signal_generator.h"
+#include "control.h"
 #include "midi.h"
 #include "menu.h"
 #include "luts.h"
@@ -53,11 +54,13 @@ int main(void)
 
 	vSemaphoreCreateBinary(I2S_TX_low_sem);
 	vSemaphoreCreateBinary(I2S_TX_high_sem);
-	vSemaphoreCreateBinary(step_sem);
+	vSemaphoreCreateBinary(timer_sem);
 	vSemaphoreCreateBinary(display_sem);
 	vSemaphoreCreateBinary(note_on_sem);
 	vSemaphoreCreateBinary(note_off_sem);
 	vSemaphoreCreateBinary(mod_sem);
+	vSemaphoreCreateBinary(step_sem);
+	vSemaphoreCreateBinary(bypass_sem);
 
 	// initialize software instances
 	initialize_system(&system_inst);
@@ -78,7 +81,7 @@ int main(void)
 				"Sequencer",
 				256,
 				NULL,
-				2,
+				3,
 				NULL);
 
 	xTaskCreate(menu_thread,
@@ -113,7 +116,6 @@ void calculate_samples(void* pvParameters)
 {
 	uint32_t samples[NUM_POLY];
 	float freq[NUM_POLY];
-	uint8_t activeNotes = 1;
 	uint8_t modulation;
 
 	while(1)
@@ -143,16 +145,86 @@ void calculate_samples(void* pvParameters)
 
 void sequence_thread(void* pvParameters)
 {
+	mode_t mode;
+	uint8_t btns;
+	uint8_t encSw;
+
 	while(1)
 	{
+		mode = getMode();
+		if (xSemaphoreTake(timer_sem, minimum_wait))
+		{
+			if (mode == PLAY)
+			{
+				stop_note();
+				quiet_note();
+				next_step();
+				play_note();
+				vTaskDelay(1);
+				send_note();
+				updateLEDs();
+			}
+			else if (mode == RECORD)
+			{
+				updateLEDs();
+				toggleBlink();
+			}
+			else if (mode == BYPASS)
+			{
+				updateLEDs();
+				toggleBlink();
+			}
+		}
 		if (xSemaphoreTake(step_sem, minimum_wait))
 		{
-			stop_note();
-			next_step();
-			play_note();
-			vTaskDelay(1);
-			send_note();
-			updateLEDs();
+			btns = (uint8_t)getButtons();
+			if (mode == PLAY)
+			{
+				if (btns & BTNC)
+				{
+					setMode(RECORD);
+				}
+			}
+			else if (mode == RECORD)
+			{
+				if (btns & BTNC)
+				{
+					setMode(PLAY);
+				}
+				else if (btns & BTNR)
+				{
+					stepSeqForward();
+				}
+				else if (btns & BTNL)
+				{
+					stepSeqBackward();
+				}
+			}
+		}
+		if (xSemaphoreTake(bypass_sem, minimum_wait))
+		{
+			encSw = (uint8_t)PMODENC544_getBtnSwReg() & ENC_SW_MASK;
+			if (mode == PLAY)
+			{
+				if (!encSw)
+				{
+					setMode(BYPASS);
+				}
+			}
+			else if (mode == RECORD)
+			{
+				if (!encSw)
+				{
+					setMode(BYPASS);
+				}
+			}
+			else if (mode == BYPASS)
+			{
+				if (encSw)
+				{
+					setMode(RECORD);
+				}
+			}
 		}
 
 		vTaskDelay(10);
@@ -179,22 +251,38 @@ static void menu_thread(void* pvParameters)
 static void midi_thread(void* pvParameters)
 {
 	uint8_t midiByte;
+	mode_t mode;
 	while(1)
 	{
+		mode = getMode();
 		if (xSemaphoreTake(note_on_sem, minimum_wait))
 		{
 			midiByte = MIDI_processor_getNote();
-			setPitch(midiByte);
+			if (mode == BYPASS)
+			{
+				setPitch(midiByte);
+			}
+			if (mode == RECORD)
+			{
+				setNotePitch(midiByte);
+				stepSeqForward();
+			}
 		}
 		else if (xSemaphoreTake(note_off_sem, minimum_wait))
 		{
 			midiByte = MIDI_processor_getNote();
-			clearPitch();
+			if(mode == BYPASS)
+			{
+				clearPitch();
+			}
 		}
 		else if (xSemaphoreTake(mod_sem, minimum_wait))
 		{
 			midiByte = MIDI_processor_getModulation();
-			setModulationRX(midiByte);
+			if (mode == BYPASS)
+			{
+				setModulationRX(midiByte);
+			}
 		}
 
 		vTaskDelay(1);

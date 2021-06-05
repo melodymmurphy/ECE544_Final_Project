@@ -72,6 +72,7 @@
 #define PMODENC_BASEADDR			XPAR_PMODENC544_0_S00_AXI_BASEADDR
 #define PMODENC_HIGHADDR			XPAR_PMODENC544_0_S00_AXI_HIGHADDR
 #define PMODENC_INTERRUPT_ID		XPAR_MICROBLAZE_0_AXI_INTC_PMODENC544_0_INT_SIG_INTR
+#define ENC_SW_MASK					0x2
 
 // GPIO parameters
 #define GPIO_0_DEVICE_ID			XPAR_AXI_GPIO_0_DEVICE_ID
@@ -133,10 +134,12 @@ XUartNs550  	 	UART_inst;					// UART for MIDI output				// system flags
 // Semaphores
 xSemaphoreHandle	I2S_TX_low_sem;
 xSemaphoreHandle 	I2S_TX_high_sem;
-xSemaphoreHandle 	step_sem;
+xSemaphoreHandle 	timer_sem;
 xSemaphoreHandle 	display_sem;
+xSemaphoreHandle	step_sem;
 xSemaphoreHandle 	note_on_sem;
 xSemaphoreHandle 	note_off_sem;
 xSemaphoreHandle	mod_sem;
+xSemaphoreHandle	bypass_sem;
 
 #endif

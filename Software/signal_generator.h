@@ -5,6 +5,7 @@
 
 /****************************** Includes *********************************/
 #include "main.h"
+#include "luts.h"
 
 /****************************** Definitions ******************************/
 
@@ -54,5 +55,6 @@ void setPitch(uint8_t pitch);
 float getFrequency(void);
 void clearPitch(void);
 void sendSample(void);
+void bufferSample(uint32_t sample, uint32_t index);
 
 #endif

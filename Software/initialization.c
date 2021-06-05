@@ -1,6 +1,7 @@
 // Author: Mel Murphy
 
 #include "initialization.h"
+#include "sequencer.h"
 
 static XUartNs550Format midi_format;
 
@@ -115,7 +116,7 @@ int AXI_Timer_initialize(void){
 		XTmrCtr_SetControlStatusReg(AXI_TIMER_BASEADDR, TIMER_1 ,ctlsts);
 
 		//Set the value that is loaded into the timer counter and cause it to be loaded into the timer counter
-		XTmrCtr_SetLoadReg(AXI_TIMER_BASEADDR, TIMER_1 , TIMER_INIT);
+		XTmrCtr_SetLoadReg(AXI_TIMER_BASEADDR, TIMER_1 , RECORD_BLINK_RATE);
 		XTmrCtr_LoadTimerCounterReg(AXI_TIMER_BASEADDR, TIMER_1);
 		ctlsts = XTmrCtr_GetControlStatusReg(AXI_TIMER_BASEADDR, TIMER_1);
 		ctlsts &= (~XTC_CSR_LOAD_MASK);

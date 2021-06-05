@@ -88,9 +88,9 @@ void sendMidiModulation(void)
 	return;
 }
 
-void setModulationRX(midiByte)
+void setModulationRX(uint8_t modulation)
 {
-	midi_rx->modulation = midiByte;
+	midi_rx->modulation = modulation;
 
 	return;
 }

@@ -67,7 +67,7 @@ void Timer_Handler(void)
 	XTmrCtr_DisableIntr(AXITimerInst.BaseAddress, TIMER_1);		// disable interrupts
 	ctlsts = XTmrCtr_GetControlStatusReg(AXITimerInst.BaseAddress, TIMER_1);	// get CSR
 
-	xSemaphoreGiveFromISR(step_sem, NULL);	// notify task that sequencer should be updated
+	xSemaphoreGiveFromISR(timer_sem, NULL);	// notify task that sequencer should be updated
 
 	XTmrCtr_WriteReg(AXITimerInst.BaseAddress, TIMER_1, XTC_TCSR_OFFSET, ctlsts | XTC_CSR_INT_OCCURED_MASK);
 	XTmrCtr_EnableIntr(AXITimerInst.BaseAddress, TIMER_1);	// acknowledge interrupt, re-enable interrupts, start timer
@@ -99,7 +99,15 @@ void MIDI_Handler(void)
 
 void GPIO_Handler(void)
 {
-	xSemaphoreGiveFromISR(display_sem, NULL);			// notify display that GPIO state has changed
+	uint8_t btns = (uint8_t)getButtons();
+	if ((btns & BTNU) || (btns & BTND))
+	{
+		xSemaphoreGiveFromISR(display_sem, NULL);			// notify display that GPIO state has changed
+	}
+	else if ((btns & BTNL) || (btns & BTNR) || (btns & BTNC))
+	{
+		xSemaphoreGiveFromISR(step_sem, NULL);			// notify display that GPIO state has changed
+	}
 	XGpio_InterruptClear( &GPIO_inst, GPIO_IN_MASK );	// clear GPIO interrupts
 }
 
@@ -124,4 +132,5 @@ void I2S_TX_Handler(void)
 void ENC_Handler(void)
 {
 	xSemaphoreGiveFromISR(display_sem, NULL);			// notify task encoder state has changed
+	xSemaphoreGiveFromISR(bypass_sem, NULL);			// notify task encoder state has changed
 }
