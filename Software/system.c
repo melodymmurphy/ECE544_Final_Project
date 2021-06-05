@@ -35,6 +35,17 @@ seq_mode_t getMode(void)
 
 void setMode(seq_mode_t mode)
 {
+	if (mode == PLAY)
+	{
+		seq_system->led_toggle = true;
+		updateLEDs();
+		XTmrCtr_Stop(&AXITimerInst, TIMER_1);		// stop sequence timer
+		XTmrCtr_SetResetValue(&AXITimerInst, TIMER_1, TIMER_COUNT(getTempo()));	// load sequence timer with LED blink rate
+		XTmrCtr_Reset(&AXITimerInst, TIMER_1);		// reset the timer
+		XTmrCtr_Start(&AXITimerInst, TIMER_1);
+		play_note();
+		send_note();
+	}
 	if (mode == RECORD)
 	{
 		stop_note();
@@ -45,17 +56,6 @@ void setMode(seq_mode_t mode)
 		XTmrCtr_Start(&AXITimerInst, TIMER_1);
 		seq_system->led_toggle = false;
 		updateLEDs();
-	}
-	if (mode == PLAY)
-	{
-		play_note();
-		send_note();
-		seq_system->led_toggle = true;
-		updateLEDs();
-		XTmrCtr_Stop(&AXITimerInst, TIMER_1);		// stop sequence timer
-		XTmrCtr_SetResetValue(&AXITimerInst, TIMER_1, TIMER_COUNT(getTempo()));	// load sequence timer with LED blink rate
-		XTmrCtr_Reset(&AXITimerInst, TIMER_1);		// reset the timer
-		XTmrCtr_Start(&AXITimerInst, TIMER_1);
 	}
 	if (mode == BYPASS)
 	{
