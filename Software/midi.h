@@ -45,7 +45,7 @@ void setMidiOutMod(uint8_t channel, uint8_t controller, uint8_t modulation);
 void sendMidiNoteOn(void);
 void sendMidiNoteOff(void);
 void sendMidiModulation(void);
-void setModulationRX(midiByte);
+void setModulationRX(uint8_t modulation);
 uint8_t getModulationRX(void);
 
 #endif

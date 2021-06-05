@@ -27,6 +27,7 @@ typedef struct
 	uint8_t				slot;
 	seq_mode_t 			mode;
 	uint8_t 			volume;
+	bool				led_toggle;
 	sequencer_t			sequencer_bank[BANK_SIZE];
 	sequencer_t			active_sequence;
 	signal_generator_t 	sigGen;
@@ -45,6 +46,7 @@ void store_sequence(void);
 void load_sequence(void);
 void updateLEDs(void);
 void play_note(void);
+void quiet_note(void);
 void send_note(void);
 void stop_note(void);
 void next_step(void);
@@ -63,5 +65,10 @@ void setNoteVelocity(uint8_t velocity);
 void setNotePitch(uint8_t pitch);
 void setDutyCycle(uint8_t dutyCycle);
 void setState(bool onOff);
+void stepSeqForward(void);
+void stepSeqBackward(void);
+void resetSeqTimer(void);
+void getNoteTimer(void);
+void toggleBlink(void);
 
 #endif

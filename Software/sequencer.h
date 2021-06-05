@@ -12,16 +12,22 @@
 /****************************** Definitions ******************************/
 
 // Sequencer values
-#define FIRST           0         // first step of sequence
-#define LAST            15        // last step of sequence
-#define STEPS           16        // number of steps of sequence
+#define FIRST          	 	0         // first step of sequence
+#define LAST           	 	15        // last step of sequence
+#define STEPS          	 	16        // number of steps of sequence
 
-#define VELOCITY_MIN	0
-#define VELOCITY_MAX	127
-#define PITCH_MIN		0
-#define PITCH_MAX		127
+#define VELOCITY_MIN		0
+#define VELOCITY_MAX		127
+#define PITCH_MIN			0
+#define PITCH_MAX			127
+#define RIGHT				0
+#define LEFT				1
 
-#define TIMER_CLOCK 	AXI_CLOCK_FREQ_HZ
+#define RECORD_BLINK_RATE	((AXI_CLOCK_FREQ_HZ * 60) / 150)			// LED blink rate for RECORD mode
+#define BYPASS_BLINK_RATE	((AXI_CLOCK_FREQ_HZ * 60) / 60)			// LED blink rate for RECORD mode
+#define TIMER_COUNT(X)		((AXI_CLOCK_FREQ_HZ * 60) / X)
+
+#define TIMER_CLOCK 		AXI_CLOCK_FREQ_HZ
 
 
 /**************************** Type Definitions ****************************/
@@ -43,16 +49,14 @@ typedef struct
 
 typedef struct
 {
-	volatile uint8_t step;          	// sequence step
-	volatile uint8_t prevStep;			// previous sequencer step
-	volatile uint32_t timer_count;   	// value to write to timer countdown
-	volatile uint8_t tempo;				// tempo of sequence in beats per minute
-	volatile uint8_t swing;				// swing of sequence
-	volatile bool led_toggle;    		// toggle step LED on or off
-	volatile pattern_t pattern;      	// sequence pattern--forwards, backwards, random
-	volatile note_length_t subdiv;   	// note subdivisions--whole, half, quarter, etc.
-	volatile note_t note[STEPS]; 		// array of note structs assigned to each sequence step
-	uint64_t seq_timer;					// timer count for sequence step timer
+	uint8_t step;         	 	// sequence step
+	uint8_t direction;			// current direction in which sequence is moving (BOTH_DIR implementation)
+	uint8_t tempo;				// tempo of sequence in beats per minute
+	uint8_t swing;				// swing of sequence
+	pattern_t pattern;      	// sequence pattern--forwards, backwards, random
+	note_length_t subdiv;   	// note subdivisions--whole, half, quarter, etc.
+	note_t note[STEPS]; 		// array of note structs assigned to each sequence step
+	uint64_t seq_timer;			// timer count for sequence step timer
 
 } sequencer_t;
 
@@ -62,6 +66,8 @@ typedef struct
 void initializeNote(volatile note_t* note, uint8_t pitch);
 void initialize_sequencer(sequencer_t* sequencer);
 void states_initialization(sequencer_t* sequencer);
+void stepForward(sequencer_t* sequencer);
+void stepBackward(sequencer_t* sequencer);
 void sequence_step(sequencer_t* sequencer);
 uint8_t getStep(sequencer_t* sequencer);
 

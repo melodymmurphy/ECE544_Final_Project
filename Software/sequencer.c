@@ -36,18 +36,16 @@ void initialize_sequencer(sequencer_t* sequencer)
 
 	  // Initialize states
 	sequencer->step			= FIRST;                		// initialize sequence step to first
-	sequencer->prevStep 	= FIRST;						// initialize previous sequencer step to first step
+	sequencer->direction	= RIGHT;						// initialize sequener direction to moving forward
 	sequencer->tempo 		= 80;							// initialize tempo to 80 BPM
-	sequencer->timer_count  = (TIMER_CLOCK / 8);    		// initialize timer count to blink 8x per second
-	sequencer->seq_timer 	= (TIMER_CLOCK / 80) * 60;  	// initialize sequence rate to 80 BPM
-	sequencer->led_toggle 	= false;           				// initialize LED to off
+	sequencer->swing 		= 0;							// initialize sequencer to no swing
 	sequencer->pattern 		= BOTH_DIR;           			// initialize sequence pattern to forward
 	sequencer->subdiv 		= QUARTER;            			// initialize note subdivision to quarter notes
 
 }
 
 // increment sequence step (right)
-static void stepForward(sequencer_t* sequencer)
+void stepForward(sequencer_t* sequencer)
 {
 	sequencer->step++;            // increment step
 	if (sequencer->step > LAST)
@@ -57,7 +55,7 @@ static void stepForward(sequencer_t* sequencer)
 }
 
 // decrement sequence step (left)
-static void stepBackward(sequencer_t* sequencer)
+void stepBackward(sequencer_t* sequencer)
 {
 	if (sequencer->step <= FIRST)
 	{
@@ -91,19 +89,22 @@ void sequence_step(sequencer_t* sequencer)
 		case BOTH_DIR:	if (sequencer->step == FIRST)
 						{
 							stepForward(sequencer);
+							sequencer->direction = RIGHT;
 						}
 						else if (sequencer->step == LAST)
 						{
 							stepBackward(sequencer);
+							sequencer->direction = LEFT;
 						}
-						else if (sequencer->prevStep < sequencer->step)
+						else if (sequencer->direction == RIGHT)
 						{
 							stepForward(sequencer);
 						}
-						else if (sequencer->prevStep > sequencer->step)
+						else if (sequencer->direction == LEFT)
 						{
 							stepBackward(sequencer);
 						}
+
 						break;
 
 		case RANDOM:    stepRandom(sequencer);
@@ -111,8 +112,6 @@ void sequence_step(sequencer_t* sequencer)
 
 		default:        break;
 	}
-
-	sequencer->prevStep = step;
 
 	return;
 }

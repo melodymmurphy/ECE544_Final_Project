@@ -21,6 +21,7 @@ void initialize_system(system_t* system_p)
 	}
 	initializeSigGen(&(seq_system->sigGen));
 	initialize_MIDI(&(seq_system->midi_rx), &(seq_system->midi_tx));
+	seq_system->led_toggle = false;
 	seq_system->slot = 1;
 	seq_system->mode = RECORD;
 
@@ -34,7 +35,42 @@ seq_mode_t getMode(void)
 
 void setMode(seq_mode_t mode)
 {
+	if (mode == RECORD)
+	{
+		stop_note();
+		quiet_note();		// turn of currently playing sound
+		XTmrCtr_Stop(&AXITimerInst, TIMER_1);		// stop sequence timer
+		XTmrCtr_SetResetValue(&AXITimerInst, TIMER_1, RECORD_BLINK_RATE);	// load sequence timer with LED blink rate
+		XTmrCtr_Reset(&AXITimerInst, TIMER_1);		// reset the timer
+		XTmrCtr_Start(&AXITimerInst, TIMER_1);
+		seq_system->led_toggle = false;
+		updateLEDs();
+	}
+	if (mode == PLAY)
+	{
+		play_note();
+		send_note();
+		seq_system->led_toggle = true;
+		updateLEDs();
+		XTmrCtr_Stop(&AXITimerInst, TIMER_1);		// stop sequence timer
+		XTmrCtr_SetResetValue(&AXITimerInst, TIMER_1, TIMER_COUNT(getTempo()));	// load sequence timer with LED blink rate
+		XTmrCtr_Reset(&AXITimerInst, TIMER_1);		// reset the timer
+		XTmrCtr_Start(&AXITimerInst, TIMER_1);
+	}
+	if (mode == BYPASS)
+	{
+		stop_note();
+		quiet_note();		// turn of currently playing sound
+		XTmrCtr_Stop(&AXITimerInst, TIMER_1);		// stop sequence timer
+		XTmrCtr_SetResetValue(&AXITimerInst, TIMER_1, BYPASS_BLINK_RATE);	// load sequence timer with LED blink rate
+		XTmrCtr_Reset(&AXITimerInst, TIMER_1);		// reset the timer
+		XTmrCtr_Start(&AXITimerInst, TIMER_1);
+		seq_system->led_toggle = false;
+		updateLEDs();
+	}
+
 	seq_system->mode = mode;
+
 	return;
 }
 
@@ -66,19 +102,38 @@ void load_sequence(void)
 
 void updateLEDs(void)
 {
+
 	uint32_t step_LED = (1 << (STEPS-1)) >> seq_system->active_sequence.step;			// LED of active sequencer step
 	XGpio_DiscreteClear(&GPIO_inst, CHANNEL_2, GPIO_LEDS_MASK);		// clear all LEDs
-	XGpio_DiscreteSet(&GPIO_inst, CHANNEL_2, step_LED);				// write just the LED we want
+	if (seq_system->mode == PLAY || ((seq_system->mode == RECORD) && (seq_system->led_toggle)))
+	{
+		XGpio_DiscreteSet(&GPIO_inst, CHANNEL_2, step_LED);				// write just the LED we want
+	}
+	if ((seq_system->mode == BYPASS) && (seq_system->led_toggle))
+	{
+		XGpio_DiscreteSet(&GPIO_inst, CHANNEL_2, GPIO_LEDS_MASK);				// write all LEDs
+	}
 
 }
 
-// play an audio signal corresponding to the current sequencer step
+// play an audio signal
 void play_note(void)
 {
 	sequencer_t sequencer = seq_system->active_sequence;
 	note_t note = sequencer.note[sequencer.step];
 	seq_system->sigGen.frequency[0] = note_to_freq(note.pitch);
 	seq_system->sigGen.velocity[0] = note.velocity;
+
+	return;
+}
+
+// Turn off currently playing note
+void quiet_note(void)
+{
+	sequencer_t sequencer = seq_system->active_sequence;
+	note_t note = sequencer.note[sequencer.step];
+	seq_system->sigGen.frequency[0] = 0;
+	seq_system->sigGen.velocity[0] = 0;
 
 	return;
 }
@@ -104,8 +159,20 @@ void stop_note(void)
 void next_step(void)
 {
 	sequencer_t* sequencer = &(seq_system->active_sequence);
-	sequence_step(sequencer);
+	if (getMode() == PLAY)
+	{
+		sequence_step(sequencer);
+	}
+	else if (getMode() == RECORD)
+	{
+		(sequencer->step)++;
+		if (sequencer->step > LAST)
+		{
+			sequencer->step = FIRST;
+		}
+	}
 
+	return;
 }
 
 void setVolume(uint8_t volume)
@@ -128,9 +195,7 @@ void setTempo(uint8_t tempo)
 	if ((tempo >= TEMPO_MIN) && (tempo <= TEMPO_MAX))
 	{
 		seq_system->active_sequence.tempo = tempo;
-		timer_count = ((AXI_CLOCK_FREQ_HZ * 60) / tempo);
-		seq_system->active_sequence.timer_count = (uint32_t)timer_count;
-		XTmrCtr_SetLoadReg(AXI_TIMER_BASEADDR, TIMER_1 , (uint32_t)timer_count);
+		XTmrCtr_SetLoadReg(AXI_TIMER_BASEADDR, TIMER_1 , TIMER_COUNT(tempo));
 		XTmrCtr_LoadTimerCounterReg(AXI_TIMER_BASEADDR, TIMER_1);
 	}
 
@@ -191,7 +256,7 @@ void setNoteVelocity(uint8_t velocity)
 
 void setNotePitch(uint8_t pitch)
 {
-	if ((pitch >= PITCH_MIN) && (pitch <= PITCH_MAX))
+	if ((pitch >= (PITCH_MIN + 1)) && (pitch <= PITCH_MAX))
 	{
 		seq_system->active_sequence.note[seq_system->active_sequence.step].pitch = pitch;
 	}
@@ -211,5 +276,32 @@ void setDutyCycle(uint8_t duty_cycle)
 void setState(bool note_on)
 {
 	seq_system->active_sequence.note[seq_system->active_sequence.step].note_on = note_on;
+	return;
+}
+
+void stepSeqForward(void)
+{
+	stepForward(&(seq_system->active_sequence));
+	seq_system->led_toggle = true;
+	return;
+}
+
+void stepSeqBackward(void)
+{
+	stepBackward(&(seq_system->active_sequence));
+	seq_system->led_toggle = true;
+	return;
+}
+
+void toggleBlink(void)
+{
+	if (seq_system->led_toggle)
+	{
+		seq_system->led_toggle = false;
+	}
+	else
+	{
+		seq_system->led_toggle = true;
+	}
 	return;
 }
