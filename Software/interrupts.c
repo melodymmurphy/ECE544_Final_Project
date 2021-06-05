@@ -88,7 +88,7 @@ void MIDI_Handler(void)
 		{
 			xSemaphoreGiveFromISR(note_off_sem, NULL);
 		}
-		else if (reg & MODULATION_MASK)	// modukatino
+		else if (reg & MODULATION_MASK)	// modulation
 		{
 			xSemaphoreGiveFromISR(mod_sem, NULL);
 		}
@@ -125,12 +125,11 @@ void I2S_TX_Handler(void)
 		xSemaphoreGiveFromISR(I2S_TX_low_sem, NULL);	// send semaphore to write low buffer
 	}
 
-
 	return;
 }
 
 void ENC_Handler(void)
 {
-	xSemaphoreGiveFromISR(display_sem, NULL);			// notify task encoder state has changed
 	xSemaphoreGiveFromISR(bypass_sem, NULL);			// notify task encoder state has changed
+	xSemaphoreGiveFromISR(display_sem, NULL);			// notify task encoder state has changed
 }
