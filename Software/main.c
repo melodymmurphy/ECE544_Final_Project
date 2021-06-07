@@ -122,6 +122,7 @@ void calculate_samples(void* pvParameters)
 	{
 		modulation = getModulationRX();
 		freq[0] = getFrequency();
+
 		if (xSemaphoreTake(I2S_TX_low_sem, minimum_wait))
 		{
 			for (int index = 0; index < (BUFFER_SIZE >> 1); index++)

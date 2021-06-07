@@ -1,0 +1,2604 @@
+/*
+
+Xilinx Vivado v2019.2 (64-bit) [Major: 2019, Minor: 2]
+SW Build: 2708876 on Wed Nov  6 21:40:23 MST 2019
+IP Build: 2700528 on Thu Nov  7 00:09:20 MST 2019
+
+Process ID (PID): 6168
+License: Customer
+
+Current time: 	Sun Jun 06 19:42:33 PDT 2021
+Time zone: 	Pacific Standard Time (America/Los_Angeles)
+
+OS: Windows 10
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 8
+
+Screen size: 2736x1824
+Screen resolution (DPI): 150
+Available screens: 1
+Available disk space: 37 GB
+Default font: family=Segoe UI,name=Segoe UI,style=plain,size=18
+
+Java version: 	9.0.4 64-bit
+Java home: 	C:/Xilinx/Vivado/2019.2/tps/win64/jre9.0.4
+Java executable location: 	C:/Xilinx/Vivado/2019.2/tps/win64/jre9.0.4/bin/java.exe
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 3 GB
+
+
+User name: 	jlaw
+User home directory: C:/Users/jlaw
+User working directory: C:/Users/jlaw/ece544/sig_gen_ip
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2019.2
+RDI_DATADIR: C:/Xilinx/Vivado/2019.2/data
+RDI_BINDIR: C:/Xilinx/Vivado/2019.2/bin
+
+Vivado preferences file location: C:/Users/jlaw/AppData/Roaming/Xilinx/Vivado/2019.2/vivado.xml
+Vivado preferences directory: C:/Users/jlaw/AppData/Roaming/Xilinx/Vivado/2019.2/
+Vivado layouts directory: C:/Users/jlaw/AppData/Roaming/Xilinx/Vivado/2019.2/layouts
+PlanAhead jar file location: 	C:/Xilinx/Vivado/2019.2/lib/classes/planAhead.jar
+Vivado log file location: 	C:/Users/jlaw/ece544/sig_gen_ip/vivado.log
+Vivado journal file location: 	C:/Users/jlaw/ece544/sig_gen_ip/vivado.jou
+Engine tmp dir: 	C:/Users/jlaw/ece544/sig_gen_ip/.Xil/Vivado-6168-DESKTOP-J9LKVP9
+
+Xilinx Environment Variables
+----------------------------
+XILINX: C:/Xilinx/Vivado/2019.2/ids_lite/ISE
+XILINX_DSP: C:/Xilinx/Vivado/2019.2/ids_lite/ISE
+XILINX_PLANAHEAD: C:/Xilinx/Vivado/2019.2
+XILINX_VIVADO: C:/Xilinx/Vivado/2019.2
+XILINX_VIVADO_HLS: C:/Xilinx/Vivado/2019.2
+
+
+GUI allocated memory:	186 MB
+GUI max memory:		3,072 MB
+Engine allocated memory: 732 MB
+
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// TclEventType: PROJECT_OPEN_DIALOG
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// bB (cr):  Open Project : addNotify
+// Opening Vivado Project: C:\Users\jlaw\ece544\sig_gen_ip\edit_sig_gen_v1_0.xpr. Version: Vivado v2019.2 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.xpr 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 737 MB. GUI used memory: 66 MB. Current time: 6/6/21, 7:42:35 PM PDT
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 78 MB (+78824kb) [00:00:11]
+// [Engine Memory]: 747 MB (+631826kb) [00:00:11]
+// [GUI Memory]: 90 MB (+9013kb) [00:00:11]
+// [GUI Memory]: 114 MB (+19897kb) [00:00:11]
+// WARNING: HEventQueue.dispatchEvent() is taking  2432 ms.
+// Tcl Message: open_project C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0'. 
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'. 
+// [Engine Memory]: 791 MB (+6405kb) [00:00:13]
+// Tcl Message: open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:07 . Memory (MB): peak = 783.605 ; gain = 108.902 
+// Project name: edit_sig_gen_v1_0; location: C:/Users/jlaw/ece544/sig_gen_ip; part: xc7a100tcsg324-1
+dismissDialog("Open Project"); // bB (cr)
+// Tcl Message: update_compile_order -fileset sources_1 
+// [GUI Memory]: 122 MB (+3314kb) [00:00:20]
+// [Engine Memory]: 833 MB (+2757kb) [00:00:20]
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v)]", 1); // B (F, cr)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3); // B (F, cr)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v)]", 4); // B (F, cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 15, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// f (cr): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// bB (cr):  Starting Design Runs : addNotify
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: LOAD_FEATURE
+// Tcl Message: launch_runs synth_1 -jobs 4 
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: LOAD_FEATURE
+// TclEventType: RSB_LOCK_CHANGE
+// Tcl Message: INFO: [BD 41-1662] The design 'tri_ramp.bd' is already validated. Therefore parameter propagation will not be re-run. 
+// HMemoryUtils.trashcanNow. Engine heap size: 963 MB. GUI used memory: 71 MB. Current time: 6/6/21, 7:42:55 PM PDT
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_CLOSE_DIAGRAM
+// Tcl Message: VHDL Output written to : C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/synth/tri_ramp.v VHDL Output written to : C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/sim/tri_ramp.v VHDL Output written to : C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/hdl/tri_ramp_wrapper.v 
+// Tcl Message: Exporting to file C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/hw_handoff/tri_ramp.hwh Generated Block Design Tcl file C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/hw_handoff/tri_ramp_bd.tcl Generated Hardware Definition File C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/synth/tri_ramp.hwdef 
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// [Engine Memory]: 1,026 MB (+158799kb) [00:00:32]
+// Tcl Message: [Sun Jun  6 19:42:58 2021] Launched synth_1... Run output will be captured here: C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/synth_1/runme.log 
+// Tcl Message: launch_runs: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1044.957 ; gain = 190.035 
+// 'k' command handler elapsed time: 6 seconds
+// [GUI Memory]: 130 MB (+1404kb) [00:00:33]
+dismissDialog("Starting Design Runs"); // bB (cr)
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 16 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Edit Packaged IP]", 5, false); // u (O, cr)
+// bB (cr):  Open Project Manager : addNotify
+// Run Command: PAResourceCommand.PACommandNames_IP_PACKAGER
+dismissDialog("Open Project Manager"); // bB (cr)
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_CURRENT_CORE
+// Run Command: PAResourceCommand.PACommandNames_IP_PACKAGER
+// WARNING: HEventQueue.dispatchEvent() is taking  1172 ms.
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// Tcl Message: ipx::open_ipxact_file C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/component.xml 
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// bB (cr):  IP Packager : addNotify
+dismissDialog("IP Packager"); // bB (cr)
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "Customization Parameters", 3); // ar (O, cr)
+selectButton(PAResourceItoN.MessageBanner_CHANGES_DETECTED_IN_VIVADO_PROJECT_THAT, "Merge changes from Customization Parameters Wizard"); // h (M, cr)
+// TclEventType: PACKAGER_COMPONENT_RESET
+// [GUI Memory]: 140 MB (+3349kb) [00:00:55]
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// Tcl Message: ipx::merge_project_changes hdl_parameters [ipx::current_core] 
+// Tcl Message: INFO: [IP_Flow 19-3166] Bus Interface 'S00_AXI': References existing memory map 'S00_AXI'. 
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "File Groups", 2); // ar (O, cr)
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+selectButton(PAResourceOtoP.PackagerStepContentPanel_MESSAGES, "1"); // h (p, cr)
+expandTreeTable(PAResourceEtoH.FileGroupFacetTable_FILE_GROUP_FACET_TABLE, "Verilog Simulation ;  ;  ; false ;  ;  ; sig_gen_v1_0", 3); // M (O, cr)
+selectTreeTable(PAResourceEtoH.FileGroupFacetTable_FILE_GROUP_FACET_TABLE, "../edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/sim/tri_ramp.protoinst ;  ; unknown ; false ; false ; xilinx_verilogbehavioralsimulation ; ", 23, "../edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/sim/tri_ramp.protoinst", 0, false); // M (O, cr)
+selectTreeTable(PAResourceEtoH.FileGroupFacetTable_FILE_GROUP_FACET_TABLE, "../edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/sim/tri_ramp.protoinst ;  ; unknown ; false ; false ; xilinx_verilogbehavioralsimulation ; ", 23, "../edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/sim/tri_ramp.protoinst", 0, false, false, false, false, true, false); // M (O, cr) - Popup Trigger
+selectMenuItem(PAResourceEtoH.FileGroupFacetTable_REMOVE_FILE, "Remove File"); // ai (ao, cr)
+// TclEventType: PACKAGER_OBJECT_DELETE
+// Tcl Message: ipx::remove_file ../edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/sim/tri_ramp.protoinst [ipx::get_file_groups xilinx_verilogbehavioralsimulation -of_objects [ipx::current_core]] 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,068 MB. GUI used memory: 83 MB. Current time: 6/6/21, 7:43:30 PM PDT
+selectButton(PAResourceOtoP.PackagerStepContentPanel_MESSAGES, "1"); // h (p, cr)
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "Review and Package", 7); // ar (O, cr)
+selectButton(PAResourceItoN.MessageBanner_CHANGES_DETECTED_IN_IP_THAT_REQUIRE, "IP has been modified."); // h (M, cr)
+// Tcl Message: ipx::update_checksums [ipx::current_core] 
+// Tcl Message: ipx::save_core [ipx::current_core] 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// aj (cr): Synthesis Completed: addNotify
+// Elapsed time: 57 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (aj)
+dismissDialog("Synthesis Completed"); // aj (cr)
+// Elapsed time: 27 seconds
+selectButton(PAResourceQtoS.ReviewContentPanel_RE_PACKAGE_IP, "Re-Package IP"); // a (c, cr)
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// Tcl Message: set_property core_revision 2 [ipx::current_core] 
+// Tcl Message: ipx::create_xgui_files [ipx::current_core] 
+// Tcl Message: ipx::update_checksums [ipx::current_core] 
+// bB (cr):  Package IP : addNotify
+// Tcl Message: ipx::save_core [ipx::current_core] 
+// TclEventType: CREATE_IP_CATALOG
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: CREATE_IP_CATALOG
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// Tcl Message: update_ip_catalog -rebuild -repo_path c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0 
+// Tcl Message: INFO: [IP_Flow 19-725] Reloaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0' 
+// TclEventType: FILE_SET_CHANGE
+selectButton("OptionPane.button", "OK"); // JButton (A, G)
+// Elapsed time: 14 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // aa (q, cr)
+selectMenuItem(RDIResourceCommand.RDICommands_UNDO, "Undo"); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_EDIT, "Edit"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "Open Recent"); // af (cr)
+selectMenuItem(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "C:/Users/jlaw/ece544/finalproj/finalproj.xpr"); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+// TclEventType: PROJECT_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,074 MB. GUI used memory: 85 MB. Current time: 6/6/21, 7:45:26 PM PDT
+// Opening Vivado Project: C:/Users/jlaw/ece544/finalproj/finalproj.xpr. Version: Vivado v2019.2 
+// bB (cr):  Open Project : addNotify
+selectButton("OptionPane.button", "Yes"); // JButton (A, G)
+// Tcl Message: close_project 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 1,094 MB (+17361kb) [00:03:06]
+// WARNING: HEventQueue.dispatchEvent() is taking  1489 ms.
+// Tcl Message: open_project C:/Users/jlaw/ece544/finalproj/finalproj.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_test'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware'. INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'. 
+// Tcl Message: open_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 1141.020 ; gain = 43.922 
+// Project name: finalproj; location: C:/Users/jlaw/ece544/finalproj; part: xc7a100tcsg324-1
+dismissDialog("Open Project"); // bB (cr)
+// [Engine Memory]: 1,160 MB (+12213kb) [00:03:12]
+// Tcl Message: update_compile_order -fileset sources_1 
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator, Open Block Design]", 7, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_BLOCK_DESIGN
+// bB (cr):  Open Block Design : addNotify
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// Tcl Message: open_bd_design {C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd} 
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_OPEN_DIAGRAM
+// Tcl Message: Successfully read diagram <embsys> from BD file <C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd> 
+// TclEventType: RSB_OPEN_DIAGRAM
+// WARNING: HEventQueue.dispatchEvent() is taking  1202 ms.
+// TclEventType: RSB_CONNECTION_CHANGE
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// TclEventType: RSB_LOCK_CHANGE
+// [GUI Memory]: 150 MB (+3950kb) [00:03:17]
+dismissDialog("Open Block Design"); // bB (cr)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1354, 630, 1714, 1020, false, false, false, true, false); // go (i, cr) - Popup Trigger
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,199 MB. GUI used memory: 96 MB. Current time: 6/6/21, 7:45:51 PM PDT
+selectMenuItem(PAResourceCommand.PACommandNames_REPORT_IP_STATUS, "Report IP Status"); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_IP_STATUS
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// Tcl Message: report_ip_status -name ip_status  
+// bB (cr):  Report IP Status : addNotify
+dismissDialog("Report IP Status"); // bB (cr)
+// [Engine Memory]: 1,236 MB (+18921kb) [00:03:28]
+selectButton(PAResourceItoN.IPStatusSectionPanel_UPGRADE_SELECTED, "Upgrade Selected"); // a (g, cr)
+// Run Command: PAResourceCommand.PACommandNames_UPGRADE_IP
+// al (cr): Upgrade IP: addNotify
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (al)
+// 'ac' command handler elapsed time: 7 seconds
+dismissDialog("Upgrade IP"); // al (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_CHECKPOINT, "Checkpoint"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_IP, "IP"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_TEXT_EDITOR, "Text Editor"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_IP, "IP"); // af (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // u (O, cr)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// Tcl Command: 'rdi::info_commands {device::*}'
+// Tcl Command: 'rdi::info_commands {debug::*}'
+// Tcl Command: 'rdi::info_commands {*}'
+// I (cr): Settings: addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  1458 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 1,297 MB. GUI used memory: 97 MB. Current time: 6/6/21, 7:46:11 PM PDT
+expandTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, IP]", 6); // L (E, I)
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, IP, Repository]", 7, false); // L (E, I)
+selectList(PAResourceQtoS.SettingsProjectIPRepositoryPage_REPOSITORY_CHOOSER, "c:/Users/jlaw/ece544/sig_gen_test", 1); // cq (O, I)
+selectButton(RDIResource.AbstractCombinedPanel_REMOVE_SELECTED_ELEMENTS, "Remove"); // E (f, I)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// [GUI Memory]: 176 MB (+18491kb) [00:03:50]
+// Tcl Message: set_property  ip_repo_paths  {c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware} [current_project] 
+// TclEventType: CREATE_IP_CATALOG
+// bB (cr):  Refresh All IP Repositories : addNotify
+// Tcl Message: update_ip_catalog 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware'. 
+dismissDialog("Refresh All IP Repositories"); // bB (cr)
+selectButton(PAResourceQtoS.SettingsProjectIPRepositoryPage_ADD_REPOSITORY, "Add Repository"); // E (f, I)
+setFolderChooser("C:/Users/jlaw/ece544/sig_gen_ip");
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// Tcl Message: set_property  ip_repo_paths  {c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware C:/Users/jlaw/ece544/sig_gen_ip} [current_project] 
+// TclEventType: CREATE_IP_CATALOG
+// bB (cr):  Refresh All IP Repositories : addNotify
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: CREATE_IP_CATALOG
+// Tcl Message: update_ip_catalog 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_ip'. 
+// c (I): Add Repository: addNotify
+selectButton(RDIResource.AddRepositoryInfoDialog_OK, "OK"); // a (c)
+dismissDialog("Add Repository"); // c (I)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (I)
+// [GUI Memory]: 193 MB (+8737kb) [00:04:03]
+dismissDialog("Settings"); // I (cr)
+selectButton(PAResourceQtoS.SystemTab_SHOW_IP_STATUS, "Show IP Status"); // h (ds, cr)
+ // selectButton(PAResourceItoN.IPStatusTablePanel_MORE_INFO, "Add IP definition to catalog"); // N (B, cr)
+selectTreeTable(PAResourceItoN.IPStatusTablePanel_IP_STATUS_TABLE, "/sig_gen_0 ; false ; embsys_sig_gen_0_0 [sig_gen] (IP definition not found) ; embsys_sig_gen_0_0 [sig_gen] (IP definition not found) ;  ; sig_gen ; 1.0 (Rev. 2) ; N/A ; embsys_sig_gen_0_0 [sig_gen] (IP definition not found) ; xc7a100tcsg324-1", 1, "embsys_sig_gen_0_0 [sig_gen] (IP definition not found)", 3, false); // B (O, cr)
+selectButton(RDIResource.BaseReportTab_RERUN, "Rerun"); // h (ds, cr)
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// bB (cr):  Report IP Status : addNotify
+// Tcl Message: report_ip_status -name ip_status  
+dismissDialog("Report IP Status"); // bB (cr)
+selectButton(PAResourceItoN.IPStatusSectionPanel_UPGRADE_SELECTED, "Upgrade Selected"); // a (g, cr)
+// Run Command: PAResourceCommand.PACommandNames_UPGRADE_IP
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: FILE_SET_CHANGE
+// bB (cr):  Upgrade IP : addNotify
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: upgrade_ip -vlnv xilinx.com:user:sig_gen:1.0 [get_ips  embsys_sig_gen_0_0] -log ip_upgrade.log 
+// Tcl Message: Upgrading 'C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd' 
+// Tcl Message: INFO: [IP_Flow 19-3420] Updated embsys_sig_gen_0_0 to use current project options 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILESET_UPDATE_IP
+// TclEventType: IP_UPGRADE_COMPLETE
+// Tcl Message: Wrote  : <C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\bd\embsys\embsys.bd>  Wrote  : <C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/ui/bd_bcf741d3.ui>  
+// Tcl Message: INFO: [Coretcl 2-1525] Wrote upgrade log to 'C:/Users/jlaw/ece544/finalproj/ip_upgrade.log'. 
+// Tcl Message: export_ip_user_files -of_objects [get_ips embsys_sig_gen_0_0] -no_script -sync -force -quiet 
+// a (cr): Critical Messages: addNotify
+// aI (cr): Generate Output Products: addNotify
+selectButton("OptionPane.button", "OK"); // JButton (A, G)
+selectButton(PAResourceQtoS.SimpleOutputProductDialog_CLOSE_DIALOG_UNSAVED_CHANGES_WILL, "Skip"); // a (aI)
+dismissDialog("Generate Output Products"); // aI (cr)
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (a)
+dismissDialog("Critical Messages"); // a (cr)
+selectButton(RDIResource.BaseReportTab_RERUN, "Rerun"); // h (ds, cr)
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// bB (cr):  Report IP Status : addNotify
+// Tcl Message: report_ip_status -name ip_status  
+dismissDialog("Report IP Status"); // bB (cr)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1338, 624, 1714, 1020, false, false, false, true, false); // go (i, cr) - Popup Trigger
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderMenu_IP_DOCUMENTATION, "IP Documentation"); // af (ao, Popup.HeavyWeightWindow)
+selectMenuItem(PAResourceCommand.PACommandNames_EDIT_IN_IP_PACKAGER, "Edit in IP Packager"); // ai (ao, Popup.HeavyWeightWindow)
+// Run Command: PAResourceCommand.PACommandNames_EDIT_IN_IP_PACKAGER
+// k (cr): Edit in IP Packager: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (k)
+// bB (cr):  Edit in IP Packager : addNotify
+selectButton("OptionPane.button", "OK"); // JButton (A, H)
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_ADD
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: ipx::edit_ip_in_project -upgrade true -name sig_gen_v1_0_project -directory C:/Users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/component.xml 
+// TclEventType: PROJECT_NEW
+// WARNING: HEventQueue.dispatchEvent() is taking  2179 ms.
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'. 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories 
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_ip'. INFO: [IP_Flow 19-795] Syncing license key meta-data 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_CURRENT_CORE
+// Run Command: PAResourceCommand.PACommandNames_IP_PACKAGER
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// Tcl Message: ipx::edit_ip_in_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 1317.227 ; gain = 0.000 
+// 'i' command handler elapsed time: 12 seconds
+// Elapsed time: 10 seconds
+dismissDialog("Edit in IP Packager"); // bB (cr)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v)]", 1); // B (F, cr)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3); // B (F, cr)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v)]", 4); // B (F, cr)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v), tri_ramp_inst : tri_ramp (tri_ramp.v)]", 5); // B (F, cr)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v)]", 2); // B (F, cr)
+closeMainWindow("sig_gen_v1_0_project - [c:/users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project/sig_gen_v1_0_project.xpr] - Vivado 2019.2"); // cr
+// Run Command: PAResourceCommand.PACommandNames_CLOSE_PROJECT
+// A (cr): Close Project: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (A)
+// bB (cr):  Close Project : addNotify
+// TclEventType: PROJECT_CLOSE
+dismissDialog("Close Project"); // A (cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,297 MB. GUI used memory: 122 MB. Current time: 6/6/21, 7:47:24 PM PDT
+// 'b' command handler elapsed time: 3 seconds
+// Tcl Message: close_project 
+dismissDialog("Close Project"); // bB (cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// A (cr): No Implementation Results Available: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (A)
+// bB (cr):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("No Implementation Results Available"); // A (cr)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cr): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// 'cw' command handler elapsed time: 3 seconds
+// TclEventType: RSB_SCRIPT_TASK
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 4 
+// bB (cr):  Generate Bitstream : addNotify
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: INFO: [xilinx.com:ip:axi_intc:4.1-1] /microblaze_0_axi_intc: The AXI INTC core has been configured to operate with synchronous clocks. 
+// Tcl Message: Wrote  : <C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\bd\embsys\embsys.bd>  
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// [Engine Memory]: 1,302 MB (+3804kb) [00:05:10]
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/synth/embsys.v VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/sim/embsys.v VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hdl/embsys_wrapper.v 
+// HMemoryUtils.trashcanNow. Engine heap size: 1,326 MB. GUI used memory: 119 MB. Current time: 6/6/21, 7:47:41 PM PDT
+// TclEventType: FILE_SET_CHANGE
+// [Engine Memory]: 1,529 MB (+170676kb) [00:05:28]
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,535 MB. GUI used memory: 119 MB. Current time: 6/6/21, 7:47:56 PM PDT
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [BD 41-1029] Generation completed for the IP Integrator block sig_gen_0 . 
+// Tcl Message: Exporting to file C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hw_handoff/embsys.hwh Generated Block Design Tcl file C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hw_handoff/embsys_bd.tcl 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// Tcl Message: Generated Hardware Definition File C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/synth/embsys.hwdef 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Sun Jun  6 19:47:59 2021] Launched embsys_sig_gen_0_0_synth_1, synth_1... Run output will be captured here: embsys_sig_gen_0_0_synth_1: C:/Users/jlaw/ece544/finalproj/finalproj.runs/embsys_sig_gen_0_0_synth_1/runme.log synth_1: C:/Users/jlaw/ece544/finalproj/finalproj.runs/synth_1/runme.log [Sun Jun  6 19:47:59 2021] Launched impl_1... Run output will be captured here: C:/Users/jlaw/ece544/finalproj/finalproj.runs/impl_1/runme.log 
+// Tcl Message: launch_runs: Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1566.414 ; gain = 249.188 
+// aZ (cr): Launch Run Critical Messages: addNotify
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 30 seconds
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (aZ)
+dismissDialog("Launch Run Critical Messages"); // aZ (cr)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// aj (cr): Synthesis Failed: addNotify
+// TclEventType: RUN_STATUS_CHANGE
+// [GUI Memory]: 204 MB (+1625kb) [00:17:48]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,586 MB. GUI used memory: 148 MB. Current time: 6/6/21, 8:18:00 PM PDT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,586 MB. GUI used memory: 143 MB. Current time: 6/6/21, 8:48:00 PM PDT
+// WARNING: HEventQueue.dispatchEvent() is taking  972574 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  5313074 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 1,586 MB. GUI used memory: 140 MB. Current time: 6/6/21, 10:38:01 PM PDT
+// Elapsed time: 10206 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aj)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Synthesis Failed"); // aj (cr)
+// Elapsed time: 26 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-448] named port connection 'midi_out_0' does not exist for instance 'EMBSYS' of module 'embsys' [C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/imports/hardware/nexysA7fpga.v:152]. ]", 9, true); // ah (O, cr) - Node
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\imports\hardware\nexysA7fpga.v;-;;-;16;-;line;-;152;-;;-;16;-;"); // ah (O, cr)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // i (h, cr)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "nexysA7fpga.v", 2); // i (h, cr)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // i (h, cr)
+// Elapsed time: 16 seconds
+selectTab((HResource) null, (HResource) null, "Sources", 0); // aL (aI, cr)
+// Elapsed time: 16 seconds
+selectTab((HResource) null, (HResource) null, "Design Runs", 5); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aL (aI, cr)
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-6156] failed synthesizing module 'IOBUF' [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:36196]. ]", 10); // ah (O, cr)
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-6156] failed synthesizing module 'IOBUF' [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:36196]. ]", 10); // ah (O, cr)
+// Elapsed time: 21 seconds
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-448] named port connection 'midi_out_0' does not exist for instance 'EMBSYS' of module 'embsys' [C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/imports/hardware/nexysA7fpga.v:152]. ]", 9); // ah (O, cr)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "nexysA7fpga.v", 2); // i (h, cr)
+// Elapsed time: 29 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-448] named port connection 'midi_out_0' does not exist for instance 'EMBSYS' of module 'embsys' [C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/imports/hardware/nexysA7fpga.v:152]. ]", 9, true); // ah (O, cr) - Node
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\imports\hardware\nexysA7fpga.v;-;;-;16;-;line;-;152;-;;-;16;-;"); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-448] named port connection 'midi_out_0' does not exist for instance 'EMBSYS' of module 'embsys' [C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/imports/hardware/nexysA7fpga.v:152]. , [Synth 8-448] named port connection 'btnL_0' does not exist for instance 'EMBSYS' of module 'embsys' [C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/imports/hardware/nexysA7fpga.v:174]. ]", 10, false); // ah (O, cr)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\imports\hardware\nexysA7fpga.v;-;;-;16;-;line;-;174;-;;-;16;-;"); // ah (O, cr)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // i (h, cr)
+// Elapsed time: 18 seconds
+setText(PAResourceQtoS.RSBExternalPortPropPanels_NAME, "btnL_0", true); // ac (Q, cr)
+// Tcl Command: 'set_property name btnL_0 [get_bd_ports btnL_1]'
+// TclEventType: RSB_RENAME_OBJECT
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_RENAME_OBJECT
+// Tcl Message: set_property name btnL_0 [get_bd_ports btnL_1] 
+// Elapsed time: 13 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "nexysA7fpga.v", 2); // i (h, cr)
+// Elapsed time: 10 seconds
+selectCodeEditor("nexysA7fpga.v", 158, 236); // ch (w, cr)
+// Elapsed time: 19 seconds
+selectCodeEditor("nexysA7fpga.v", 135, 561); // ch (w, cr)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // i (h, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aa (q, cr)
+selectMenuItem(PAResourceCommand.PACommandNames_VALIDATE_RSB_DESIGN, "Validate Design"); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aa (q, cr)
+// Run Command: PAResourceCommand.PACommandNames_VALIDATE_RSB_DESIGN
+// Tcl Command: 'validate_bd_design'
+// TclEventType: RSB_PARAM_PROP
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: validate_bd_design 
+// bB (cr):  Validate Design : addNotify
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_PARAM_PROP
+// Tcl Message: INFO: [xilinx.com:ip:axi_intc:4.1-1] /microblaze_0_axi_intc: The AXI INTC core has been configured to operate with synchronous clocks. 
+// dM (cr): Critical Messages: addNotify
+dismissDialog("Validate Design"); // bB (cr)
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (dM)
+dismissDialog("Critical Messages"); // dM (cr)
+selectButton(PAResourceItoN.MsgView_CLEAR_MESSAGES_RESULTING_FROM_USER_EXECUTED, "Messages_cleanUpMessages"); // E (f, cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 14, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// al (cr): Save Project: addNotify
+selectButton(PAResourceQtoS.SaveProjectUtils_SAVE, "Save"); // a (al)
+// bB (cr):  Save Constraints : addNotify
+dismissDialog("Save Project"); // al (cr)
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: save_bd_design 
+// Tcl Message: Wrote  : <C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\bd\embsys\embsys.bd>  Wrote  : <C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/ui/bd_bcf741d3.ui>  
+// bB (cr):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Save Constraints"); // bB (cr)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cr): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (f)
+// 'k' command handler elapsed time: 4 seconds
+dismissDialog("Launch Runs"); // f (cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator, Generate Block Design]", 8, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_GENERATE_RSB_DESIGN
+// aI (cr): Generate Output Products: addNotify
+selectButton(PAResourceQtoS.SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY, "Generate"); // a (aI)
+// bB (cr):  Managing Output Products : addNotify
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: generate_target all [get_files  C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd] 
+// Tcl Message: INFO: [BD 41-1662] The design 'embsys.bd' is already validated. Therefore parameter propagation will not be re-run. 
+// Tcl Message: Wrote  : <C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\bd\embsys\embsys.bd>  
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/synth/embsys.v VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/sim/embsys.v VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hdl/embsys_wrapper.v 
+// Tcl Message: Exporting to file C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hw_handoff/embsys.hwh Generated Block Design Tcl file C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hw_handoff/embsys_bd.tcl 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: Generated Hardware Definition File C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/synth/embsys.hwdef 
+// Tcl Message: export_ip_user_files -of_objects [get_files C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd] -no_script -sync -force -quiet 
+// Tcl Message: create_ip_run [get_files -of_objects [get_fileset sources_1] C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd] 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: export_simulation -of_objects [get_files C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd] -directory C:/Users/jlaw/ece544/finalproj/finalproj.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/jlaw/ece544/finalproj/finalproj.ip_user_files -ipstatic_source_dir C:/Users/jlaw/ece544/finalproj/finalproj.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Users/jlaw/ece544/finalproj/finalproj.cache/compile_simlib/modelsim} {questa=C:/Users/jlaw/ece544/finalproj/finalproj.cache/compile_simlib/questa} {riviera=C:/Users/jlaw/ece544/finalproj/finalproj.cache/compile_simlib/riviera} {activehdl=C:/Users/jlaw/ece544/finalproj/finalproj.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// 'bq' command handler elapsed time: 23 seconds
+// a (cr): Critical Messages: addNotify
+// Elapsed time: 22 seconds
+dismissDialog("Managing Output Products"); // bB (cr)
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (a)
+dismissDialog("Critical Messages"); // a (cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// A (cr): No Implementation Results Available: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (A)
+// bB (cr):  Resetting Runs : addNotify
+// f (cr): Launch Runs: addNotify
+dismissDialog("No Implementation Results Available"); // A (cr)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: RUN_LAUNCH
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 4 
+// TclEventType: RUN_LAUNCH
+// bB (cr):  Generate Bitstream : addNotify
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Sun Jun  6 22:43:05 2021] Launched synth_1... Run output will be captured here: C:/Users/jlaw/ece544/finalproj/finalproj.runs/synth_1/runme.log [Sun Jun  6 22:43:05 2021] Launched impl_1... Run output will be captured here: C:/Users/jlaw/ece544/finalproj/finalproj.runs/impl_1/runme.log 
+// TclEventType: RUN_STATUS_CHANGE
+dismissDialog("Generate Bitstream"); // bB (cr)
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// aj (cr): Synthesis Failed: addNotify
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 25 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aj)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Synthesis Failed"); // aj (cr)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, nexysA7fpga (nexysA7fpga.v)]", 1); // B (F, cr)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, nexysA7fpga (nexysA7fpga.v), EMBSYS : embsys (embsys.bd)]", 2, true, false, false, false, true, false); // B (F, cr) - Popup Trigger - Node
+selectMenuItem(PAResourceCommand.PACommandNames_VIEW_INST_TEMPL, "View Instantiation Template"); // ai (ao, cr)
+// Run Command: PAResourceCommand.PACommandNames_VIEW_INST_TEMPL
+// TclEventType: OPEN_FILE_TO_VIEW
+// Tcl Message: make_wrapper -files [get_files C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd] -fileset [get_filesets sources_1] -inst_template 
+// Elapsed time: 13 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // i (h, cr)
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: delete_bd_objs [get_bd_intf_nets axi_uart16550_0_UART] 
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: delete_bd_objs [get_bd_intf_ports midi_out_0] 
+// Elapsed time: 13 seconds
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1356, 729, 1714, 1020, false, false, false, true, false); // go (i, cr) - Popup Trigger
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // af (ao, Popup.HeavyWeightWindow)
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_PORTS, "Make External"); // ai (ao, Popup.HeavyWeightWindow)
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_PORTS
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: startgroup 
+// Tcl Message: make_bd_pins_external  [get_bd_pins axi_uart16550_0/sout] 
+// Tcl Message: endgroup 
+setText(PAResourceQtoS.RSBExternalPortPropPanels_NAME, "midi_out_0", true); // ac (Q, cr)
+// Tcl Command: 'set_property name midi_out_0 [get_bd_ports sout_0]'
+// TclEventType: RSB_RENAME_OBJECT
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_RENAME_OBJECT
+// Tcl Message: set_property name midi_out_0 [get_bd_ports sout_0] 
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-448] named port connection 'midi_out_0' does not exist for instance 'EMBSYS' of module 'embsys' [C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/imports/hardware/nexysA7fpga.v:152]. ]", 5); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-448] named port connection 'midi_out_0' does not exist for instance 'EMBSYS' of module 'embsys' [C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/imports/hardware/nexysA7fpga.v:152]. , [Synth 8-448] named port connection 'sysclk' does not exist for instance 'EMBSYS' of module 'embsys' [C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/imports/hardware/nexysA7fpga.v:180]. ]", 6, false); // ah (O, cr)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\imports\hardware\nexysA7fpga.v;-;;-;16;-;line;-;180;-;;-;16;-;"); // ah (O, cr)
+// [GUI Memory]: 215 MB (+848kb) [03:02:07]
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "embsys_wrapper.v", 3); // i (h, cr)
+// Elapsed time: 11 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // i (h, cr)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 539, 712, 1714, 1020, false, false, false, true, false); // go (i, cr) - Popup Trigger
+selectMenu(PAResourceQtoS.SystemBuilderMenu_IP_DOCUMENTATION, "IP Documentation"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_EXPAND_COLLAPSE, "Expand/Collapse"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_EXPAND_COLLAPSE, "Expand/Collapse"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderMenu_IP_DOCUMENTATION, "IP Documentation"); // af (ao, Popup.HeavyWeightWindow)
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// O (cr):  Re-customize IP : addNotify
+// r (cr): Re-customize IP: addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  1178 ms.
+dismissDialog("Re-customize IP"); // O (cr)
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_OBJECT_CHANGE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (r)
+dismissDialog("Re-customize IP"); // r (cr)
+// Tcl Command: 'set_property -dict [list CONFIG.PRIM_SOURCE {Single_ended_clock_capable_pin}] [get_bd_cells clk_wiz_1]'
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// r (cr): Re-customize IP: addNotify
+// bB (r):  Customize IP : addNotify
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: startgroup 
+// Tcl Message: set_property -dict [list CONFIG.PRIM_SOURCE {Single_ended_clock_capable_pin}] [get_bd_cells clk_wiz_1] 
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: delete_bd_objs [get_bd_intf_nets diff_clock_rtl_0_1] 
+// Tcl Message: endgroup 
+dismissDialog("Customize IP"); // bB (r)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 130, 669, 1714, 1018, false, false, false, true, false); // go (i, cr) - Popup Trigger
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // af (ao, Popup.HeavyWeightWindow)
+selectMenuItem(RDIResourceCommand.RDICommands_DELETE, "Delete"); // ai (ao, Popup.HeavyWeightWindow)
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: delete_bd_objs [get_bd_intf_ports sysclk] 
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 518, 689, 1714, 1018, false, false, false, true, false); // go (i, cr) - Popup Trigger
+selectMenuItem(PAResourceCommand.PACommandNames_AUTO_CONNECT_PORTS, "Make External"); // ai (ao, Popup.HeavyWeightWindow)
+// Run Command: PAResourceCommand.PACommandNames_AUTO_CONNECT_PORTS
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: startgroup 
+// Tcl Message: make_bd_pins_external  [get_bd_pins clk_wiz_1/clk_in1] 
+// Tcl Message: endgroup 
+setText(PAResourceQtoS.RSBExternalPortPropPanels_NAME, (String) null); // ac (Q, cr)
+// [GUI Memory]: 229 MB (+3034kb) [03:02:55]
+setText(PAResourceQtoS.RSBExternalPortPropPanels_NAME, "sysclk", true); // ac (Q, cr)
+// Tcl Command: 'set_property name sysclk [get_bd_ports clk_in1_0]'
+// TclEventType: RSB_RENAME_OBJECT
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_RENAME_OBJECT
+// Tcl Message: set_property name sysclk [get_bd_ports clk_in1_0] 
+// Run Command: PAResourceCommand.PACommandNames_SAVE_RSB_DESIGN
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: save_bd_design 
+// Tcl Message: Wrote  : <C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\bd\embsys\embsys.bd>  Wrote  : <C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/ui/bd_bcf741d3.ui>  
+setText(PAResourceQtoS.RSBExternalPortPropPanels_FREQUENCY, "100"); // ac (Q, cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator, Generate Block Design]", 8, false); // u (O, cr)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_GENERATE_RSB_DESIGN
+// aI (cr): Generate Output Products: addNotify
+selectButton(PAResourceQtoS.SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY, "Generate"); // a (aI)
+// bB (cr):  Managing Output Products : addNotify
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: generate_target all [get_files  C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd] 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: INFO: [xilinx.com:ip:axi_intc:4.1-1] /microblaze_0_axi_intc: The AXI INTC core has been configured to operate with synchronous clocks. 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: Wrote  : <C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\bd\embsys\embsys.bd>  VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/synth/embsys.v 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/sim/embsys.v VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hdl/embsys_wrapper.v 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: Exporting to file C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hw_handoff/embsys.hwh Generated Block Design Tcl file C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hw_handoff/embsys_bd.tcl Generated Hardware Definition File C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/synth/embsys.hwdef 
+// Tcl Message: generate_target: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1670.727 ; gain = 2.344 
+// Tcl Message: catch { config_ip_cache -export [get_ips -all embsys_clk_wiz_1_0] } 
+// Tcl Message: export_ip_user_files -of_objects [get_files C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd] -no_script -sync -force -quiet 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// Tcl Message: create_ip_run [get_files -of_objects [get_fileset sources_1] C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd] 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs -jobs 4 embsys_clk_wiz_1_0_synth_1 
+// Tcl Message: [Sun Jun  6 22:45:37 2021] Launched embsys_clk_wiz_1_0_synth_1... Run output will be captured here: C:/Users/jlaw/ece544/finalproj/finalproj.runs/embsys_clk_wiz_1_0_synth_1/runme.log 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: export_simulation -of_objects [get_files C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd] -directory C:/Users/jlaw/ece544/finalproj/finalproj.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/jlaw/ece544/finalproj/finalproj.ip_user_files -ipstatic_source_dir C:/Users/jlaw/ece544/finalproj/finalproj.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Users/jlaw/ece544/finalproj/finalproj.cache/compile_simlib/modelsim} {questa=C:/Users/jlaw/ece544/finalproj/finalproj.cache/compile_simlib/questa} {riviera=C:/Users/jlaw/ece544/finalproj/finalproj.cache/compile_simlib/riviera} {activehdl=C:/Users/jlaw/ece544/finalproj/finalproj.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_CHANGE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_UNLOAD_CORE
+// 'bq' command handler elapsed time: 28 seconds
+// a (cr): Critical Messages: addNotify
+// Elapsed time: 27 seconds
+dismissDialog("Managing Output Products"); // bB (cr)
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (a)
+dismissDialog("Critical Messages"); // a (cr)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 22 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// A (cr): No Implementation Results Available: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (A)
+// bB (cr):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("No Implementation Results Available"); // A (cr)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cr): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// 'cw' command handler elapsed time: 6 seconds
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: RUN_LAUNCH
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 4 
+// bB (cr):  Generate Bitstream : addNotify
+// TclEventType: RUN_MODIFY
+// [GUI Memory]: 249 MB (+9056kb) [03:04:03]
+// Tcl Message: [Sun Jun  6 22:46:29 2021] Launched synth_1... Run output will be captured here: C:/Users/jlaw/ece544/finalproj/finalproj.runs/synth_1/runme.log [Sun Jun  6 22:46:29 2021] Launched impl_1... Run output will be captured here: C:/Users/jlaw/ece544/finalproj/finalproj.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bB (cr)
+selectButton(PAResourceItoN.MsgView_CLEAR_MESSAGES_RESULTING_FROM_USER_EXECUTED, "Messages_cleanUpMessages"); // E (f, cr)
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// aj (cr): Implementation Failed: addNotify
+// Elapsed time: 203 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aj)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Implementation Failed"); // aj (cr)
+// Elapsed time: 77 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-67] Problem: A LUT2 cell in the design is missing a connection on input pin I1, which is used by the LUT equation. This pin has either been left unconnected in the design or the connection was removed due to the trimming of unused logic. The LUT cell name is: EMBSYS/sig_gen_0/axi_rdata[0]_i_1116.. ]", 12, false); // ah (O, cr)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "ID;-;[Opt 31-67];-;;-;16;-;DetailedMsg;-;The cell in the design is missing a connection on the specific input pin. Without that connection, the cell will not work as expected.;-;;-;16;-;Resolution;-;Please review the preceding OPT INFO messages that detail what has been trimmed in the design to determine if the removal of unused logic is causing this error. If opt_design is being specified directly, it will need to be rerun with opt_design -verbose to generate detailed INFO messages about trimming.;-;;-;16;-;"); // ah (O, cr)
+// Elapsed time: 35 seconds
+selectButton(RDIResource.HPopupTitle_CLOSE, (String) null); // k (n, ResizableWindow)
+// Elapsed time: 20 seconds
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell EMBSYS/sig_gen_0/inst/sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_60, from O to I0, when collapsing this cell. ]", 11); // ah (O, cr)
+// Elapsed time: 16 seconds
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1271, 692, 1714, 1020, false, false, false, true, false); // go (i, cr) - Popup Trigger
+selectMenu(PAResourceQtoS.SystemBuilderMenu_IP_DOCUMENTATION, "IP Documentation"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_EXPAND_COLLAPSE, "Expand/Collapse"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // af (ao, Popup.HeavyWeightWindow)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // af (ao, Popup.HeavyWeightWindow)
+selectMenuItem(PAResourceCommand.PACommandNames_EDIT_IN_IP_PACKAGER, "Edit in IP Packager"); // ai (ao, Popup.HeavyWeightWindow)
+// Run Command: PAResourceCommand.PACommandNames_EDIT_IN_IP_PACKAGER
+// k (cr): Edit in IP Packager: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (k)
+// bB (cr):  Edit in IP Packager : addNotify
+selectButton("OptionPane.button", "OK"); // JButton (A, H)
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_ADD
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: ipx::edit_ip_in_project -upgrade true -name sig_gen_v1_0_project -directory C:/Users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/component.xml 
+// TclEventType: PROJECT_NEW
+// WARNING: HEventQueue.dispatchEvent() is taking  2072 ms.
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'. 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories 
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_ip'. INFO: [IP_Flow 19-795] Syncing license key meta-data 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_CURRENT_CORE
+// Run Command: PAResourceCommand.PACommandNames_IP_PACKAGER
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// Tcl Message: ipx::edit_ip_in_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1830.746 ; gain = 15.297 
+// 'i' command handler elapsed time: 12 seconds
+dismissDialog("Edit in IP Packager"); // bB (cr)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v)]", 1); // B (F, cr)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3); // B (F, cr)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Run Implementation]", 18, false); // u (O, cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Run Implementation]", 18, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+// f (cr): Launch Runs: addNotify
+selectButton("OptionPane.button", "OK"); // JButton (A, G)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// bB (cr):  Starting Design Runs : addNotify
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: launch_runs impl_1 -jobs 4 
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: INFO: [IP_Flow 19-1686] Generating 'Implementation' target for IP 'clk_wiz'... INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'c'... INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'amp_max'... INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'amp'... 
+// Tcl Message: [Sun Jun  6 22:53:02 2021] Launched synth_1... Run output will be captured here: c:/users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project/sig_gen_v1_0_project.runs/synth_1/runme.log [Sun Jun  6 22:53:02 2021] Launched impl_1... Run output will be captured here: c:/users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project/sig_gen_v1_0_project.runs/impl_1/runme.log 
+// 'c' command handler elapsed time: 9 seconds
+dismissDialog("Starting Design Runs"); // bB (cr)
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// aj (cr): Synthesis Failed: addNotify
+// Elapsed time: 309 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aj)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Synthesis Failed"); // aj (cr)
+// [GUI Memory]: 262 MB (+679kb) [03:25:21]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,586 MB. GUI used memory: 177 MB. Current time: 6/6/21, 11:08:02 PM PDT
+// Elapsed time: 1316 seconds
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-295] found timing loop. [c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/src/sig_gen.v:62]. ]", 1); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, [Synth 8-295] found timing loop. [c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/src/sig_gen.v:62]. , [Synth 8-295] found timing loop. [c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/src/sig_gen.v:62]. ]", 2, false); // ah (O, cr)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;c:\Users\jlaw\ece544\sig_gen_ip\sig_gen_1.0\src\sig_gen.v;-;;-;16;-;line;-;62;-;;-;16;-;"); // ah (O, cr)
+// Elapsed time: 326 seconds
+selectCodeEditor("sig_gen.v", 194, 723); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 194, 723, false, false, false, false, true); // ch (w, cr) - Double Click
+// Elapsed time: 13 seconds
+selectCodeEditor("sig_gen.v", 280, 682); // ch (w, cr)
+// Elapsed time: 18 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, (String) null, 26, false); // ah (O, cr)
+// Elapsed time: 18 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, (String) null, 26, false); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, (String) null, 26, false, false, false, false, false, true); // ah (O, cr) - Double Click
+// Elapsed time: 314 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v)]", 4); // B (F, cr)
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v), tri_ramp_inst : tri_ramp (tri_ramp.v)]", 5); // B (F, cr)
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v), tri_ramp_inst : tri_ramp (tri_ramp.v)]", 5); // B (F, cr)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v), tri_ramp_inst : tri_ramp (tri_ramp.v)]", 5, true); // B (F, cr) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v), tri_ramp_inst : tri_ramp (tri_ramp.v), cycle : tri_ramp_floating_point_1_1 (tri_ramp_floating_point_1_1.xci)]", 10, false, false, false, false, false, true); // B (F, cr) - Double Click
+// Elapsed time: 17 seconds
+closeMainWindow("sig_gen_v1_0_project - [c:/users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project/sig_gen_v1_0_project.xpr] - Vivado 2019.2"); // cr
+// Run Command: PAResourceCommand.PACommandNames_CLOSE_PROJECT
+// A (cr): Close Project: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (A)
+// bB (cr):  Close Project : addNotify
+dismissDialog("Close Project"); // A (cr)
+// TclEventType: PROJECT_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,636 MB. GUI used memory: 169 MB. Current time: 6/6/21, 11:32:07 PM PDT
+// Tcl Message: close_project 
+// [Engine Memory]: 1,636 MB (+31691kb) [03:49:41]
+dismissDialog("Close Project"); // bB (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "Open Recent"); // af (cr)
+selectMenuItem(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.xpr"); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+// TclEventType: PROJECT_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,636 MB. GUI used memory: 131 MB. Current time: 6/6/21, 11:32:16 PM PDT
+// Opening Vivado Project: C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.xpr. Version: Vivado v2019.2 
+// bB (cr):  Open Project : addNotify
+// WARNING: HEventQueue.dispatchEvent() is taking  1407 ms.
+selectButton("OptionPane.button", "Yes"); // JButton (A, G)
+// Tcl Message: close_project 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// WARNING: HEventQueue.dispatchEvent() is taking  1123 ms.
+// Tcl Message: open_project C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0'. 
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'. 
+// Project name: edit_sig_gen_v1_0; location: C:/Users/jlaw/ece544/sig_gen_ip; part: xc7a100tcsg324-1
+dismissDialog("Open Project"); // bB (cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 15, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// bB (cr):  Resetting Runs : addNotify
+selectButton("OptionPane.button", "OK"); // JButton (A, G)
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cr): Launch Runs: addNotify
+// Tcl Message: update_compile_order -fileset sources_1 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// bB (cr):  Starting Design Runs : addNotify
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: FILE_SET_NEW
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// Tcl Message: launch_runs synth_1 -jobs 4 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-5642] Done with IP cache export for multiple IPs 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+selectButton(RDIResource.ProgressDialog_BACKGROUND, "Background"); // a (bB)
+// TclEventType: FILE_SET_NEW
+// 'k' command handler elapsed time: 5 seconds
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v)]", 1); // B (F, cr)
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3); // B (F, cr)
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v)]", 4); // B (F, cr)
+// Tcl Message: [Sun Jun  6 23:32:37 2021] Launched synth_1... Run output will be captured here: C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/synth_1/runme.log 
+// Tcl Message: launch_runs: Time (s): cpu = 00:00:10 ; elapsed = 00:00:09 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// TclEventType: RUN_STATUS_CHANGE
+dismissDialog("Starting Design Runs"); // bB (cr)
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 2908 ms. Increasing delay to 3000 ms.
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator, Open Block Design]", 8, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_BLOCK_DESIGN
+// bB (cr):  Open Block Design : addNotify
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_OPEN_DIAGRAM
+// Tcl Message: open_bd_design {C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.srcs/sources_1/bd/tri_ramp/tri_ramp.bd} 
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RSB_CONNECTION_CHANGE
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// TclEventType: RSB_LOCK_CHANGE
+dismissDialog("Open Block Design"); // bB (cr)
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// O (cr):  Re-customize IP : addNotify
+// r (cr): Re-customize IP: addNotify
+// Elapsed time: 11 seconds
+dismissDialog("Re-customize IP"); // O (cr)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Output Clocks", 1); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Clocking Options", 0); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "MMCM Settings", 2); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Summary", 3); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Clocking Options", 0); // cU (E, r)
+dismissDialog("Re-customize IP"); // r (cr)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 28 seconds
+selectTab((HResource) null, (HResource) null, "Sources", 0); // aL (aI, cr)
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// [GUI Memory]: 278 MB (+3529kb) [03:51:30]
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 21 seconds
+selectTab((HResource) null, (HResource) null, "Design Runs", 4); // aL (aI, cr)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+selectTab((HResource) null, (HResource) null, "Tcl Console", 0); // aL (aI, cr)
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 11 seconds
+selectTab((HResource) null, (HResource) null, "Log", 2); // aL (aI, cr)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aL (aI, cr)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// [GUI Memory]: 293 MB (+828kb) [03:53:39]
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// aj (cr): Synthesis Completed: addNotify
+// Elapsed time: 123 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aj)
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+// f (cr): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// bB (cr):  Starting Design Runs : addNotify
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -jobs 4 
+// Tcl Message: [Sun Jun  6 23:36:34 2021] Launched impl_1... Run output will be captured here: C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/impl_1/runme.log 
+dismissDialog("Starting Design Runs"); // bB (cr)
+// TclEventType: RUN_STATUS_CHANGE
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// O (cr):  Re-customize IP : addNotify
+// r (cr): Re-customize IP: addNotify
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 56 seconds
+dismissDialog("Re-customize IP"); // O (cr)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Precision of Inputs", 1); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Precision of Result", 2); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Optimizations", 3); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Interface Options", 4); // cU (E, r)
+// Elapsed time: 17 seconds
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Optimizations", 3); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Precision of Result", 2); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Precision of Inputs", 1); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Operation Selection", 0); // cU (E, r)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Implementation Details", 1); // cU (E, r)
+dismissDialog("Re-customize IP"); // r (cr)
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// aj (cr): Implementation Failed: addNotify
+// Elapsed time: 26 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aj)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Implementation Failed"); // aj (cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-67] Problem: A LUT2 cell in the design is missing a connection on input pin I0, which is used by the LUT equation. This pin has either been left unconnected in the design or the connection was removed due to the trimming of unused logic. The LUT cell name is: n_0_2042_BUFG_inst_i_8.. ]", 6, false); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-67] Problem: A LUT2 cell in the design is missing a connection on input pin I0, which is used by the LUT equation. This pin has either been left unconnected in the design or the connection was removed due to the trimming of unused logic. The LUT cell name is: n_0_2042_BUFG_inst_i_8.. ]", 6, false, false, false, false, false, true); // ah (O, cr) - Double Click
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-67] Problem: A LUT2 cell in the design is missing a connection on input pin I0, which is used by the LUT equation. This pin has either been left unconnected in the design or the connection was removed due to the trimming of unused logic. The LUT cell name is: n_0_2042_BUFG_inst_i_8.. ]", 6, false); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-67] Problem: A LUT2 cell in the design is missing a connection on input pin I0, which is used by the LUT equation. This pin has either been left unconnected in the design or the connection was removed due to the trimming of unused logic. The LUT cell name is: n_0_2042_BUFG_inst_i_8.. ]", 6, false, false, false, false, false, true); // ah (O, cr) - Double Click
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. ]", 5); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. ]", 5, true); // ah (O, cr) - Node
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. ]", 5, true); // ah (O, cr) - Node
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. ]", 5, true, false, false, false, false, true); // ah (O, cr) - Double Click - Node
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. , [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_21, from O to I0, when collapsing this cell. ]", 6, false); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. , [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_21, from O to I0, when collapsing this cell. ]", 6, false, false, false, false, false, true); // ah (O, cr) - Double Click
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. , [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_21, from O to I0, when collapsing this cell. ]", 6, false, false, false, false, true, false); // ah (O, cr) - Popup Trigger
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. , [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_21, from O to I0, when collapsing this cell. ]", 6, false); // ah (O, cr)
+// Elapsed time: 23 seconds
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. ]", 2); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. ]", 2, true); // ah (O, cr) - Node
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\jlaw\ece544\sig_gen_ip\sig_gen_1.0\hdl\sig_gen_v1_0.v;-;;-;16;-;line;-;4;-;;-;16;-;"); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. , [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. ]", 3, false); // ah (O, cr)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\jlaw\ece544\sig_gen_ip\sig_gen_1.0\hdl\sig_gen_v1_0.v;-;;-;16;-;line;-;4;-;;-;16;-;"); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. , [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. ]", 4, false); // ah (O, cr)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\jlaw\ece544\sig_gen_ip\sig_gen_1.0\hdl\sig_gen_v1_0.v;-;;-;16;-;line;-;4;-;;-;16;-;"); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. , [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. ]", 39, false); // ah (O, cr)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\jlaw\ece544\sig_gen_ip\sig_gen_1.0\hdl\sig_gen_v1_0.v;-;;-;16;-;line;-;4;-;;-;16;-;"); // ah (O, cr)
+closeView(PAResourceOtoP.PAViews_CODE, "Code"); // B
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. , [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_21, from O to I0, when collapsing this cell. ]", 43, false); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. , [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_21, from O to I0, when collapsing this cell. ]", 43, false, false, false, false, false, true); // ah (O, cr) - Double Click
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. , [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/n_0_2042_BUFG_inst_i_9, from O to I0, when collapsing this cell. ]", 44, false); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. , [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/n_0_2042_BUFG_inst_i_9, from O to I0, when collapsing this cell. ]", 44, false, false, false, false, false, true); // ah (O, cr) - Double Click
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. , [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/n_0_2042_BUFG_inst_i_3, from O to I0, when collapsing this cell. ]", 45, false); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. , [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/n_0_2042_BUFG_inst_i_3, from O to I0, when collapsing this cell. ]", 45, false, false, false, false, false, true); // ah (O, cr) - Double Click
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-67] Problem: A LUT2 cell in the design is missing a connection on input pin I0, which is used by the LUT equation. This pin has either been left unconnected in the design or the connection was removed due to the trimming of unused logic. The LUT cell name is: n_0_2042_BUFG_inst_i_8.. ]", 46, false); // ah (O, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-67] Problem: A LUT2 cell in the design is missing a connection on input pin I0, which is used by the LUT equation. This pin has either been left unconnected in the design or the connection was removed due to the trimming of unused logic. The LUT cell name is: n_0_2042_BUFG_inst_i_8.. ]", 46, false, false, false, false, false, true); // ah (O, cr) - Double Click
+collapseTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v), tri_ramp_inst : tri_ramp (tri_ramp.bd)]", 5); // B (F, cr)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3, true); // B (F, cr) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3, true, false, false, false, false, true); // B (F, cr) - Double Click - Node
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3); // B (F, cr)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v)]", 4, true); // B (F, cr) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v)]", 4, true, false, false, false, false, true); // B (F, cr) - Double Click - Node
+// Elapsed time: 15 seconds
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v), genblk1[0].sawtriramp : sawtriramp (sawtriramp.v)]", 4); // B (F, cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. , [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. ]", 29, false); // ah (O, cr)
+messagesViewCrossProbe(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "src;-;C:\Users\jlaw\ece544\sig_gen_ip\sig_gen_1.0\hdl\sig_gen_v1_0.v;-;;-;16;-;line;-;4;-;;-;16;-;"); // ah (O, cr)
+closeView(PAResourceOtoP.PAViews_CODE, "Code"); // B
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3, true); // B (F, cr) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3, true, false, false, false, false, true); // B (F, cr) - Double Click - Node
+// Elapsed time: 21 seconds
+selectCodeEditor("sig_gen.v", 189, 503); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 189, 503, false, false, false, false, true); // ch (w, cr) - Double Click
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-295] found timing loop. [C:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/hdl/sig_gen_v1_0.v:4]. ]", 2); // ah (O, cr)
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1]", 1); // ah (O, cr)
+collapseTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis]", 0); // ah (O, cr)
+// Elapsed time: 16 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_25, from O to I0, when collapsing this cell. ]", 3, true); // ah (O, cr) - Node
+// Elapsed time: 15 seconds
+selectCodeEditor("sig_gen.v", 308, 410); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 308, 410, false, false, false, false, true); // ch (w, cr) - Double Click
+// Elapsed time: 18 seconds
+selectTab((HResource) null, (HResource) null, "Design", 1); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "Signals", 2); // aL (aI, cr)
+expandTree(PAResourceQtoS.SignalTreePanel_SIGNAL_TREE_PANEL, "[root, tri_ramp_clk_in1_0 (1)]", 1); // eh (O, cr)
+expandTree(PAResourceQtoS.SignalTreePanel_SIGNAL_TREE_PANEL, "[root, /clk_wiz_clk_out1 (1)]", 0); // eh (O, cr)
+collapseTree(PAResourceQtoS.SignalTreePanel_SIGNAL_TREE_PANEL, "[root, /clk_wiz_clk_out1 (1)]", 0); // eh (O, cr)
+collapseTree(PAResourceQtoS.SignalTreePanel_SIGNAL_TREE_PANEL, "[root, tri_ramp_clk_in1_0 (1)]", 1); // eh (O, cr)
+selectTree(PAResourceQtoS.SignalTreePanel_SIGNAL_TREE_PANEL, "[root, Unconnected Clocks]", 2, false); // eh (O, cr)
+selectTab(PAResourceQtoS.SystemSignalsView_TABBED_PANE, (HResource) null, "Resets", 1); // i (hF, cr)
+expandTree(PAResourceQtoS.SignalTreePanel_SIGNAL_TREE_PANEL, "[root, rstn]", 0); // eh (O, cr)
+collapseTree(PAResourceQtoS.SignalTreePanel_SIGNAL_TREE_PANEL, "[root, rstn]", 0); // eh (O, cr)
+selectTab((HResource) null, (HResource) null, "Design", 1); // aL (aI, cr)
+// Elapsed time: 12 seconds
+collapseTree(PAResourceQtoS.SystemTreeView_SYSTEM_TREE, "[tri_ramp, Nets]", 3); // i (O, cr)
+// Elapsed time: 12 seconds
+selectCodeEditor("sig_gen.v", 201, 483); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 202, 563); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 202, 563, false, false, false, false, true); // ch (w, cr) - Double Click
+selectCodeEditor("sig_gen.v", 328, 530); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 328, 530, false, false, false, false, true); // ch (w, cr) - Double Click
+// Elapsed time: 24 seconds
+selectCodeEditor("sig_gen.v", 575, 565); // ch (w, cr)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 36 seconds
+selectCodeEditor("sig_gen.v", 152, 365); // ch (w, cr)
+// Elapsed time: 11 seconds
+selectCodeEditor("sig_gen.v", 542, 369); // ch (w, cr)
+// Elapsed time: 13 seconds
+selectCodeEditor("sig_gen.v", 263, 366); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 521, 766); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 598, 543); // ch (w, cr)
+typeControlKey((HResource) null, "sig_gen.v", 'c'); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 314, 292); // ch (w, cr)
+typeControlKey((HResource) null, "sig_gen.v", 'v'); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 305, 322); // ch (w, cr)
+// Elapsed time: 10 seconds
+selectCodeEditor("sig_gen.v", 253, 413); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 253, 413, false, false, false, false, true); // ch (w, cr) - Double Click
+typeControlKey((HResource) null, "sig_gen.v", 'c'); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 312, 297); // ch (w, cr)
+typeControlKey((HResource) null, "sig_gen.v", 'v'); // ch (w, cr)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("sig_gen.v", 167, 239); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 167, 239, false, false, false, false, true); // ch (w, cr) - Double Click
+typeControlKey((HResource) null, "sig_gen.v", 'c'); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 332, 338); // ch (w, cr)
+typeControlKey((HResource) null, "sig_gen.v", 'v'); // ch (w, cr)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+selectCodeEditor("sig_gen.v", 211, 186); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 211, 186, false, false, false, false, true); // ch (w, cr) - Double Click
+typeControlKey((HResource) null, "sig_gen.v", 'c'); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 382, 300); // ch (w, cr)
+selectCodeEditor("sig_gen.v", 378, 283); // ch (w, cr)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 24 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Run Implementation]", 18, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+// A (cr): Synthesis is Out-of-date: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (A)
+// bB (cr):  Resetting Runs : addNotify
+dismissDialog("Synthesis is Out-of-date"); // A (cr)
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cr): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// bB (cr):  Starting Design Runs : addNotify
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: launch_runs impl_1 -jobs 4 
+// Tcl Message: [Sun Jun  6 23:46:04 2021] Launched synth_1... Run output will be captured here: C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/synth_1/runme.log [Sun Jun  6 23:46:04 2021] Launched impl_1... Run output will be captured here: C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/impl_1/runme.log 
+dismissDialog("Starting Design Runs"); // bB (cr)
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// aj (cr): Implementation Completed: addNotify
+// Elapsed time: 262 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aj)
+// Run Command: PAResourceCommand.PACommandNames_GOTO_IMPLEMENTED_DESIGN
+// bB (cr):  Open Implemented Design : addNotify
+// Tcl Message: open_run impl_1 
+selectButton(RDIResource.ProgressDialog_CANCEL, "Cancel"); // a (bB)
+// TclEventType: DESIGN_CLOSE
+// TclEventType: DESIGN_NEW_FAILED
+// CommandFailedException: ERROR: [Common 17-69] Command failed:  
+// Tcl Message: INFO: [Device 21-403] Loading part xc7a100tcsg324-1 INFO: [Common 17-41] Interrupt caught. Command should exit soon. 
+// Tcl Message: Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// Tcl Message: INFO: [Netlist 29-17] Analyzing 231 Unisim elements for replacement INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds INFO: [Project 1-479] Netlist was created with Vivado 2019.2 INFO: [Common 17-344] 'open_run' was cancelled 
+// 'dQ' command handler elapsed time: 5 seconds
+dismissDialog("Open Implemented Design"); // bB (cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,662 MB. GUI used memory: 174 MB. Current time: 6/6/21, 11:50:33 PM PDT
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "Open Recent"); // af (cr)
+selectMenuItem(PAResourceItoN.MainMenuMgr_OPEN_RECENT_PROJECT, "C:/Users/jlaw/ece544/finalproj/finalproj.xpr"); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+// TclEventType: PROJECT_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,662 MB. GUI used memory: 146 MB. Current time: 6/6/21, 11:50:47 PM PDT
+// Opening Vivado Project: C:/Users/jlaw/ece544/finalproj/finalproj.xpr. Version: Vivado v2019.2 
+// bB (cr):  Open Project : addNotify
+selectButton("OptionPane.button", "Yes"); // JButton (A, G)
+// Tcl Message: close_project 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// WARNING: HEventQueue.dispatchEvent() is taking  1476 ms.
+// Tcl Message: open_project C:/Users/jlaw/ece544/finalproj/finalproj.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_ip'. INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'. 
+// Tcl Message: open_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// Project name: finalproj; location: C:/Users/jlaw/ece544/finalproj; part: xc7a100tcsg324-1
+// Elapsed time: 10 seconds
+dismissDialog("Open Project"); // bB (cr)
+// a (cr): Critical Messages: addNotify
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (a)
+dismissDialog("Critical Messages"); // a (cr)
+// Tcl Message: update_compile_order -fileset sources_1 
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+selectMenuItem(PAResourceCommand.PACommandNames_REPORT_IP_STATUS, "Report IP Status"); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_IP_STATUS
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// bB (cr):  Report IP Status : addNotify
+// Tcl Message: report_ip_status -name ip_status  
+dismissDialog("Report IP Status"); // bB (cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator, Open Block Design]", 7, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_BLOCK_DESIGN
+// bB (cr):  Open Block Design : addNotify
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_OPEN_DIAGRAM
+// Tcl Message: open_bd_design {C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd} 
+// Tcl Message: Successfully read diagram <embsys> from BD file <C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd> 
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RSB_CONNECTION_CHANGE
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// TclEventType: RSB_LOCK_CHANGE
+dismissDialog("Open Block Design"); // bB (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+selectMenuItem(PAResourceCommand.PACommandNames_REPORT_IP_STATUS, "Report IP Status"); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_IP_STATUS
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// Tcl Message: report_ip_status -name ip_status  
+selectTreeTable(PAResourceItoN.IPStatusTablePanel_IP_STATUS_TABLE, "/PmodENC544_0 ; false ; embsys_PmodENC544_0_0 [PmodENC544_v1.1] (Up-to-date) ; No changes required ;  ; PmodENC544_v1.1 ; 1.1 (Rev. 3) ; 1.1 (Rev. 3) ; embsys_PmodENC544_0_0 [PmodENC544_v1.1] (Up-to-date) ; xc7a100tcsg324-1", 2, "PmodENC544_v1.1", 5, false); // B (O, cr)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// A (cr): No Implementation Results Available: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (A)
+// bB (cr):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("No Implementation Results Available"); // A (cr)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run impl_1 
+// f (cr): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 4 
+// Tcl Message: [Sun Jun  6 23:51:24 2021] Launched impl_1... Run output will be captured here: C:/Users/jlaw/ece544/finalproj/finalproj.runs/impl_1/runme.log 
+// bB (cr):  Generate Bitstream : addNotify
+dismissDialog("Generate Bitstream"); // bB (cr)
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// aj (cr): Implementation Failed: addNotify
+// Elapsed time: 143 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aj)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Implementation Failed"); // aj (cr)
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell EMBSYS/sig_gen_0/inst/sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_60, from O to I0, when collapsing this cell. ]", 14); // ah (O, cr)
+// Elapsed time: 14 seconds
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1267, 486, 1714, 1020, false, false, false, true, false); // go (i, cr) - Popup Trigger
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // af (ao, cr)
+selectMenu(PAResourceQtoS.SystemBuilderMenu_IP_DOCUMENTATION, "IP Documentation"); // af (ao, cr)
+selectMenuItem(PAResourceCommand.PACommandNames_EDIT_IN_IP_PACKAGER, "Edit in IP Packager"); // ai (ao, cr)
+// Run Command: PAResourceCommand.PACommandNames_EDIT_IN_IP_PACKAGER
+// k (cr): Edit in IP Packager: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (k)
+// bB (cr):  Edit in IP Packager : addNotify
+selectButton("OptionPane.button", "OK"); // JButton (A, H)
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_ADD
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: ipx::edit_ip_in_project -upgrade true -name sig_gen_v1_0_project -directory C:/Users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/component.xml 
+// TclEventType: PROJECT_NEW
+// WARNING: HEventQueue.dispatchEvent() is taking  2021 ms.
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'. 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories 
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_ip'. INFO: [IP_Flow 19-795] Syncing license key meta-data 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_CURRENT_CORE
+// Run Command: PAResourceCommand.PACommandNames_IP_PACKAGER
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// Tcl Message: ipx::edit_ip_in_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// 'i' command handler elapsed time: 11 seconds
+dismissDialog("Edit in IP Packager"); // bB (cr)
+// TclEventType: FILE_SET_CHANGE
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "File Groups", 2); // ar (O, cr)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Run Implementation]", 18, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+// f (cr): Launch Runs: addNotify
+selectButton("OptionPane.button", "OK"); // JButton (A, G)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// bB (cr):  Starting Design Runs : addNotify
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -jobs 4 
+// Tcl Message: [Sun Jun  6 23:54:35 2021] Launched synth_1... Run output will be captured here: c:/users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project/sig_gen_v1_0_project.runs/synth_1/runme.log [Sun Jun  6 23:54:35 2021] Launched impl_1... Run output will be captured here: c:/users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project/sig_gen_v1_0_project.runs/impl_1/runme.log 
+// 'c' command handler elapsed time: 3 seconds
+// TclEventType: RUN_STATUS_CHANGE
+dismissDialog("Starting Design Runs"); // bB (cr)
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "File Groups", 2); // ar (O, cr)
+selectButton(PAResourceItoN.MessageBanner_CHANGES_DETECTED_IN_VIVADO_PROJECT_THAT, "Merge changes from File Groups Wizard"); // h (M, cr)
+// TclEventType: PACKAGER_COMPONENT_RESET
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// Tcl Message: ipx::merge_project_changes files [ipx::current_core] 
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// aj (cr): Synthesis Failed: addNotify
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 184 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aj)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Synthesis Failed"); // aj (cr)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, (String) null, 1, false); // ah (O, cr)
+closeMainWindow("sig_gen_v1_0_project - [c:/users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project/sig_gen_v1_0_project.xpr] - Vivado 2019.2"); // cr
+// Run Command: PAResourceCommand.PACommandNames_CLOSE_PROJECT
+// al (cr): Save Project: addNotify
+selectButton(PAResourceQtoS.SaveProjectUtils_DONT_SAVE, "Don't Save"); // a (al)
+// A (cr): Close Project: addNotify
+dismissDialog("Save Project"); // al (cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,742 MB. GUI used memory: 185 MB. Current time: 6/6/21, 11:57:58 PM PDT
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (A)
+// bB (cr):  Close Project : addNotify
+// TclEventType: PROJECT_CLOSE
+dismissDialog("Close Project"); // A (cr)
+// [Engine Memory]: 1,742 MB (+24908kb) [04:15:34]
+// 'b' command handler elapsed time: 3 seconds
+// HMemoryUtils.trashcanNow. Engine heap size: 1,742 MB. GUI used memory: 176 MB. Current time: 6/6/21, 11:58:00 PM PDT
+// Tcl Message: close_project 
+dismissDialog("Close Project"); // bB (cr)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1267, 525, 1714, 1020, false, false, false, true, false); // go (i, cr) - Popup Trigger
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // af (ao, cr)
+selectMenu(PAResourceQtoS.SystemBuilderMenu_IP_DOCUMENTATION, "IP Documentation"); // af (ao, cr)
+selectMenu(PAResourceQtoS.SystemBuilderView_ORIENTATION, "Orientation"); // af (ao, cr)
+selectMenu(PAResourceQtoS.SystemBuilderView_PINNING, "Pinning"); // af (ao, cr)
+selectMenuItem(PAResourceCommand.PACommandNames_IP_SETTINGS, "IP Settings..."); // ai (ao, cr)
+// Run Command: PAResourceCommand.PACommandNames_IP_SETTINGS
+// I (cr): Settings: addNotify
+expandTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, IP]", 6); // L (E, I)
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, IP, Repository]", 7, false); // L (E, I)
+selectList(PAResourceQtoS.SettingsProjectIPRepositoryPage_REPOSITORY_CHOOSER, "c:/Users/jlaw/ece544/sig_gen_ip", 2); // cq (O, I)
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (I)
+dismissDialog("Settings"); // I (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+selectMenuItem(PAResourceCommand.PACommandNames_REPORT_IP_STATUS, "Report IP Status"); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_REPORTS, "Reports"); // aa (q, cr)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_IP_STATUS
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// bB (cr):  Report IP Status : addNotify
+// Tcl Message: report_ip_status -name ip_status  
+dismissDialog("Report IP Status"); // bB (cr)
+// Run Command: RDIResourceCommand.RDICommands_DELETE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: delete_bd_objs [get_bd_intf_nets microblaze_0_axi_periph_M13_AXI] [get_bd_cells sig_gen_0] 
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+selectMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aa (q, cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_TOOLS, "Tools"); // aa (q, cr)
+selectButton(PAResourceQtoS.SystemBuilderView_ADD_IP, "System_RSB_ADD_IP"); // E (f, cr)
+setText("PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD", "sig"); // OverlayTextField (ay, ResizableWindow)
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "sig_gen_v1.0", 0, "sig_gen_v1.0", 0, false); // L (O, ResizableWindow)
+expandTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "sig_gen_v1.0", 0); // L (O, ResizableWindow)
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "sig_gen_v1.0", 0, "sig_gen_v1.0", 0, false, false, false, false, false, true); // L (O, ResizableWindow) - Double Click
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_ADD_OBJECT
+// bB (cr):  Add IP : addNotify
+// Tcl Message: startgroup 
+// Tcl Message: create_bd_cell -type ip -vlnv xilinx.com:user:sig_gen:1.0 sig_gen_0 
+// Tcl Message: endgroup 
+dismissDialog("Add IP"); // bB (cr)
+// Tcl Command: 'set_property location {6 2313 1437} [get_bd_cells sig_gen_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {6 2313 1437} [get_bd_cells sig_gen_0] 
+selectButton(PAResourceQtoS.RSBApplyAutomationBar_RUN_CONNECTION_AUTOMATION, "Run Connection Automation"); // h (cu, cr)
+// w (cr): Run Connection Automation: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (w)
+dismissDialog("Run Connection Automation"); // w (cr)
+// TclEventType: XGUI_UPDATE_GUI_ELEMENT
+// Tcl Message: apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {/clk_wiz_1/clk_out1 (100 MHz)} Clk_slave {Auto} Clk_xbar {/clk_wiz_1/clk_out1 (100 MHz)} Master {/microblaze_0 (Periph)} Slave {/sig_gen_0/S00_AXI} ddr_seg {Auto} intc_ip {/microblaze_0_axi_periph} master_apm {0}}  [get_bd_intf_pins sig_gen_0/S00_AXI] 
+// TclEventType: RSB_CONNECTION_CHANGE
+// bB (cr):  Run Connection Automation : addNotify
+// TclEventType: RSB_CONNECTION_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: XGUI_RESET_GUI_ELEMENT
+// Tcl Message: Slave segment </sig_gen_0/S00_AXI/S00_AXI_reg> is being mapped into address space </microblaze_0/Data> at <0x44A7_0000 [ 64K ]> 
+dismissDialog("Run Connection Automation"); // bB (cr)
+// Tcl Command: 'set_property location {6 2348 1432} [get_bd_cells sig_gen_0]'
+// TclEventType: RSB_CANVAS_LOCATION
+// Tcl Message: set_property location {6 2348 1432} [get_bd_cells sig_gen_0] 
+selectButton(RDIResource.BaseReportTab_RERUN, "Rerun"); // h (ds, cr)
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// Tcl Message: report_ip_status -name ip_status  
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Run Implementation]", 17, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+// i (cr): Reset and Re-run: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Reset and Re-run"); // a (i)
+// al (cr): Save Project: addNotify
+dismissDialog("Reset and Re-run"); // i (cr)
+selectButton(PAResourceQtoS.SaveProjectUtils_SAVE, "Save"); // a (al)
+// bB (cr):  Save Constraints : addNotify
+dismissDialog("Save Project"); // al (cr)
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: save_bd_design 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: Wrote  : <C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\bd\embsys\embsys.bd>  Wrote  : <C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/ui/bd_bcf741d3.ui>  
+// A (cr): Synthesis is Out-of-date: addNotify
+dismissDialog("Save Constraints"); // bB (cr)
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (A)
+// bB (cr):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // A (cr)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run impl_1 
+// f (cr): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// bB (cr):  Starting Design Runs : addNotify
+// TclEventType: RSB_SCRIPT_TASK
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: launch_runs impl_1 -jobs 4 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: INFO: [xilinx.com:ip:axi_intc:4.1-1] /microblaze_0_axi_intc: The AXI INTC core has been configured to operate with synchronous clocks. 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: Wrote  : <C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\bd\embsys\embsys.bd>  VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/synth/embsys.v 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/sim/embsys.v VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hdl/embsys_wrapper.v 
+selectButton(RDIResource.ProgressDialog_BACKGROUND, "Background"); // a (bB)
+// 'c' command handler elapsed time: 19 seconds
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aL (aI, cr)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [BD 41-1029] Generation completed for the IP Integrator block sig_gen_0 . 
+// Tcl Message: Exporting to file C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hw_handoff/embsys.hwh Generated Block Design Tcl file C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hw_handoff/embsys_bd.tcl 
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: Generated Hardware Definition File C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/synth/embsys.hwdef 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJ_DESIGN_MODE_SET
+// Tcl Message: INFO: [IP_Flow 19-4993] Using cached IP synthesis design for IP embsys_sig_gen_0_1, cache-ID = 2a5e8cd8643606bd; cache size = 143.392 MB. 
+// Tcl Message: config_ip_cache: Time (s): cpu = 00:00:18 ; elapsed = 00:00:22 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Mon Jun  7 00:00:04 2021] Launched synth_1... Run output will be captured here: C:/Users/jlaw/ece544/finalproj/finalproj.runs/synth_1/runme.log [Mon Jun  7 00:00:04 2021] Launched impl_1... Run output will be captured here: C:/Users/jlaw/ece544/finalproj/finalproj.runs/impl_1/runme.log 
+// Tcl Message: launch_runs: Time (s): cpu = 00:00:44 ; elapsed = 00:00:51 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// aZ (cr): Launch Run Critical Messages: addNotify
+// Elapsed time: 40 seconds
+dismissDialog("Starting Design Runs"); // bB (cr)
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 44 seconds
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (aZ)
+dismissDialog("Launch Run Critical Messages"); // aZ (cr)
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// aj (cr): Implementation Failed: addNotify
+// Elapsed time: 560 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (aj)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+dismissDialog("Implementation Failed"); // aj (cr)
+// Elapsed time: 114 seconds
+expandTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Opt Design, [Opt 31-443] Constant propagation found a feedback loop on cell EMBSYS/sig_gen_0/inst/sig_gen_v1_0_S00_AXI_inst/nolabel_line445/wave_num_reg[31]_i_60, from O to I0, when collapsing this cell. ]", 10); // ah (O, cr)
+selectButton(PAResourceItoN.MsgView_CLEAR_MESSAGES_RESULTING_FROM_USER_EXECUTED, "Messages_cleanUpMessages"); // E (f, cr)
+selectView(PAResourceOtoP.PAViews_SYSTEM, "System", 1273, 510, 1714, 1020, false, false, false, true, false); // go (i, cr) - Popup Trigger
+selectMenu(PAResourceQtoS.SelectMenu_HIGHLIGHT, "Highlight"); // af (ao, cr)
+selectMenu(PAResourceQtoS.SystemBuilderMenu_IP_DOCUMENTATION, "IP Documentation"); // af (ao, cr)
+selectMenuItem(PAResourceCommand.PACommandNames_EDIT_IN_IP_PACKAGER, "Edit in IP Packager"); // ai (ao, cr)
+// Run Command: PAResourceCommand.PACommandNames_EDIT_IN_IP_PACKAGER
+// k (cr): Edit in IP Packager: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (k)
+// bB (cr):  Edit in IP Packager : addNotify
+selectButton("OptionPane.button", "OK"); // JButton (A, H)
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_ADD
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: ipx::edit_ip_in_project -upgrade true -name sig_gen_v1_0_project -directory C:/Users/jlaw/ece544/finalproj/finalproj.tmp/sig_gen_v1_0_project c:/Users/jlaw/ece544/sig_gen_ip/sig_gen_1.0/component.xml 
+// TclEventType: PROJECT_NEW
+// WARNING: HEventQueue.dispatchEvent() is taking  2009 ms.
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2019.2/data/ip'. 
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories 
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Downloads/ece544sp21_gsproj_release_R1_0/repositories'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/Documents/GitHub/ECE544_Final_Project/Hardware'. INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_ip'. INFO: [IP_Flow 19-795] Syncing license key meta-data 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_CURRENT_CORE
+// Run Command: PAResourceCommand.PACommandNames_IP_PACKAGER
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// Tcl Message: ipx::edit_ip_in_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// [GUI Memory]: 316 MB (+9187kb) [04:30:08]
+// 'i' command handler elapsed time: 13 seconds
+dismissDialog("Edit in IP Packager"); // bB (cr)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v)]", 1); // B (F, cr)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3, true); // B (F, cr) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, sig_gen_v1_0 (sig_gen_v1_0.v), sig_gen_v1_0_S00_AXI_inst : sig_gen_v1_0_S00_AXI (sig_gen_v1_0_S00_AXI.v), sig_gen : sig_gen (sig_gen.v)]", 3, true, false, false, false, false, true); // B (F, cr) - Double Click - Node
+// Elapsed time: 56 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Package IP - sig_gen", 1); // i (h, cr)
+selectList(PAResourceOtoP.PackagerStepsPanel_PACKAGER_STEPS_LIST, "Review and Package", 7); // ar (O, cr)
+selectButton(PAResourceQtoS.ReviewContentPanel_RE_PACKAGE_IP, "Re-Package IP"); // a (c, cr)
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// Tcl Message: set_property core_revision 3 [ipx::current_core] 
+// Tcl Message: ipx::update_source_project_archive -component [ipx::current_core] 
+// Tcl Message: ipx::create_xgui_files [ipx::current_core] 
+// Tcl Message: ipx::update_checksums [ipx::current_core] 
+// Tcl Message: ipx::save_core [ipx::current_core] 
+// TclEventType: FILE_SET_CHANGE
+// bB (cr):  Package IP : addNotify
+selectButton("OptionPane.button", "Yes"); // JButton (A, G)
+// Tcl Message: ipx::move_temp_component_back -component [ipx::current_core] 
+// TclEventType: PROJECT_CLOSE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,753 MB. GUI used memory: 194 MB. Current time: 6/7/21, 12:13:46 AM PDT
+// Tcl Message: close_project -delete 
+dismissDialog("Package IP"); // bB (cr)
+// TclEventType: CREATE_IP_CATALOG
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// Tcl Message: update_ip_catalog -rebuild -repo_path c:/Users/jlaw/ece544/sig_gen_ip 
+// Tcl Message: INFO: [IP_Flow 19-725] Reloaded user IP repository 'c:/Users/jlaw/ece544/sig_gen_ip' 
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: CREATE_IP_CATALOG
+selectButton(PAResourceQtoS.SystemTab_SHOW_IP_STATUS, "Show IP Status"); // h (ds, cr)
+selectButton(RDIResource.BaseReportTab_RERUN, "Rerun"); // h (ds, cr)
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// bB (cr):  Report IP Status : addNotify
+// Tcl Message: report_ip_status -name ip_status  
+dismissDialog("Report IP Status"); // bB (cr)
+selectButton(PAResourceItoN.IPStatusSectionPanel_UPGRADE_SELECTED, "Upgrade Selected"); // a (g, cr)
+// Run Command: PAResourceCommand.PACommandNames_UPGRADE_IP
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// bB (cr):  Upgrade IP : addNotify
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: upgrade_ip -vlnv xilinx.com:user:sig_gen:1.0 [get_ips  embsys_sig_gen_0_1] -log ip_upgrade.log 
+// Tcl Message: Upgrading 'C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/embsys.bd' 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILESET_UPDATE_IP
+// TclEventType: IP_UPGRADE_COMPLETE
+// Tcl Message: INFO: [IP_Flow 19-3422] Upgraded embsys_sig_gen_0_1 (sig_gen_v1.0 1.0) from revision 2 to revision 3 
+// Tcl Message: Wrote  : <C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\bd\embsys\embsys.bd>  
+// Tcl Message: INFO: [Coretcl 2-1525] Wrote upgrade log to 'C:/Users/jlaw/ece544/finalproj/ip_upgrade.log'. 
+// Tcl Message: export_ip_user_files -of_objects [get_ips embsys_sig_gen_0_1] -no_script -sync -force -quiet 
+// aI (cr): Generate Output Products: addNotify
+selectButton("OptionPane.button", "OK"); // JButton (A, G)
+selectButton(PAResourceQtoS.SimpleOutputProductDialog_CLOSE_DIALOG_UNSAVED_CHANGES_WILL, "Skip"); // a (aI)
+dismissDialog("Generate Output Products"); // aI (cr)
+selectButton(RDIResource.BaseReportTab_RERUN, "Rerun"); // h (ds, cr)
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// Tcl Message: report_ip_status -name ip_status  
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 20, false); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// A (cr): Synthesis is Out-of-date: addNotify
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (A)
+// bB (cr):  Resetting Runs : addNotify
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // A (cr)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+// f (cr): Launch Runs: addNotify
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (f)
+// TclEventType: RSB_SCRIPT_TASK
+dismissDialog("Launch Runs"); // f (cr)
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// bB (cr):  Generate Bitstream : addNotify
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 4 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// Tcl Message: INFO: [xilinx.com:ip:axi_intc:4.1-1] /microblaze_0_axi_intc: The AXI INTC core has been configured to operate with synchronous clocks. 
+// Tcl Message: Wrote  : <C:\Users\jlaw\ece544\finalproj\finalproj.srcs\sources_1\bd\embsys\embsys.bd>  VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/synth/embsys.v 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/sim/embsys.v VHDL Output written to : C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hdl/embsys_wrapper.v 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: INFO: [BD 41-1029] Generation completed for the IP Integrator block sig_gen_0 . 
+// Tcl Message: Exporting to file C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hw_handoff/embsys.hwh Generated Block Design Tcl file C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/hw_handoff/embsys_bd.tcl 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_ADD
+// Tcl Message: Generated Hardware Definition File C:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/synth/embsys.hwdef 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Mon Jun  7 00:14:28 2021] Launched embsys_sig_gen_0_1_synth_1, synth_1... Run output will be captured here: embsys_sig_gen_0_1_synth_1: C:/Users/jlaw/ece544/finalproj/finalproj.runs/embsys_sig_gen_0_1_synth_1/runme.log synth_1: C:/Users/jlaw/ece544/finalproj/finalproj.runs/synth_1/runme.log [Mon Jun  7 00:14:28 2021] Launched impl_1... Run output will be captured here: C:/Users/jlaw/ece544/finalproj/finalproj.runs/impl_1/runme.log 
+// Tcl Message: launch_runs: Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// TclEventType: RUN_STATUS_CHANGE
+// aZ (cr): Launch Run Critical Messages: addNotify
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 58 seconds
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (aZ)
+dismissDialog("Launch Run Critical Messages"); // aZ (cr)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// aj (cr): Bitstream Generation Completed: addNotify
+// Elapsed time: 791 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel"); // a (aj)
+dismissDialog("Bitstream Generation Completed"); // aj (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_CHECKPOINT, "Checkpoint"); // af (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+// Elapsed time: 32 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+selectMenu(PAResourceItoN.MainMenuMgr_PROJECT, "Project"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_CHECKPOINT, "Checkpoint"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_IP, "IP"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_TEXT_EDITOR, "Text Editor"); // af (cr)
+selectMenu(PAResourceItoN.MainMenuMgr_EXPORT, "Export"); // af (cr)
+selectMenuItem(PAResourceCommand.PACommandNames_EXPORT_HARDWARE, "Export Hardware..."); // ai (cr)
+dismissMenu(PAResourceItoN.MainMenuMgr_FILE, "File"); // aa (q, cr)
+// Run Command: PAResourceCommand.PACommandNames_EXPORT_HARDWARE
+// Z (cr): Export Hardware: addNotify
+selectCheckBox(PAResourceItoN.NewExportHardwareDialog_INCLUDE_BITSTREAM, "Include bitstream", true); // g (Q, Z): TRUE
+// WARNING: HEventQueue.dispatchEvent() is taking  1040 ms.
+// Elapsed time: 22 seconds
+setFolderChooser("C:/Users/jlaw/Downloads/temp");
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (Z)
+// 'm' command handler elapsed time: 26 seconds
+dismissDialog("Export Hardware"); // Z (cr)
+// bB (cr):  Export Hardware : addNotify
+// Tcl Message: write_hw_platform -fixed -force  -include_bit -file C:/Users/jlaw/Downloads/temp/nexysA7fpga.xsa 
+// Tcl Message: INFO: [Vivado 12-4895] Creating Hardware Platform: C:/Users/jlaw/Downloads/temp/nexysA7fpga.xsa ... 
+// Tcl Message: INFO: [Hsi 55-2053] elapsed time for repository (C:/Xilinx/Vivado/2019.2/data\embeddedsw) loading 1 seconds 
+// Tcl Message: INFO: [Vivado 12-4896] Successfully created Hardware Platform: C:/Users/jlaw/Downloads/temp/nexysA7fpga.xsa 
+dismissDialog("Export Hardware"); // bB (cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,753 MB. GUI used memory: 213 MB. Current time: 6/7/21, 12:43:49 AM PDT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,753 MB. GUI used memory: 211 MB. Current time: 6/7/21, 1:13:49 AM PDT
+// WARNING: HEventQueue.dispatchEvent() is taking  18288137 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 1,753 MB. GUI used memory: 210 MB. Current time: 6/7/21, 6:41:44 AM PDT
+// WARNING: HEventQueue.dispatchEvent() is taking  7077737 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 1,753 MB. GUI used memory: 210 MB. Current time: 6/7/21, 8:39:42 AM PDT
+// WARNING: HSwingWorker (Refresh Filesets Swing Worker) is taking 7078401 ms. Increasing delay to 21235203 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  14734611 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 1,753 MB. GUI used memory: 210 MB. Current time: 6/7/21, 12:45:21 PM PDT
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 14735176 ms. Increasing delay to 3000 ms.
+// WARNING: HEventQueue.dispatchEvent() is taking  480685 ms.
+// WARNING: HSwingWorker (Update Runs Swing Worker) is taking 6953 ms. Increasing delay to 4000 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 1,753 MB. GUI used memory: 210 MB. Current time: 6/7/21, 1:15:24 PM PDT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,753 MB. GUI used memory: 210 MB. Current time: 6/7/21, 1:45:24 PM PDT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,753 MB. GUI used memory: 210 MB. Current time: 6/7/21, 2:15:24 PM PDT
+// WARNING: HEventQueue.dispatchEvent() is taking  1541 ms.
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// r (cr): Re-customize IP: addNotify
+// Elapsed time: 49871 seconds
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Port A Options", 1); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Port B Options", 2); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Other Options", 3); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Summary", 4); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Basic", 0); // bh (E, r)
+dismissDialog("Re-customize IP"); // r (cr)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // i (h, cr)
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// r (cr): Re-customize IP: addNotify
+selectButton(PAResourceAtoD.CustomizeCoreDialog_SWITCH_TO_ADVANCED_VIEW, "Advanced"); // x (f, r): TRUE
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Exception", 1); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Cache", 2); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "MMU", 3); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Debug", 4); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Interrupt & Reset", 5); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "PVR", 6); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Buses", 7); // bh (E, r)
+dismissDialog("Re-customize IP"); // r (cr)
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// r (cr): Re-customize IP: addNotify
+// Elapsed time: 10 seconds
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "ECC", 1); // bh (E, r)
+selectTab(PAResourceEtoH.HACGCTabbedPane_TABBED_PANE, (HResource) null, "Addresses", 0); // bh (E, r)
+dismissDialog("Re-customize IP"); // r (cr)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // i (h, cr)
+// Run Command: PAResourceCommand.PACommandNames_CUSTOMIZE_RSB_BLOC
+// r (cr): Re-customize IP: addNotify
+// Elapsed time: 11 seconds
+dismissDialog("Re-customize IP"); // r (cr)
+closeView(PAResourceOtoP.PAViews_SYSTEM, "System"); // go
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // i (h, cr)
+// Elapsed time: 19 seconds
+selectTab((HResource) null, (HResource) null, "Sources", 0); // aL (aI, cr)
+// Elapsed time: 14 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0, true); // u (O, cr) - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_PROJECT_MANAGER
+// Elapsed time: 48 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, IP Integrator]", 5, true); // u (O, cr) - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_IP_INTEGRATOR
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // v
+// WARNING: HEventQueue.dispatchEvent() is taking  1332 ms.
+// Elapsed time: 28 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "System", 0); // i (h, cr)
+// Elapsed time: 58 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0, true); // u (O, cr) - Node
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0); // u (O, cr)
+// Run Command: PAResourceCommand.PACommandNames_GOTO_PROJECT_MANAGER
+// Elapsed time: 23 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation]", 16, true); // u (O, cr) - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation]", 16, true); // u (O, cr) - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Implementation, Open Implemented Design]", 18, true); // u (O, cr) - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_IMPLEMENTED_DESIGN
+// bB (cr):  Open Implemented Design : addNotify
+// Tcl Message: open_run impl_1 
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_CNS_STALE
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: POWER_REPORT_STALE
+// TclEventType: SDC_CONSTRAINT_ADD
+// TclEventType: FLOORPLAN_MODIFY
+// TclEventType: DESIGN_NEW
+// HMemoryUtils.trashcanNow. Engine heap size: 1,753 MB. GUI used memory: 231 MB. Current time: 6/7/21, 2:25:31 PM PDT
+// TclEventType: DESIGN_NEW
+// [Engine Memory]: 1,852 MB (+24722kb) [18:43:08]
+// TclEventType: HFED_INIT_ROUTE_STORAGE_COMPLETED
+// RouteApi::loadEngineXgd elapsed time: 2.1s
+// Device: addNotify
+// DeviceView Instantiated
+// WARNING: HEventQueue.dispatchEvent() is taking  1763 ms.
+// TclEventType: CURR_DESIGN_SET
+// Tcl Message: Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.450 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// Tcl Message: INFO: [Netlist 29-17] Analyzing 797 Unisim elements for replacement INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds INFO: [Project 1-479] Netlist was created with Vivado 2019.2 INFO: [Project 1-570] Preparing netlist for logic optimization 
+// Tcl Message: INFO: [Timing 38-478] Restoring timing data from binary archive. INFO: [Timing 38-479] Binary timing data restore complete. INFO: [Project 1-856] Restoring constraints from binary archive. INFO: [Project 1-853] Binary constraint restore complete. 
+// Tcl Message: Reading XDEF placement. Reading placer database... Reading XDEF routing. 
+// Tcl Message: Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// Tcl Message: Restored from archive | CPU: 2.000000 secs | Memory: 0.000000 MB | 
+// Tcl Message: Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// Tcl Message: Generating merged BMM file for the design top 'nexysA7fpga'... 
+// Tcl Message: INFO: [Memdata 28-144] Successfully populated the BRAM INIT strings from the following elf files: c:/Users/jlaw/ece544/finalproj/finalproj.srcs/sources_1/bd/embsys/ip/embsys_microblaze_0_0/data/mb_bootloop_le.elf  
+// Tcl Message: Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// Tcl Message: INFO: [Project 1-111] Unisim Transformation Summary:   A total of 140 instances were transformed.   IOBUF => IOBUF (IBUF, OBUFT): 8 instances   LUT6_2 => LUT6_2 (LUT5, LUT6): 79 instances   RAM16X1D => RAM32X1D (RAMD32(x2)): 32 instances   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 20 instances   SRLC16E => SRL16E: 1 instance   
+// TclEventType: DRC_ADDED
+// Device view-level: 0.0
+// RouteApi: Init Delay Mediator Swing Worker Finished
+// Tcl Message: open_run: Time (s): cpu = 00:00:28 ; elapsed = 00:00:23 . Memory (MB): peak = 3404.566 ; gain = 0.000 
+// TclEventType: DRC_ADDED
+// TclEventType: METHODOLOGY_ADDED
+// TclEventType: POWER_UPDATED
+// [GUI Memory]: 332 MB (+59kb) [18:43:16]
+// WARNING: HEventQueue.dispatchEvent() is taking  5042 ms.
+// TclEventType: TIMING_SUMMARY_UPDATED
+// WARNING: HEventQueue.dispatchEvent() is taking  2941 ms.
+// [Engine Memory]: 1,949 MB (+3960kb) [18:43:23]
+// 'dQ' command handler elapsed time: 37 seconds
+// Device view-level: 0.1
+// [GUI Memory]: 371 MB (+23137kb) [18:43:23]
+// S (cr): Critical Messages: addNotify
+// Device view-level: 0.0
+// Elapsed time: 37 seconds
+dismissDialog("Open Implemented Design"); // bB (cr)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,974 MB. GUI used memory: 309 MB. Current time: 6/7/21, 2:25:50 PM PDT
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK"); // f (S)
+dismissDialog("Critical Messages"); // S (cr)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Project Summary", 0); // i (h, cr)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Device", 1); // i (h, cr)
+selectTab((HResource) null, (HResource) null, "Tcl Console", 0); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "Log", 2); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "Methodology", 8); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "DRC", 7); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "Power", 6); // aL (aI, cr)
+// Elapsed time: 14 seconds
+selectTab((HResource) null, (HResource) null, "DRC", 7); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "Power", 6); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "Methodology", 8); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "Timing", 9); // aL (aI, cr)
+selectTab((HResource) null, (HResource) null, "IP Status", 5); // aL (aI, cr)
+// Elapsed time: 1023 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager]", 0, true); // u (O, cr) - Node
+// Run Command: PAResourceCommand.PACommandNames_GOTO_PROJECT_MANAGER

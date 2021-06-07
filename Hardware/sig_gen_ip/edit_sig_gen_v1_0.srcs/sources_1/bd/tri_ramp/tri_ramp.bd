@@ -1,0 +1,1070 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x337C0686D26AF357",
+      "device": "xc7a100tcsg324-1",
+      "name": "tri_ramp",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2019.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "amp": "",
+      "peak": "",
+      "amp_max": "",
+      "cycle": "",
+      "rc_max": "",
+      "c": "",
+      "rise_cycle": "",
+      "sample_low_sub": "",
+      "rampDown": "",
+      "high_cycle": "",
+      "rampUp": "",
+      "sample_low_mul": "",
+      "low_cycle": "",
+      "sample_high": "",
+      "highcycle_o": "",
+      "sample_high_o": "",
+      "sample_low_o": "",
+      "clk_wiz": ""
+    },
+    "ports": {
+      "rc_max_i": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "c_i": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "rise_cycle_i": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "amp_i": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "amp_max_i": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "cycle_i": {
+        "direction": "I",
+        "left": "31",
+        "right": "0"
+      },
+      "wr": {
+        "direction": "I"
+      },
+      "sample_high_o": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "sample_low_o": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "high_cycle_o": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
+      },
+      "rstn": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
+      },
+      "clk": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "tri_ramp_clk_in1_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      }
+    },
+    "components": {
+      "amp": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_0_0",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "6"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Fixed_to_float"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "peak": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_0_1",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "28"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Divide"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "amp_max": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_1_0",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "6"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Fixed_to_float"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "cycle": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_1_1",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "6"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Fixed_to_float"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "rc_max": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_1_2",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "6"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Fixed_to_float"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "c": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_3_0",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "6"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Fixed_to_float"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "rise_cycle": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_0_2",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "6"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Fixed_to_float"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "sample_low_sub": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_1_3",
+        "parameters": {
+          "Add_Sub_Value": {
+            "value": "Subtract"
+          },
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "11"
+          },
+          "C_Mult_Usage": {
+            "value": "Full_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Add_Subtract"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "rampDown": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_1_4",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "28"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Divide"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "high_cycle": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_7_0",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "28"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Divide"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "rampUp": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_7_1",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "28"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Divide"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "sample_low_mul": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_floating_point_8_0",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "28"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Divide"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "low_cycle": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_sub_0",
+        "parameters": {
+          "Add_Sub_Value": {
+            "value": "Subtract"
+          },
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "11"
+          },
+          "C_Mult_Usage": {
+            "value": "Full_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Add_Subtract"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "sample_high": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_mul_0",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "28"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "8"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "24"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Divide"
+          },
+          "Result_Precision_Type": {
+            "value": "Single"
+          }
+        }
+      },
+      "highcycle_o": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_mul_1",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "6"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "32"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "0"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Float_to_fixed"
+          },
+          "Result_Precision_Type": {
+            "value": "Int32"
+          }
+        }
+      },
+      "sample_high_o": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_sout_0",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "6"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "32"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "0"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Float_to_fixed"
+          },
+          "Result_Precision_Type": {
+            "value": "Int32"
+          }
+        }
+      },
+      "sample_low_o": {
+        "vlnv": "xilinx.com:ip:floating_point:7.1",
+        "xci_name": "tri_ramp_sout_1",
+        "parameters": {
+          "C_Accum_Input_Msb": {
+            "value": "32"
+          },
+          "C_Accum_Lsb": {
+            "value": "-31"
+          },
+          "C_Accum_Msb": {
+            "value": "32"
+          },
+          "C_Latency": {
+            "value": "6"
+          },
+          "C_Mult_Usage": {
+            "value": "No_Usage"
+          },
+          "C_Rate": {
+            "value": "1"
+          },
+          "C_Result_Exponent_Width": {
+            "value": "32"
+          },
+          "C_Result_Fraction_Width": {
+            "value": "0"
+          },
+          "Flow_Control": {
+            "value": "NonBlocking"
+          },
+          "Has_RESULT_TREADY": {
+            "value": "false"
+          },
+          "Operation_Type": {
+            "value": "Float_to_fixed"
+          },
+          "Result_Precision_Type": {
+            "value": "Int32"
+          }
+        }
+      },
+      "clk_wiz": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "xci_name": "tri_ramp_clk_wiz_0"
+      }
+    },
+    "interface_nets": {
+      "c_M_AXIS_RESULT": {
+        "interface_ports": [
+          "sample_high/S_AXIS_B",
+          "c/M_AXIS_RESULT"
+        ]
+      },
+      "rampUp_M_AXIS_RESULT": {
+        "interface_ports": [
+          "rampUp/M_AXIS_RESULT",
+          "sample_high/S_AXIS_A"
+        ]
+      },
+      "amp_M_AXIS_RESULT": {
+        "interface_ports": [
+          "amp/M_AXIS_RESULT",
+          "peak/S_AXIS_A"
+        ]
+      },
+      "rise_cycle_M_AXIS_RESULT": {
+        "interface_ports": [
+          "rise_cycle/M_AXIS_RESULT",
+          "high_cycle/S_AXIS_A"
+        ]
+      },
+      "amp_max_M_AXIS_RESULT": {
+        "interface_ports": [
+          "amp_max/M_AXIS_RESULT",
+          "peak/S_AXIS_B"
+        ]
+      },
+      "rc_max_M_AXIS_RESULT": {
+        "interface_ports": [
+          "rc_max/M_AXIS_RESULT",
+          "high_cycle/S_AXIS_B"
+        ]
+      },
+      "low_cycle_M_AXIS_RESULT": {
+        "interface_ports": [
+          "low_cycle/M_AXIS_RESULT",
+          "rampDown/S_AXIS_B"
+        ]
+      },
+      "cycle_M_AXIS_RESULT": {
+        "interface_ports": [
+          "cycle/M_AXIS_RESULT",
+          "low_cycle/S_AXIS_A"
+        ]
+      },
+      "high_cycle_M_AXIS_RESULT": {
+        "interface_ports": [
+          "high_cycle/M_AXIS_RESULT",
+          "low_cycle/S_AXIS_B"
+        ]
+      },
+      "peak_M_AXIS_RESULT": {
+        "interface_ports": [
+          "peak/M_AXIS_RESULT",
+          "rampUp/S_AXIS_A"
+        ]
+      },
+      "sample_low_mul_M_AXIS_RESULT": {
+        "interface_ports": [
+          "sample_low_mul/M_AXIS_RESULT",
+          "sample_low_sub/S_AXIS_B"
+        ]
+      },
+      "rampDown_M_AXIS_RESULT": {
+        "interface_ports": [
+          "rampDown/M_AXIS_RESULT",
+          "sample_low_mul/S_AXIS_A"
+        ]
+      },
+      "sample_high_M_AXIS_RESULT": {
+        "interface_ports": [
+          "sample_high_o/S_AXIS_A",
+          "sample_high/M_AXIS_RESULT"
+        ]
+      },
+      "sample_low_sub_M_AXIS_RESULT": {
+        "interface_ports": [
+          "sample_low_o/S_AXIS_A",
+          "sample_low_sub/M_AXIS_RESULT"
+        ]
+      }
+    },
+    "nets": {
+      "s_axis_a_tdata_0_1": {
+        "ports": [
+          "rc_max_i",
+          "rc_max/s_axis_a_tdata"
+        ]
+      },
+      "s_axis_a_tdata_1_1": {
+        "ports": [
+          "c_i",
+          "c/s_axis_a_tdata"
+        ]
+      },
+      "s_axis_a_tdata_2_1": {
+        "ports": [
+          "rise_cycle_i",
+          "rise_cycle/s_axis_a_tdata"
+        ]
+      },
+      "s_axis_a_tdata_3_1": {
+        "ports": [
+          "amp_i",
+          "amp/s_axis_a_tdata"
+        ]
+      },
+      "s_axis_a_tdata_4_1": {
+        "ports": [
+          "amp_max_i",
+          "amp_max/s_axis_a_tdata"
+        ]
+      },
+      "s_axis_a_tdata_5_1": {
+        "ports": [
+          "cycle_i",
+          "cycle/s_axis_a_tdata"
+        ]
+      },
+      "s_axis_a_tvalid_0_1": {
+        "ports": [
+          "wr",
+          "amp/s_axis_a_tvalid",
+          "amp_max/s_axis_a_tvalid",
+          "rise_cycle/s_axis_a_tvalid",
+          "rc_max/s_axis_a_tvalid",
+          "c/s_axis_a_tvalid",
+          "cycle/s_axis_a_tvalid"
+        ]
+      },
+      "sample_high_o_m_axis_result_tdata": {
+        "ports": [
+          "sample_high_o/m_axis_result_tdata",
+          "sample_high_o"
+        ]
+      },
+      "sample_low_o_m_axis_result_tdata": {
+        "ports": [
+          "sample_low_o/m_axis_result_tdata",
+          "sample_low_o"
+        ]
+      },
+      "highcycle_o_m_axis_result_tdata": {
+        "ports": [
+          "highcycle_o/m_axis_result_tdata",
+          "high_cycle_o"
+        ]
+      },
+      "high_cycle_m_axis_result_tdata": {
+        "ports": [
+          "high_cycle/m_axis_result_tdata",
+          "rampUp/s_axis_b_tdata",
+          "highcycle_o/s_axis_a_tdata"
+        ]
+      },
+      "high_cycle_m_axis_result_tvalid": {
+        "ports": [
+          "high_cycle/m_axis_result_tvalid",
+          "rampUp/s_axis_b_tvalid",
+          "highcycle_o/s_axis_a_tvalid"
+        ]
+      },
+      "peak_m_axis_result_tdata": {
+        "ports": [
+          "peak/m_axis_result_tdata",
+          "rampDown/s_axis_a_tdata",
+          "sample_low_sub/s_axis_a_tdata"
+        ]
+      },
+      "peak_m_axis_result_tvalid": {
+        "ports": [
+          "peak/m_axis_result_tvalid",
+          "rampDown/s_axis_a_tvalid",
+          "sample_low_sub/s_axis_a_tvalid"
+        ]
+      },
+      "c_m_axis_result_tdata": {
+        "ports": [
+          "c/m_axis_result_tdata",
+          "sample_low_mul/s_axis_b_tdata"
+        ]
+      },
+      "c_m_axis_result_tvalid": {
+        "ports": [
+          "c/m_axis_result_tvalid",
+          "sample_low_mul/s_axis_b_tvalid"
+        ]
+      },
+      "clk_wiz_clk_out1": {
+        "ports": [
+          "clk_wiz/clk_out1",
+          "high_cycle/aclk",
+          "low_cycle/aclk",
+          "rc_max/aclk",
+          "rise_cycle/aclk",
+          "amp/aclk",
+          "amp_max/aclk",
+          "c/aclk",
+          "cycle/aclk",
+          "sample_low_mul/aclk",
+          "rampDown/aclk",
+          "rampUp/aclk",
+          "sample_high/aclk",
+          "sample_low_sub/aclk",
+          "sample_low_o/aclk",
+          "sample_high_o/aclk",
+          "highcycle_o/aclk",
+          "peak/aclk"
+        ]
+      },
+      "reset_0_1": {
+        "ports": [
+          "rstn",
+          "clk_wiz/reset"
+        ]
+      },
+      "clk_in1_0_1": {
+        "ports": [
+          "clk",
+          "clk_wiz/clk_in1"
+        ]
+      }
+    }
+  }
+}

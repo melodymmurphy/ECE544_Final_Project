@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="tri_ramp_floating_point_8_0_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_8_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="tri_ramp_mul_1_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_mul_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="tri_ramp_mul_0_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_mul_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_floating_point_8_0_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_clk_wiz_0_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_clk_wiz_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="tri_ramp_sub_0_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_sub_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="tri_ramp_sout_0_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_sout_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_mul_1_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_sout_1_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_sout_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_mul_1_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_floating_point_0_0_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="tri_ramp_floating_point_0_1_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_0_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_floating_point_8_0_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_floating_point_1_1_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_1_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_floating_point_0_0_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_floating_point_1_2_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_1_2_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_floating_point_0_0_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_floating_point_1_0_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_floating_point_0_0_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_floating_point_3_0_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_3_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_floating_point_0_0_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_floating_point_1_4_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_1_4_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_floating_point_8_0_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_floating_point_7_1_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_7_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_floating_point_8_0_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_floating_point_0_2_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_0_2_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_floating_point_0_0_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_floating_point_1_3_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_1_3_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_sub_0_synth_1"/>
+	</Run>
+	<Run Id="tri_ramp_floating_point_7_0_synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/tri_ramp_floating_point_7_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="tri_ramp_floating_point_8_0_synth_1"/>
+	</Run>
+	<Run Id="synth_1" LaunchDir="C:/Users/jlaw/ece544/sig_gen_ip/edit_sig_gen_v1_0.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="tri_ramp_floating_point_8_0_synth_1"/>
+		<Parent Id="tri_ramp_mul_1_synth_1"/>
+		<Parent Id="tri_ramp_mul_0_synth_1"/>
+		<Parent Id="tri_ramp_clk_wiz_0_synth_1"/>
+		<Parent Id="tri_ramp_sub_0_synth_1"/>
+		<Parent Id="tri_ramp_sout_0_synth_1"/>
+		<Parent Id="tri_ramp_sout_1_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_0_0_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_0_1_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_1_1_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_1_2_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_1_0_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_3_0_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_1_4_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_7_1_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_0_2_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_1_3_synth_1"/>
+		<Parent Id="tri_ramp_floating_point_7_0_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+
