@@ -9,8 +9,8 @@
 #include "xil_io.h"
 #include "xstatus.h"
 
-#define MIDI_PROCESSOR_NOTE_ON_OFFSET 		0
-#define MIDI_PROCESSOR_NOTE_OFFSET 			4
+#define MIDI_PROCESSOR_NOTE_DATA_LOW 		0
+#define MIDI_PROCESSOR_NOTE_DATA_HIGH		4
 #define MIDI_PROCESSOR_MODULATION_OFFSET 	8
 #define MIDI_PROCESSOR_CONTROL_OFFSET 		12
 #define MIDI_PROCESSOR_INTERRUPT_OFFSET 	16
@@ -80,14 +80,13 @@
 XStatus MIDI_PROCESSOR_Reg_SelfTest(void * baseaddr_p);
 
 XStatus MIDI_processor_initialize(uint32_t baseaddr_p);
-uint32_t MIDI_processor_getBaseAddress(void);
-bool MIDI_processor_getNoteOn(void);
-uint8_t MIDI_processor_getNote(void);
+uint32_t MIDI_processor_getNotesLow(void);
+uint32_t MIDI_processor_getNotesHigh(void);
 uint8_t MIDI_processor_getModulation(void);
 void MIDI_processor_setControl(uint8_t data);
 uint8_t MIDI_processor_readControl(void);
 uint8_t MIDI_processor_readInterrupts(void);
-void MIDI_processor_clearDisableInterrupts(void);
+void MIDI_processor_clearDisableInterrupts();
 void MIDI_processor_enableInterrupts(void);
 
 

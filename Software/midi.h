@@ -13,6 +13,7 @@
 #define NUM_INST		NUM_POLY		// number of available active instruments
 #define PITCH_A4		69
 #define CHANNEL_0		0
+#define NOTE_0_MASK		0xFF000000
 
 /*************************** Type Definitions ****************************/
 
@@ -20,8 +21,8 @@ typedef struct
 {
 	uint8_t active;
 	uint8_t numActive;				// number of currently active notes
-	uint8_t notesOn[NUM_INST + 1];	// which notes are currently active
-	uint8_t velocity[NUM_INST + 1];		// velocity of active notes
+	uint8_t notesOn[NUM_INST];	// which notes are currently active
+	uint8_t velocity[NUM_INST];		// velocity of active notes
 	uint8_t modulation;				// modulation value
 
 } midi_rx_t;
@@ -47,5 +48,6 @@ void sendMidiNoteOff(void);
 void sendMidiModulation(void);
 void setModulationRX(uint8_t modulation);
 uint8_t getModulationRX(void);
+void setNotes(void);
 
 #endif

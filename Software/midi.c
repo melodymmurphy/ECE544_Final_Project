@@ -99,3 +99,31 @@ uint8_t getModulationRX(void)
 {
 	return midi_rx->modulation;
 }
+
+static void setActive(void)
+{
+	midi_rx->numActive = 0;
+	for (int index = 0; index < NUM_INST; index++)
+	{
+		if (midi_rx->notesOn[index] > 0)
+		{
+			(midi_rx->numActive++);
+		}
+	}
+
+	return;
+}
+
+void setNotes(void)
+{
+	uint32_t notes_lo = MIDI_processor_getNotesLow();
+	uint32_t notes_hi = MIDI_processor_getNotesHigh();
+	for (int index = 0; index < NUM_INST / 2; index++)
+	{
+		midi_rx->notesOn[index  ] = ((notes_lo & (0xFF << (8*index))) >> (8*index));
+		midi_rx->notesOn[index+4] = ((notes_hi & (0xFF << (8*index))) >> (8*index));
+	}
+	setActive();
+	return;
+}
+

@@ -22,6 +22,7 @@ void initializeSigGen(signal_generator_t* sigGen_p)
 		sigGen->cycle[index] 		= 0;
 		sigGen->high_cycle[index] 	= 0;
 		sigGen->low_cycle[index] 	= 0;
+		sigGen->riseCycle[index] 	= 0;
 		sigGen->rampUp[index] 		= 0;
 		sigGen->rampDown[index] 	= 0;
 		sigGen->peak[index] 		= 0;
@@ -49,6 +50,7 @@ uint32_t pulseWave(float frequency, uint8_t amplitude, uint8_t dutyCycle, uint8_
 		}
 		sigGen->high_cycle[signalIndex] = (dutyCycle * sigGen->cycle[signalIndex]) / DC_MAX;	// length of high part of duty cycle
 		sigGen->c[signalIndex] = 0;
+
 	}
 
 	if (frequency == 0)		// output nothing if frequency is zero
@@ -61,11 +63,10 @@ uint32_t pulseWave(float frequency, uint8_t amplitude, uint8_t dutyCycle, uint8_
 	}
 	else
 	{
-		sample = 0x800000;		// low cycle
+		sample = 0x100000;		// low cycle
 	}
 
 	(sigGen->c[signalIndex])++;		// increment cycle counter
-
 
 	return sample;
 
@@ -163,7 +164,6 @@ uint32_t mixer(uint8_t numSignals, uint32_t signalArray[])
 	}
 
 	mixedSignal = signalSum / numSignals;		// divide to get the average
-
 	return mixedSignal;
 }
 
@@ -177,32 +177,34 @@ uint32_t incrementSample(void)
 	}
 
 	return sigGen->readIndex;
-
 }
 
-void setPitch(uint8_t pitch)
+void setPitch(uint8_t index, uint8_t pitch)
 {
 	if (pitch > 0)
 	{
-		sigGen->frequency[0] = note_to_freq(pitch);
+		sigGen->frequency[index] = note_to_freq(pitch);
+	}
+	else
+	{
+		sigGen->frequency[index] = 0;
 	}
 }
 
-float getFrequency(void)
+float getFrequency(uint8_t index)
 {
-	return sigGen->frequency[0];
+	return sigGen->frequency[index];
 }
 
-void clearPitch(void)
+void clearPitch(uint8_t index)
 {
-	sigGen->frequency[0] = 0;
+	sigGen->frequency[index] = 0;
 }
 
 // send next sample to I2S
 void sendSample(void)
 {
 	I2S2_Send_Sample(sigGen->sampleBuffer[sigGen->readIndex]);
-
 	return;
 }
 
@@ -211,3 +213,5 @@ void bufferSample(uint32_t sample, uint32_t index)
 	sigGen->sampleBuffer[index] = sample;
 	return;
 }
+
+

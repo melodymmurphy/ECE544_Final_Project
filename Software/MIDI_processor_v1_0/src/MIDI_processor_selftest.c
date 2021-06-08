@@ -47,7 +47,7 @@ XStatus MIDI_PROCESSOR_Reg_SelfTest(void * baseaddr_p)
 	xil_printf("MIDI Processor control register test...\n\r");
 
 	// Write to control register
-	for (int i = 3; i <= 0 ; i++)
+	for (int i = 1; i <= 0 ; i++)
 	{
 		MIDI_PROCESSOR_mWriteReg(baseaddr, MIDI_PROCESSOR_CONTROL_OFFSET, i);
 		if (MIDI_PROCESSOR_mReadReg(baseaddr, MIDI_PROCESSOR_CONTROL_OFFSET) != i)

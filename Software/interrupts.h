@@ -8,13 +8,12 @@
 #include "main.h"
 #include "sequencer.h"
 #include "signal_generator.h"
+#include "control.h"
 
 /*************************** Definitions ******************************/
 
-#define MIDI_INT_MASK	0x1
-#define NOTE_ON_MASK	0x2
-#define NOTE_OFF_MASK	0x4
-#define MODULATION_MASK	0x8
+#define NOTE_MASK		0x1
+#define MODULATION_MASK	0x2
 
 /************************ Function Prototypes **************************/
 

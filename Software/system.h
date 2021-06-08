@@ -8,15 +8,11 @@
 #include "sequencer.h"
 #include "signal_generator.h"
 #include "midi.h"
+#include "control.h"
 
 /****************************** Definitions ******************************/
 
 #define BANK_SIZE			16		// number of active sequencers
-
-#define TEMPO_MIN			60		  // slowest tempo
-#define TEMPO_MAX			240		  // fastest tempo
-#define SWING_MIN			-100
-#define SWING_MAX			100
 #define VOLUME_MIN			0
 #define VOLUME_MAX			100
 
@@ -57,8 +53,8 @@ void setTempo(uint8_t tempo);
 uint8_t getTempo(void);
 void setSubdiv(note_length_t subdiv);
 note_length_t getSubdiv(void);
-void setSwing(uint8_t swing);
-uint8_t getSwing(void);
+void setSwing(int8_t swing);
+int8_t getSwing(void);
 void setPattern(pattern_t pattern);
 pattern_t getPattern(void);
 void setNoteVelocity(uint8_t velocity);
@@ -70,5 +66,9 @@ void stepSeqBackward(void);
 void resetSeqTimer(void);
 void getNoteTimer(void);
 void toggleBlink(void);
+uint8_t getActive(void);
+void getFreqs(void);
+void compute_constants(uint8_t signalIndex);
+void seq_timer(void);
 
 #endif

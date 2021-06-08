@@ -9,6 +9,7 @@
 
 /**************************** Function Prototypes ******************************/
 
-uint32_t getButtons(void);
+uint8_t getButtons(void);
+uint16_t getSwitches(void);
 
 #endif

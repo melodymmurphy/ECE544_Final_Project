@@ -76,7 +76,6 @@ static void stepRandom(sequencer_t* sequencer)
 // Determine which sequencer step follows the current step
 void sequence_step(sequencer_t* sequencer)
 {
-	uint8_t step = sequencer->step;
 
 	switch(sequencer->pattern)    // case statement to select next step based on pattern stored in states
 	{
@@ -114,4 +113,23 @@ void sequence_step(sequencer_t* sequencer)
 	}
 
 	return;
+}
+
+uint32_t tempo_timer(sequencer_t* sequencer, uint8_t tempo)
+{
+	uint32_t timer_count;
+	if ((sequencer->step % 2) == 0)
+	{
+		timer_count = (TIMER_CLOCK / tempo) * (SWING_MAX + sequencer->swing);
+		timer_count /= SWING_MAX;
+		timer_count = (timer_count >> (sequencer->subdiv)) + 1;	// add one to avoid 0 timer cases
+	}
+	else
+	{
+		timer_count = (TIMER_CLOCK / tempo) * (SWING_MAX - sequencer->swing);
+		timer_count /= SWING_MAX;
+		timer_count = (timer_count >> (sequencer->subdiv)) + 1;
+	}
+	timer_count *= 60;
+	return timer_count;
 }

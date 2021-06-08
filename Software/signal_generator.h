@@ -19,9 +19,7 @@
 #define AMP_MIN			0
 #define AMP_MAX			127
 #define NOTE_A4			440		// frequency value of MIDI note A4
-#define MAX_SAW  		3
-#define MAX_PULSE		4
-#define NUM_POLY		4
+#define NUM_POLY		8
 #define BUFFER_SIZE		8192
 
 /*************************** Type Definitions ****************************/
@@ -33,6 +31,7 @@ typedef struct
 	float cycle[NUM_POLY];
 	float high_cycle[NUM_POLY];
 	float low_cycle[NUM_POLY];
+	float riseCycle[NUM_POLY];
 	float rampUp[NUM_POLY];
 	float rampDown[NUM_POLY];
 	uint32_t peak[NUM_POLY];
@@ -51,9 +50,9 @@ uint32_t sawtoothWave(float frequency, uint8_t amplitude, uint8_t signalIndex);
 uint32_t sawTriRampWave(uint16_t frequency, uint8_t amplitude, uint8_t riseCycle, uint8_t signalIndex);
 uint32_t mixer(uint8_t numSignals, uint32_t signalArray[]);
 uint32_t incrementSample(void);
-void setPitch(uint8_t pitch);
-float getFrequency(void);
-void clearPitch(void);
+void setPitch(uint8_t index, uint8_t pitch);
+float getFrequency(uint8_t index);
+void clearPitch(uint8_t index);
 void sendSample(void);
 void bufferSample(uint32_t sample, uint32_t index);
 

@@ -35,17 +35,20 @@ seq_mode_t getMode(void)
 
 void setMode(seq_mode_t mode)
 {
+	uint32_t timer_count;
 	if (mode == PLAY)
 	{
+		timer_count = tempo_timer(&(seq_system->active_sequence), getTempo());
 		seq_system->led_toggle = true;
 		updateLEDs();
 		XTmrCtr_Stop(&AXITimerInst, TIMER_1);		// stop sequence timer
-		XTmrCtr_SetResetValue(&AXITimerInst, TIMER_1, TIMER_COUNT(getTempo()));	// load sequence timer with LED blink rate
+		XTmrCtr_SetResetValue(&AXITimerInst, TIMER_1, timer_count);	// load sequence timer with LED blink rate
 		XTmrCtr_Reset(&AXITimerInst, TIMER_1);		// reset the timer
 		XTmrCtr_Start(&AXITimerInst, TIMER_1);
 		play_note();
 		send_note();
 	}
+
 	if (mode == RECORD)
 	{
 		stop_note();
@@ -104,8 +107,13 @@ void updateLEDs(void)
 {
 
 	uint32_t step_LED = (1 << (STEPS-1)) >> seq_system->active_sequence.step;			// LED of active sequencer step
+	uint16_t switches = getSwitches();
 	XGpio_DiscreteClear(&GPIO_inst, CHANNEL_2, GPIO_LEDS_MASK);		// clear all LEDs
-	if (seq_system->mode == PLAY || ((seq_system->mode == RECORD) && (seq_system->led_toggle)))
+	if ((seq_system->mode == PLAY) && (switches & (1 << (LAST - seq_system->active_sequence.step))))
+	{
+		XGpio_DiscreteSet(&GPIO_inst, CHANNEL_2, step_LED);
+	}
+	if ((seq_system->mode == RECORD) && (seq_system->led_toggle))
 	{
 		XGpio_DiscreteSet(&GPIO_inst, CHANNEL_2, step_LED);				// write just the LED we want
 	}
@@ -121,8 +129,12 @@ void play_note(void)
 {
 	sequencer_t sequencer = seq_system->active_sequence;
 	note_t note = sequencer.note[sequencer.step];
-	seq_system->sigGen.frequency[0] = note_to_freq(note.pitch);
-	seq_system->sigGen.velocity[0] = note.velocity;
+	uint16_t switches = getSwitches();
+	if (switches & (1 << (LAST - sequencer.step)))
+	{
+		seq_system->sigGen.frequency[7] = note_to_freq(note.pitch);
+		seq_system->sigGen.velocity[7] = note.velocity;
+	}
 
 	return;
 }
@@ -132,8 +144,8 @@ void quiet_note(void)
 {
 	sequencer_t sequencer = seq_system->active_sequence;
 	note_t note = sequencer.note[sequencer.step];
-	seq_system->sigGen.frequency[0] = 0;
-	seq_system->sigGen.velocity[0] = 0;
+	seq_system->sigGen.frequency[7] = 0;
+	seq_system->sigGen.velocity[7] = 0;
 
 	return;
 }
@@ -191,12 +203,20 @@ uint8_t getVolume(void)
 
 void setTempo(uint8_t tempo)
 {
-	uint64_t timer_count;
+	uint32_t current_value = XTmrCtr_GetValue(&AXITimerInst, TIMER_1);
+	uint32_t timer_count;
 	if ((tempo >= TEMPO_MIN) && (tempo <= TEMPO_MAX))
 	{
+		timer_count = tempo_timer(&(seq_system->active_sequence), tempo);
 		seq_system->active_sequence.tempo = tempo;
-		XTmrCtr_SetLoadReg(AXI_TIMER_BASEADDR, TIMER_1 , TIMER_COUNT(tempo));
-		XTmrCtr_LoadTimerCounterReg(AXI_TIMER_BASEADDR, TIMER_1);
+		if (getMode() == PLAY)
+		{
+			XTmrCtr_SetResetValue(&AXITimerInst, TIMER_1, timer_count);	// load sequence timer with LED blink rate
+			if (timer_count < current_value)
+			{
+				XTmrCtr_Reset(&AXITimerInst, TIMER_1);		// reset the timer
+			}
+		}
 	}
 
 	return;
@@ -209,7 +229,20 @@ uint8_t getTempo(void)
 
 void setSubdiv(note_length_t subdiv)
 {
+	uint32_t timer_count;
 	seq_system->active_sequence.subdiv = subdiv;
+	uint32_t current_value = XTmrCtr_GetValue(&AXITimerInst, TIMER_1);
+	timer_count = tempo_timer(&(seq_system->active_sequence), seq_system->active_sequence.tempo);
+
+	seq_system->active_sequence.subdiv = subdiv;
+	if (getMode() == PLAY)
+	{
+		XTmrCtr_SetResetValue(&AXITimerInst, TIMER_1, timer_count);	// load sequence timer with LED blink rate
+		if (timer_count < current_value)
+		{
+			XTmrCtr_Reset(&AXITimerInst, TIMER_1);		// reset the timer
+		}
+	}
 	return;
 }
 
@@ -218,7 +251,7 @@ note_length_t getSubdiv(void)
 	return seq_system->active_sequence.subdiv;
 }
 
-void setSwing(uint8_t swing)
+void setSwing(int8_t swing)
 {
 	if ((swing >= SWING_MIN) && (swing <= SWING_MAX))
 	{
@@ -228,7 +261,7 @@ void setSwing(uint8_t swing)
 	return;
 }
 
-uint8_t getSwing(void)
+int8_t getSwing(void)
 {
 	return seq_system->active_sequence.swing;
 }
@@ -305,3 +338,53 @@ void toggleBlink(void)
 	}
 	return;
 }
+
+void getNotes(uint8_t* noteArray)
+{
+	for (int index = 0; index < NUM_INST; index++)
+	{
+		noteArray[index] = seq_system->midi_rx.notesOn[index];
+	}
+	return;
+}
+
+uint8_t getActive(void)
+{
+	return seq_system->midi_rx.numActive;
+}
+
+
+void getFreqs(void)
+{
+	for (int index = 0; index < NUM_INST; index++)
+	{
+		setPitch(index, seq_system->midi_rx.notesOn[index]);
+	}
+	return;
+}
+
+void compute_constants(uint8_t signalIndex)
+{
+	seq_system->sigGen.peak[signalIndex] = (seq_system->sigGen.velocity[signalIndex] * ((1 << BIT_DEPTH) - 1)) / AMP_MAX;
+	if (seq_system->sigGen.frequency[signalIndex] > 0)
+	{
+		seq_system->sigGen.cycle[signalIndex] = (SAMPLE_RATE << 1 ) / seq_system->sigGen.frequency[signalIndex];
+	}
+	seq_system->sigGen.high_cycle[signalIndex] = (seq_system->sigGen.riseCycle[signalIndex] * seq_system->sigGen.cycle[signalIndex]) / RC_MAX;	// length of high part of duty cycle
+	seq_system->sigGen.low_cycle[signalIndex] = seq_system->sigGen.cycle[signalIndex] - seq_system->sigGen.high_cycle[signalIndex];
+	seq_system->sigGen.rampUp[signalIndex] = seq_system->sigGen.peak[signalIndex] / seq_system->sigGen.high_cycle[signalIndex];
+	seq_system->sigGen.rampDown[signalIndex] = seq_system->sigGen.peak[signalIndex] / seq_system->sigGen.low_cycle[signalIndex];
+	seq_system->sigGen.c[signalIndex] = 0;
+
+	return;
+}
+
+void seq_timer(void)
+{
+	uint32_t timer_count = tempo_timer(&(seq_system->active_sequence), seq_system->active_sequence.tempo);
+	XTmrCtr_SetResetValue(&AXITimerInst, TIMER_1, timer_count);	// load sequence timer with LED blink rate
+	XTmrCtr_Reset(&AXITimerInst, TIMER_1);		// reset the timer
+
+	return;
+}
+

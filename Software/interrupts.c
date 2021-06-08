@@ -78,20 +78,13 @@ void MIDI_Handler(void)
 	uint32_t reg = MIDI_processor_readInterrupts();
 	MIDI_processor_clearDisableInterrupts();
 
-	if (reg & MIDI_INT_MASK)			// if active interrupt
+	if (reg & NOTE_MASK)			// note on
 	{
-		if (reg & NOTE_ON_MASK)			// note on
-		{
-			xSemaphoreGiveFromISR(note_on_sem, NULL);
-		}
-		else if (reg & NOTE_OFF_MASK)	// note off
-		{
-			xSemaphoreGiveFromISR(note_off_sem, NULL);
-		}
-		else if (reg & MODULATION_MASK)	// modulation
-		{
-			xSemaphoreGiveFromISR(mod_sem, NULL);
-		}
+		xSemaphoreGiveFromISR(note_sem, NULL);
+	}
+	else if (reg & MODULATION_MASK)	// modulation
+	{
+		xSemaphoreGiveFromISR(mod_sem, NULL);
 	}
 
 	MIDI_processor_enableInterrupts();
@@ -99,7 +92,7 @@ void MIDI_Handler(void)
 
 void GPIO_Handler(void)
 {
-	uint8_t btns = (uint8_t)getButtons();
+	uint8_t btns = getButtons();
 	if ((btns & BTNU) || (btns & BTND))
 	{
 		xSemaphoreGiveFromISR(display_sem, NULL);			// notify display that GPIO state has changed

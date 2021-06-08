@@ -36,6 +36,7 @@ static void calculate_samples(void* pvParameters);
 static void sequence_thread(void* pvParameters);
 static void menu_thread(void* pvParameters);
 static void midi_thread(void* pvParameters);
+static void calculate_constants(void* pvParameters);
 
 /********************************* MAIN PROGRAM ******************************/
 
@@ -56,11 +57,11 @@ int main(void)
 	vSemaphoreCreateBinary(I2S_TX_high_sem);
 	vSemaphoreCreateBinary(timer_sem);
 	vSemaphoreCreateBinary(display_sem);
-	vSemaphoreCreateBinary(note_on_sem);
-	vSemaphoreCreateBinary(note_off_sem);
+	vSemaphoreCreateBinary(note_sem);
 	vSemaphoreCreateBinary(mod_sem);
 	vSemaphoreCreateBinary(step_sem);
 	vSemaphoreCreateBinary(bypass_sem);
+	vSemaphoreCreateBinary(calc_sem);
 
 	// initialize software instances
 	initialize_system(&system_inst);
@@ -95,7 +96,7 @@ int main(void)
 				"MIDI receive",
 				256,
 				NULL,
-				2,
+				3,
 				NULL);
 
 
@@ -111,34 +112,72 @@ int main(void)
 	return -1;
 }
 
+void calculate_constants(void* pvParameters)
+{
+	while(1)
+	{
+		if (xSemaphoreTake(calc_sem, minimum_wait))
+		{
+
+		}
+
+		vTaskDelay(1);
+	}
+
+	vTaskDelete(NULL);
+}
+
 // Fill audio buffer with samples to send to I2S TX module
 void calculate_samples(void* pvParameters)
 {
 	uint32_t samples[NUM_POLY];
 	float freq[NUM_POLY];
 	uint8_t modulation;
+	uint32_t mixedSample;
+	uint8_t numActive;
+	mode_t mode;
+
+	///// ============ NOTE: TRY RECALCULATING CONSTANTS ONLY ON PARAMTER CHANGE!! ======== ///
 
 	while(1)
 	{
 		modulation = getModulationRX();
-		freq[0] = getFrequency();
+		mode = getMode();
+//		freq[2] = getFrequency(5);
+//		freq[3] = getFrequency(4);
 
-		if (xSemaphoreTake(I2S_TX_low_sem, minimum_wait))
-		{
-			for (int index = 0; index < (BUFFER_SIZE >> 1); index++)
+//		if (mode == BYPASS)
+//		{
+			if (xSemaphoreTake(I2S_TX_low_sem, minimum_wait))
 			{
-				samples[0] = sawTriRampWave(freq[0], 127, modulation, 0);
-				bufferSample(samples[0], index);
+				freq[0] = getFrequency(7);
+//				freq[1] = getFrequency(6);
+//				freq[2] = getFrequency(5);
+				for (int index = 0; index < (BUFFER_SIZE >> 1); index++)
+				{
+					samples[0] = sawTriRampWave(freq[0], 32, 64, 0);
+//					samples[1] = pulseWave(freq[1], 32, 64, 1);
+//					samples[2] = pulseWave(freq[2], 32, 64, 2);
+					mixedSample = mixer(1, samples);
+					bufferSample(mixedSample, index);
+				}
 			}
-		}
-		else if (xSemaphoreTake(I2S_TX_high_sem, minimum_wait))
-		{
-			for (int index = (BUFFER_SIZE >> 1); index < BUFFER_SIZE; index++)
+			else if (xSemaphoreTake(I2S_TX_high_sem, minimum_wait))
 			{
-				samples[0] = sawTriRampWave(freq[0], 127, modulation, 0);
-				bufferSample(samples[0], index);
+				freq[0] = getFrequency(7);
+//				freq[1] = getFrequency(6);
+//				freq[2] = getFrequency(5);
+				for (int index = (BUFFER_SIZE >> 1); index < BUFFER_SIZE; index++)
+				{
+					samples[0] = sawTriRampWave(freq[0], 32, 64, 0);
+//					samples[1] = pulseWave(freq[1], 32, 64, 1);
+//					samples[2] = pulseWave(freq[2], 32, 64, 2);
+					mixedSample = mixer(1, samples);
+					bufferSample(mixedSample, index);
+				}
 			}
-		}
+//		}
+		vTaskDelay(1);
 	}
 
 	vTaskDelete(NULL);
@@ -160,7 +199,9 @@ void sequence_thread(void* pvParameters)
 				stop_note();
 				quiet_note();
 				next_step();
+				seq_timer();
 				play_note();
+				xSemaphoreGive(calc_sem);
 				vTaskDelay(1);
 				send_note();
 				updateLEDs();
@@ -178,7 +219,7 @@ void sequence_thread(void* pvParameters)
 		}
 		if (xSemaphoreTake(step_sem, minimum_wait))
 		{
-			btns = (uint8_t)getButtons();
+			btns = getButtons();
 			if (mode == PLAY)
 			{
 				if (btns & BTNC)
@@ -251,38 +292,33 @@ static void menu_thread(void* pvParameters)
 
 static void midi_thread(void* pvParameters)
 {
-	uint8_t midiByte;
+	uint8_t mod;
 	mode_t mode;
 	while(1)
 	{
 		mode = getMode();
-		if (xSemaphoreTake(note_on_sem, minimum_wait))
+
+		if (xSemaphoreTake(note_sem, minimum_wait))
 		{
-			midiByte = MIDI_processor_getNote();
 			if (mode == BYPASS)
 			{
-				setPitch(midiByte);
+				setNotes();
+				getFreqs();
+				xSemaphoreGive(calc_sem);
 			}
 			if (mode == RECORD)
 			{
-				setNotePitch(midiByte);
-				stepSeqForward();
-			}
-		}
-		else if (xSemaphoreTake(note_off_sem, minimum_wait))
-		{
-			midiByte = MIDI_processor_getNote();
-			if(mode == BYPASS)
-			{
-				clearPitch();
+//				setNotePitch((notes_hi & NOTE_0_MASK) >> 24);
+//				stepSeqForward();
 			}
 		}
 		else if (xSemaphoreTake(mod_sem, minimum_wait))
 		{
-			midiByte = MIDI_processor_getModulation();
+			mod = MIDI_processor_getModulation();
 			if (mode == BYPASS)
 			{
-				setModulationRX(midiByte);
+				setModulationRX(mod);
+				xSemaphoreGive(calc_sem);
 			}
 		}
 

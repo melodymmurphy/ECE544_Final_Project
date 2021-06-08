@@ -44,21 +44,14 @@ uint32_t MIDI_processor_getBaseAddress(void)
 	return baseAddress;
 }
 
-bool MIDI_processor_getNoteOn(void)
+uint32_t MIDI_processor_getNotesLow(void)
 {
-	if (MIDI_PROCESSOR_mReadReg(baseAddress, MIDI_PROCESSOR_NOTE_ON_OFFSET))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return MIDI_PROCESSOR_mReadReg(baseAddress, MIDI_PROCESSOR_NOTE_DATA_LOW);
 }
 
-uint8_t MIDI_processor_getNote(void)
+uint32_t MIDI_processor_getNotesHigh(void)
 {
-	return MIDI_PROCESSOR_mReadReg(baseAddress, MIDI_PROCESSOR_NOTE_OFFSET);
+	return MIDI_PROCESSOR_mReadReg(baseAddress, MIDI_PROCESSOR_NOTE_DATA_HIGH);
 }
 
 uint8_t MIDI_processor_getModulation(void)

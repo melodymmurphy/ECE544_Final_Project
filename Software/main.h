@@ -137,9 +137,9 @@ xSemaphoreHandle 	I2S_TX_high_sem;
 xSemaphoreHandle 	timer_sem;
 xSemaphoreHandle 	display_sem;
 xSemaphoreHandle	step_sem;
-xSemaphoreHandle 	note_on_sem;
-xSemaphoreHandle 	note_off_sem;
+xSemaphoreHandle 	note_sem;
 xSemaphoreHandle	mod_sem;
 xSemaphoreHandle	bypass_sem;
+xSemaphoreHandle	calc_sem;
 
 #endif

@@ -20,12 +20,15 @@
 #define VELOCITY_MAX		127
 #define PITCH_MIN			0
 #define PITCH_MAX			127
+#define TEMPO_MIN			60		  // slowest tempo
+#define TEMPO_MAX			240		  // fastest tempo
+#define SWING_MIN			-100
+#define SWING_MAX			100
 #define RIGHT				0
 #define LEFT				1
 
-#define RECORD_BLINK_RATE	((AXI_CLOCK_FREQ_HZ * 60) / 150)			// LED blink rate for RECORD mode
-#define BYPASS_BLINK_RATE	((AXI_CLOCK_FREQ_HZ * 60) / 60)			// LED blink rate for RECORD mode
-#define TIMER_COUNT(X)		((AXI_CLOCK_FREQ_HZ * 60) / X)
+#define RECORD_BLINK_RATE 	(AXI_CLOCK_FREQ_HZ / 5)		// LED blink rate for RECORD mode
+#define BYPASS_BLINK_RATE 	(AXI_CLOCK_FREQ_HZ / 2)
 
 #define TIMER_CLOCK 		AXI_CLOCK_FREQ_HZ
 
@@ -35,7 +38,7 @@
 // Sequencer modes
 typedef enum {PLAY, RECORD, BYPASS, MEMORY} seq_mode_t;
 typedef enum {WHOLE, HALF, QUARTER, EIGHTH, SIXTEENTH, THIRTYSECOND, SIXTYFOURTH} note_length_t;
-typedef enum {FORWARD, BACKWARD, BOTH_DIR, RANDOM} pattern_t;
+typedef enum {FORWARD, BACKWARD, BOTH_DIR, RANDOM, SUSTAIN} pattern_t;
 
 typedef struct
 {
@@ -52,7 +55,7 @@ typedef struct
 	uint8_t step;         	 	// sequence step
 	uint8_t direction;			// current direction in which sequence is moving (BOTH_DIR implementation)
 	uint8_t tempo;				// tempo of sequence in beats per minute
-	uint8_t swing;				// swing of sequence
+	int8_t swing;				// swing of sequence
 	pattern_t pattern;      	// sequence pattern--forwards, backwards, random
 	note_length_t subdiv;   	// note subdivisions--whole, half, quarter, etc.
 	note_t note[STEPS]; 		// array of note structs assigned to each sequence step
@@ -70,5 +73,6 @@ void stepForward(sequencer_t* sequencer);
 void stepBackward(sequencer_t* sequencer);
 void sequence_step(sequencer_t* sequencer);
 uint8_t getStep(sequencer_t* sequencer);
+uint32_t tempo_timer(sequencer_t* sequencer, uint8_t tempo);
 
 #endif
