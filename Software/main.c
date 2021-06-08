@@ -23,6 +23,7 @@
 #include "midi.h"
 #include "menu.h"
 #include "luts.h"
+#include "xbram.h"
 
 /************************** Variable Declarations ****************************/
 

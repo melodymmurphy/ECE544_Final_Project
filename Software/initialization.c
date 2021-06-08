@@ -16,6 +16,7 @@ int	initialize_hardware(void)
 {
 
 	uint32_t status;				// status from Xilinx Lib calls
+	XBram_Config *ConfigPtr;
 
 	// initialize the Nexys4 driver and (some of)the devices
 	status = (uint32_t) NX4IO_initialize(NX4IO_BASEADDR);
@@ -52,6 +53,18 @@ int	initialize_hardware(void)
 	{
 		return XST_FAILURE;
 	}
+	
+	// BRAM configuration ptr
+	ConfigPtr = XBram_LookupConfig(XPAR_BRAM_0_DEVICE_ID);
+	if (ConfigPtr == (XBram_Config *) NULL) {
+		return XST_FAILURE;
+	}
+	// BRAM Initialization
+	status = XBram_CfgInitialize(&Bram, ConfigPtr, ConfigPtr->CtrlBaseAddress);
+	if (status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
 
 	// Initialize the UART
 	XUartNs550_Initialize(&UART_inst, UART_MIDI_TX_DEVICE_ID);

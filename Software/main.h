@@ -113,6 +113,9 @@
 #define I2S_TX_SAMPLE_RATE			48000
 #define I2S_TX_INTERRUPT_ID			XPAR_MICROBLAZE_0_AXI_INTC_I2S2_0_READY_INTR
 
+// Additional BRAM
+#define BRAM_DEVICE_ID				XPAR_BRAM_0_DEVICE_ID
+
 // Commonly used values
 #define OFF		 0
 #define ON		 1
@@ -141,5 +144,8 @@ xSemaphoreHandle 	note_sem;
 xSemaphoreHandle	mod_sem;
 xSemaphoreHandle	bypass_sem;
 xSemaphoreHandle	calc_sem;
+
+// BRAM instance
+XBram Bram;
 
 #endif

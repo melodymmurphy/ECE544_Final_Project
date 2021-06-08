@@ -204,13 +204,13 @@ void clearPitch(uint8_t index)
 // send next sample to I2S
 void sendSample(void)
 {
-	I2S2_Send_Sample(sigGen->sampleBuffer[sigGen->readIndex]);
+	I2S2_Send_Sample(XBram_ReadReg(XPAR_BRAM_0_BASEADDR, sigGen->readIndex));
 	return;
 }
 
 void bufferSample(uint32_t sample, uint32_t index)
 {
-	sigGen->sampleBuffer[index] = sample;
+	XBram_WriteReg(XPAR_BRAM_0_BASEADDR, index, sample);
 	return;
 }
 
