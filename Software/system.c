@@ -24,6 +24,9 @@ void initialize_system(system_t* system_p)
 	seq_system->led_toggle = false;
 	seq_system->slot = 1;
 	seq_system->mode = RECORD;
+	seq_system->memory_index = 0;
+	seq_system->byte_counter = 0;
+	seq_system->tune_byte = 0;
 
 	return;
 }
@@ -129,11 +132,20 @@ void play_note(void)
 {
 	sequencer_t sequencer = seq_system->active_sequence;
 	note_t note = sequencer.note[sequencer.step];
-	uint16_t switches = getSwitches();
-	if (switches & (1 << (LAST - sequencer.step)))
+	if (getMode() == PLAY)
 	{
-		seq_system->sigGen.frequency[7] = note_to_freq(note.pitch);
-		seq_system->sigGen.velocity[7] = note.velocity;
+		uint16_t switches = getSwitches();
+		if (switches & (1 << (LAST - sequencer.step)))
+		{
+			seq_system->sigGen.frequency[7] = note_to_freq(note.pitch);
+			seq_system->sigGen.velocity[7] = note.velocity;
+		}
+	}
+	else if (getMode() == MEMORY)
+	{
+		seq_system->tune_byte = readNextNote();
+		seq_system->sigGen.frequency[7] = note_to_freq(seq_system->tune_byte);
+		seq_system->sigGen.velocity[7] = VELOCITY_MAX / 2;
 	}
 
 	return;
@@ -143,7 +155,6 @@ void play_note(void)
 void quiet_note(void)
 {
 	sequencer_t sequencer = seq_system->active_sequence;
-	note_t note = sequencer.note[sequencer.step];
 	seq_system->sigGen.frequency[7] = 0;
 	seq_system->sigGen.velocity[7] = 0;
 
@@ -155,7 +166,14 @@ void send_note(void)
 {
 	sequencer_t sequencer = seq_system->active_sequence;
 	note_t note = sequencer.note[sequencer.step];
-	setMidiOutNote(CHANNEL_0, note.pitch, note.velocity);
+	if (getMode() == PLAY)
+	{
+		setMidiOutNote(CHANNEL_0, note.pitch, note.velocity);
+	}
+	else if (getMode() == MEMORY)
+	{
+		setMidiOutNote(CHANNEL_0, seq_system->tune_byte, VELOCITY_MAX / 2);
+	}
 	sendMidiNoteOn();
 }
 
@@ -164,13 +182,21 @@ void stop_note(void)
 {
 	sequencer_t sequencer = seq_system->active_sequence;
 	note_t note = sequencer.note[sequencer.step];
-	setMidiOutNote(CHANNEL_0, note.pitch, note.velocity);
+	if (getMode() == PLAY)
+	{
+		setMidiOutNote(CHANNEL_0, note.pitch, note.velocity);
+	}
+	else if (getMode() == MEMORY)
+	{
+		setMidiOutNote(CHANNEL_0, seq_system->tune_byte, note.velocity);
+	}
 	sendMidiNoteOff();
 }
 
 void next_step(void)
 {
 	sequencer_t* sequencer = &(seq_system->active_sequence);
+	uint8_t midi_note;
 	if (getMode() == PLAY)
 	{
 		sequence_step(sequencer);
@@ -183,6 +209,7 @@ void next_step(void)
 			sequencer->step = FIRST;
 		}
 	}
+
 
 	return;
 }
@@ -339,11 +366,16 @@ void toggleBlink(void)
 	return;
 }
 
+uint8_t getNote(uint8_t index)
+{
+	return seq_system->midi_rx.notesOn[index];
+}
+
 void getNotes(uint8_t* noteArray)
 {
 	for (int index = 0; index < NUM_INST; index++)
 	{
-		noteArray[index] = seq_system->midi_rx.notesOn[index];
+		noteArray[index] = getNote(index);
 	}
 	return;
 }
@@ -386,5 +418,26 @@ void seq_timer(void)
 	XTmrCtr_Reset(&AXITimerInst, TIMER_1);		// reset the timer
 
 	return;
+}
+
+uint8_t readNextNote(void)
+{
+	uint32_t midi_word = XBram_ReadReg(MIDI_BRAM_BASEADDR, seq_system->memory_index);
+	uint8_t midi_note = (midi_word & (0xFF000000 >> (seq_system->byte_counter * 8))) >> ((3 - seq_system->byte_counter) * 8);
+
+	seq_system->byte_counter = seq_system->byte_counter + 1;
+	if (seq_system->byte_counter == 4)
+	{
+		seq_system->byte_counter = 0;
+		seq_system->memory_index += 4;
+	}
+
+	if (seq_system->memory_index > (TUNE_LENGTH * 4))
+	{
+		seq_system->memory_index = 0;
+		seq_system->byte_counter = 0;
+	}
+
+	return midi_note;
 }
 

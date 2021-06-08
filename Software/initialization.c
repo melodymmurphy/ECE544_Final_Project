@@ -4,6 +4,8 @@
 #include "sequencer.h"
 
 static XUartNs550Format midi_format;
+static XBram_Config* XBRAM0_config;
+static XBram_Config* XBRAM1_config;
 
 /****************************************************************************
 * initialize the system
@@ -16,7 +18,6 @@ int	initialize_hardware(void)
 {
 
 	uint32_t status;				// status from Xilinx Lib calls
-	XBram_Config *ConfigPtr;
 
 	// initialize the Nexys4 driver and (some of)the devices
 	status = (uint32_t) NX4IO_initialize(NX4IO_BASEADDR);
@@ -32,6 +33,28 @@ int	initialize_hardware(void)
 	// enable the PWM outputs
 	NX4IO_RGBLED_setChnlEn(RGB1, true, true, true);
 	NX4IO_RGBLED_setChnlEn(RGB2, true, true, true);
+
+	// Initialize BRAM controller 0 - extra storage for audio buffer
+	XBRAM0_config = XBram_LookupConfig(XPAR_BRAM_2_DEVICE_ID);
+	if (XBRAM0_config == (XBram_Config *) NULL) {
+		return XST_FAILURE;
+	}
+	// BRAM Initialization
+	status = XBram_CfgInitialize(&BRAM0_inst, XBRAM0_config, XBRAM0_config->CtrlBaseAddress);
+	if (status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	// Initialize BRAM controller 1 - storage for preloaded MIDI track
+	XBRAM1_config = XBram_LookupConfig(XPAR_BRAM_3_DEVICE_ID);
+	if (XBRAM1_config == (XBram_Config *) NULL) {
+		return XST_FAILURE;
+	}
+	// BRAM Initialization
+	status = XBram_CfgInitialize(&BRAM1_inst, XBRAM1_config, XBRAM1_config->CtrlBaseAddress);
+	if (status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
 
 	// initialize OLEDrgb display
 	OLEDrgb_begin(&pmodOLEDrgb_inst, RGBDSPLY_GPIO_BASEADDR, RGBDSPLY_SPI_BASEADDR);
@@ -53,18 +76,6 @@ int	initialize_hardware(void)
 	{
 		return XST_FAILURE;
 	}
-	
-	// BRAM configuration ptr
-	ConfigPtr = XBram_LookupConfig(XPAR_BRAM_0_DEVICE_ID);
-	if (ConfigPtr == (XBram_Config *) NULL) {
-		return XST_FAILURE;
-	}
-	// BRAM Initialization
-	status = XBram_CfgInitialize(&Bram, ConfigPtr, ConfigPtr->CtrlBaseAddress);
-	if (status != XST_SUCCESS) {
-		return XST_FAILURE;
-	}
-
 
 	// Initialize the UART
 	XUartNs550_Initialize(&UART_inst, UART_MIDI_TX_DEVICE_ID);

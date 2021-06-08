@@ -20,7 +20,7 @@
 #define AMP_MAX			127
 #define NOTE_A4			440		// frequency value of MIDI note A4
 #define NUM_POLY		8
-#define BUFFER_SIZE		2048
+#define BUFFER_SIZE		8192
 
 /*************************** Type Definitions ****************************/
 
@@ -38,6 +38,7 @@ typedef struct
 	volatile uint32_t c[NUM_POLY];			// sample counter
 	uint16_t calcIndex;
 	volatile uint16_t readIndex;
+	uint32_t sampleBuffer[BUFFER_SIZE];
 } signal_generator_t;
 
 

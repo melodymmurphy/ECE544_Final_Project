@@ -37,6 +37,7 @@
 #include "MIDI_processor.h"
 #include "xuartns550.h"
 #include "i2s2.h"
+#include "xbram.h"
 
 
 /************************** Defines ****************************/
@@ -113,8 +114,17 @@
 #define I2S_TX_SAMPLE_RATE			48000
 #define I2S_TX_INTERRUPT_ID			XPAR_MICROBLAZE_0_AXI_INTC_I2S2_0_READY_INTR
 
-// Additional BRAM
-#define BRAM_DEVICE_ID				XPAR_BRAM_0_DEVICE_ID
+// Audio buffer storage BRAM
+#define BRAM_0_DEVICE_ID			XPAR_BRAM_2_DEVICE_ID
+#define BRAM_0_DATA_WIDTH			XPAR_BRAM_2_DATA_WIDTH
+#define BRAM_0_BASEADDR				XPAR_BRAM_2_BASEADDR
+#define BRAM_0_HIGHADDR				XPAR_BRAM_2_HIGHADDR
+
+// Preloaded MIDI track BROM
+#define MIDI_BRAM_DEVICE_ID 		XPAR_BRAM_3_DEVICE_ID
+#define MIDI_BRAM_DATA_WIDTH		XPAR_BRAM_3_DATA_WIDTH
+#define MIDI_BRAM_BASEADDR			XPAR_BRAM_3_BASEADDR
+#define MIDI_BRAM_HIGHADDR			XPAR_BRAM_3_HIGHADDR
 
 // Commonly used values
 #define OFF		 0
@@ -132,7 +142,9 @@ PmodOLEDrgb		 	pmodOLEDrgb_inst;			// PMOD OLED RGB screen instance
 XGpio			 	GPIO_inst;					// GPIO instance
 XIntc 			 	IntrptCtlrInst;				// Interrupt Controller instance
 XTmrCtr			 	AXITimerInst;				// PWM timer instance
-XUartNs550  	 	UART_inst;					// UART for MIDI output				// system flags
+XUartNs550  	 	UART_inst;					// UART for MIDI output
+XBram 				BRAM0_inst;					// BRAM
+XBram 				BRAM1_inst;					// BROM
 
 // Semaphores
 xSemaphoreHandle	I2S_TX_low_sem;
@@ -144,8 +156,5 @@ xSemaphoreHandle 	note_sem;
 xSemaphoreHandle	mod_sem;
 xSemaphoreHandle	bypass_sem;
 xSemaphoreHandle	calc_sem;
-
-// BRAM instance
-XBram Bram;
 
 #endif

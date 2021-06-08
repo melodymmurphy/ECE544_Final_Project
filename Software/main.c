@@ -23,7 +23,6 @@
 #include "midi.h"
 #include "menu.h"
 #include "luts.h"
-#include "xbram.h"
 
 /************************** Variable Declarations ****************************/
 
@@ -162,6 +161,7 @@ void calculate_samples(void* pvParameters)
 					mixedSample = mixer(1, samples);
 					bufferSample(mixedSample, index);
 				}
+				vTaskDelay(1);
 			}
 			else if (xSemaphoreTake(I2S_TX_high_sem, minimum_wait))
 			{
@@ -176,9 +176,9 @@ void calculate_samples(void* pvParameters)
 					mixedSample = mixer(1, samples);
 					bufferSample(mixedSample, index);
 				}
+				vTaskDelay(1);
 			}
 //		}
-		vTaskDelay(1);
 	}
 
 	vTaskDelete(NULL);
@@ -216,6 +216,17 @@ void sequence_thread(void* pvParameters)
 			{
 				updateLEDs();
 				toggleBlink();
+			}
+			if (mode == MEMORY)
+			{
+					stop_note();
+					quiet_note();
+					seq_timer();
+					play_note();
+					xSemaphoreGive(calc_sem);
+					vTaskDelay(1);
+					send_note();
+					updateLEDs();
 			}
 		}
 		if (xSemaphoreTake(step_sem, minimum_wait))
@@ -295,6 +306,8 @@ static void midi_thread(void* pvParameters)
 {
 	uint8_t mod;
 	mode_t mode;
+	uint32_t notes_hi;
+	static uint32_t i = 0;
 	while(1)
 	{
 		mode = getMode();
@@ -309,8 +322,14 @@ static void midi_thread(void* pvParameters)
 			}
 			if (mode == RECORD)
 			{
-//				setNotePitch((notes_hi & NOTE_0_MASK) >> 24);
-//				stepSeqForward();
+
+				notes_hi = MIDI_processor_getNotesHigh();
+				if (((notes_hi & NOTE_0_MASK) >> 24) > getNote(7))
+				{
+					setNotePitch((notes_hi & NOTE_0_MASK) >> 24);
+					stepSeqForward();
+				}
+				setNotes();
 			}
 		}
 		else if (xSemaphoreTake(mod_sem, minimum_wait))

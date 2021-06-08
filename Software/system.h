@@ -15,6 +15,7 @@
 #define BANK_SIZE			16		// number of active sequencers
 #define VOLUME_MIN			0
 #define VOLUME_MAX			100
+#define TUNE_LENGTH			139
 
 /**************************** Type Definitions ****************************/
 
@@ -26,6 +27,9 @@ typedef struct
 	bool				led_toggle;
 	sequencer_t			sequencer_bank[BANK_SIZE];
 	sequencer_t			active_sequence;
+	uint32_t			memory_index;
+	uint8_t 			byte_counter;
+	uint8_t				tune_byte;
 	signal_generator_t 	sigGen;
 	midi_rx_t			midi_rx;
 	midi_tx_t			midi_tx;
@@ -66,9 +70,12 @@ void stepSeqBackward(void);
 void resetSeqTimer(void);
 void getNoteTimer(void);
 void toggleBlink(void);
+uint8_t getNote(uint8_t index);
+void getNotes(uint8_t* noteArray);
 uint8_t getActive(void);
 void getFreqs(void);
 void compute_constants(uint8_t signalIndex);
 void seq_timer(void);
+uint8_t readNextNote(void);
 
 #endif
