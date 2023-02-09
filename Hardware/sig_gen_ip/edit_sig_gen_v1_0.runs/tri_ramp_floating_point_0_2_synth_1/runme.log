@@ -1,4 +1,0 @@
-
-*** Running vivado
-    with args -log tri_ramp_floating_point_0_2.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source tri_ramp_floating_point_0_2.tcl
-

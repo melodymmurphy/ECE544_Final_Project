@@ -1,3 +1,5 @@
+// Author: Andy West (2019)
+
 `timescale 1ns / 1ps
 
 module MidiByteReader(
