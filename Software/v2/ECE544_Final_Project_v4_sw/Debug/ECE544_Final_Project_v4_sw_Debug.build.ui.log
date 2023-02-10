@@ -1,178 +1,0 @@
-2021-06-08T22:53:03.731401300255-22:53:03 **** Build of configuration Debug for project ECE544_Final_Project_v4_sw ****
-000-make all 
-000-'Building file: ../src/control.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/control.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/control.d" -MT"src/control.o" -o "src/control.o" "../src/control.c"
-000-'Finished building: ../src/control.c'
-000-' '
-000-'Building file: ../src/display.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/display.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/display.d" -MT"src/display.o" -o "src/display.o" "../src/display.c"
-000-'Finished building: ../src/display.c'
-000-' '
-000-'Building file: ../src/initialization.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/initialization.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/initialization.d" -MT"src/initialization.o" -o "src/initialization.o" "../src/initialization.c"
-000-'Finished building: ../src/initialization.c'
-000-' '
-000-'Building file: ../src/interrupts.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/interrupts.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/interrupts.d" -MT"src/interrupts.o" -o "src/interrupts.o" "../src/interrupts.c"
-000-'Finished building: ../src/interrupts.c'
-000-' '
-000-'Building file: ../src/luts.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/luts.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/luts.d" -MT"src/luts.o" -o "src/luts.o" "../src/luts.c"
-000-'Finished building: ../src/luts.c'
-000-' '
-000-'Building file: ../src/main.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-000-../src/main.c: In function 'calculate_samples':
-000/ECE544_Final_Project_v4_sw/src/main.c138-1-1variable 'mode' set but not used [-Wunused-but-set-variable]1-../src/main.c:138:9: warning: variable 'mode' set but not used [-Wunused-but-set-variable]
-000-  mode_t mode;
-000-         ^~~~
-000/ECE544_Final_Project_v4_sw/src/main.c137-1-1unused variable 'numActive' [-Wunused-variable]1-../src/main.c:137:10: warning: unused variable 'numActive' [-Wunused-variable]
-000-  uint8_t numActive;
-000-          ^~~~~~~~~
-000/ECE544_Final_Project_v4_sw/src/main.c135-1-1variable 'modulation' set but not used [-Wunused-but-set-variable]1-../src/main.c:135:10: warning: variable 'modulation' set but not used [-Wunused-but-set-variable]
-000-  uint8_t modulation;
-000-          ^~~~~~~~~~
-000-At top level:
-000/ECE544_Final_Project_v4_sw/src/main.c115-1-1'calculate_constants' defined but not used [-Wunused-function]1calculate_constants../src/main.c:115:6: warning: 'calculate_constants' defined but not used [-Wunused-function]
-000- void calculate_constants(void* pvParameters)
-000-      ^~~~~~~~~~~~~~~~~~~
-000-'Finished building: ../src/main.c'
-000-' '
-000-'Building file: ../src/menu.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/menu.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/menu.d" -MT"src/menu.o" -o "src/menu.o" "../src/menu.c"
-000-In file included from ../src/menu.c:22:
-000-../src/menu.c: In function 'menu_nav':
-000/ECE544_Final_Project_v4_sw/src/menu.h76-1-1assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type 'seq_mode_t *' {aka 'enum <anonymous> *'} [-Wincompatible-pointer-types]1-../src/menu.h:76:14: warning: assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type 'seq_mode_t *' {aka 'enum <anonymous> *'} [-Wincompatible-pointer-types]
-000-  msel[row-1] = &val;\
-000-              ^
-000/ECE544_Final_Project_v4_sw/src/menu.c79-1-1in expansion of macro 'menu_line'0-../src/menu.c:79:5: note: in expansion of macro 'menu_line'
-000-     menu_line(menu_sel,r,"mode:  ",(*menu).system.mode,mode_str);
-000-     ^~~~~~~~~
-000/ECE544_Final_Project_v4_sw/src/menu.h76-1-1assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type 'u8 *' {aka 'unsigned char *'} [-Wincompatible-pointer-types]1-../src/menu.h:76:14: warning: assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type 'u8 *' {aka 'unsigned char *'} [-Wincompatible-pointer-types]
-000-  msel[row-1] = &val;\
-000-              ^
-000/ECE544_Final_Project_v4_sw/src/menu.c80-1-1in expansion of macro 'menu_line'0-../src/menu.c:80:5: note: in expansion of macro 'menu_line'
-000-     menu_line(menu_sel,r,"slot:  ",(*menu).system.slot,num);
-000-     ^~~~~~~~~
-000/ECE544_Final_Project_v4_sw/src/menu.h76-1-1assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type '_Bool *' [-Wincompatible-pointer-types]1-../src/menu.h:76:14: warning: assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type '_Bool *' [-Wincompatible-pointer-types]
-000-  msel[row-1] = &val;\
-000-              ^
-000/ECE544_Final_Project_v4_sw/src/menu.c81-1-1in expansion of macro 'menu_line'0-../src/menu.c:81:5: note: in expansion of macro 'menu_line'
-000-     menu_line(menu_sel,r,"load:  ",(*menu).system.load,seq_op);
-000-     ^~~~~~~~~
-000/ECE544_Final_Project_v4_sw/src/menu.h76-1-1assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type '_Bool *' [-Wincompatible-pointer-types]1-../src/menu.h:76:14: warning: assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type '_Bool *' [-Wincompatible-pointer-types]
-000-  msel[row-1] = &val;\
-000-              ^
-000/ECE544_Final_Project_v4_sw/src/menu.c82-1-1in expansion of macro 'menu_line'0-../src/menu.c:82:5: note: in expansion of macro 'menu_line'
-000-     menu_line(menu_sel,r,"store: ",(*menu).system.store,seq_op);
-000-     ^~~~~~~~~
-000/ECE544_Final_Project_v4_sw/src/menu.h76-1-1assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type 'u16 *' {aka 'short unsigned int *'} [-Wincompatible-pointer-types]1-../src/menu.h:76:14: warning: assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type 'u16 *' {aka 'short unsigned int *'} [-Wincompatible-pointer-types]
-000-  msel[row-1] = &val;\
-000-              ^
-000/ECE544_Final_Project_v4_sw/src/menu.c88-1-1in expansion of macro 'menu_line'0-../src/menu.c:88:5: note: in expansion of macro 'menu_line'
-000-     menu_line(menu_sel,r,"tempo: ",(*menu).sequence.tempo,num);
-000-     ^~~~~~~~~
-000/ECE544_Final_Project_v4_sw/src/menu.h76-1-1assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type 'note_length_t *' {aka 'enum <anonymous> *'} [-Wincompatible-pointer-types]1-../src/menu.h:76:14: warning: assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type 'note_length_t *' {aka 'enum <anonymous> *'} [-Wincompatible-pointer-types]
-000-  msel[row-1] = &val;\
-000-              ^
-000/ECE544_Final_Project_v4_sw/src/menu.c89-1-1in expansion of macro 'menu_line'0-../src/menu.c:89:5: note: in expansion of macro 'menu_line'
-000-     menu_line(menu_sel,r,"subdiv:",(*menu).sequence.subdivision,num);
-000-     ^~~~~~~~~
-000/ECE544_Final_Project_v4_sw/src/menu.h76-1-1pointer targets in assignment from 's32 *' {aka 'long int *'} to 'u32 *' {aka 'long unsigned int *'} differ in signedness [-Wpointer-sign]1-../src/menu.h:76:14: warning: pointer targets in assignment from 's32 *' {aka 'long int *'} to 'u32 *' {aka 'long unsigned int *'} differ in signedness [-Wpointer-sign]
-000-  msel[row-1] = &val;\
-000-              ^
-000/ECE544_Final_Project_v4_sw/src/menu.c90-1-1in expansion of macro 'menu_line'0-../src/menu.c:90:5: note: in expansion of macro 'menu_line'
-000-     menu_line(menu_sel,r,"swing: ",(*menu).sequence.swing,num);
-000-     ^~~~~~~~~
-000/ECE544_Final_Project_v4_sw/src/menu.h76-1-1assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type 'pattern_t *' {aka 'enum <anonymous> *'} [-Wincompatible-pointer-types]1-../src/menu.h:76:14: warning: assignment to 'u32 *' {aka 'long unsigned int *'} from incompatible pointer type 'pattern_t *' {aka 'enum <anonymous> *'} [-Wincompatible-pointer-types]
-000-  msel[row-1] = &val;\
-000-              ^
-000/ECE544_Final_Project_v4_sw/src/menu.c91-1-1in expansion of macro 'menu_line'0-../src/menu.c:91:5: note: in expansion of macro 'menu_line'
-000-     menu_line(menu_sel,r,"patt:  ",(*menu).sequence.pattern,num);
-000-     ^~~~~~~~~
-000-../src/menu.c: In function 'menu_update':
-000/ECE544_Final_Project_v4_sw/src/menu.c140-1-1pointer targets in assignment from 'u32 *' {aka 'long unsigned int *'} to 's32 *' {aka 'long int *'} differ in signedness [-Wpointer-sign]1-../src/menu.c:140:5: warning: pointer targets in assignment from 'u32 *' {aka 'long unsigned int *'} to 's32 *' {aka 'long int *'} differ in signedness [-Wpointer-sign]
-000-  sel=menu_sel[row-1];
-000-     ^
-000-In file included from ../src/menu.c:22:
-000/ECE544_Final_Project_v4_sw/src/menu.c144-1-1suggest parentheses around arithmetic in operand of '|' [-Wparentheses]1-../src/menu.c:144:28: warning: suggest parentheses around arithmetic in operand of '|' [-Wparentheses]
-000-  switch (menu_item(page,row-1)){
-000-                         ~~~^~
-000/ECE544_Final_Project_v4_sw/src/menu.h91-1-1in definition of macro 'menu_item'0-../src/menu.h:91:42: note: in definition of macro 'menu_item'
-000- #define menu_item(page,row) ((page<<4) | row)
-000-                                          ^~~
-000/ECE544_Final_Project_v4_sw/src/menu.c193-1-1suggest parentheses around arithmetic in operand of '|' [-Wparentheses]1-../src/menu.c:193:28: warning: suggest parentheses around arithmetic in operand of '|' [-Wparentheses]
-000-  switch (menu_item(page,row-1)) {
-000-                         ~~~^~
-000/ECE544_Final_Project_v4_sw/src/menu.h91-1-1in definition of macro 'menu_item'0-../src/menu.h:91:42: note: in definition of macro 'menu_item'
-000- #define menu_item(page,row) ((page<<4) | row)
-000-                                          ^~~
-000/ECE544_Final_Project_v4_sw/src/menu.c217-1-1suggest parentheses around arithmetic in operand of '|' [-Wparentheses]1-../src/menu.c:217:30: warning: suggest parentheses around arithmetic in operand of '|' [-Wparentheses]
-000-    switch (menu_item(page,row-1)) {
-000-                           ~~~^~
-000/ECE544_Final_Project_v4_sw/src/menu.h91-1-1in definition of macro 'menu_item'0-../src/menu.h:91:42: note: in definition of macro 'menu_item'
-000- #define menu_item(page,row) ((page<<4) | row)
-000-                                          ^~~
-000-'Finished building: ../src/menu.c'
-000-' '
-000-'Building file: ../src/midi.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/midi.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/midi.d" -MT"src/midi.o" -o "src/midi.o" "../src/midi.c"
-000-../src/midi.c: In function 'sendMidiNoteOn':
-000/ECE544_Final_Project_v4_sw/src/midi.c56-1-1variable 'rc' set but not used [-Wunused-but-set-variable]1-../src/midi.c:56:6: warning: variable 'rc' set but not used [-Wunused-but-set-variable]
-000-  int rc;
-000-      ^~
-000-../src/midi.c: In function 'sendMidiNoteOff':
-000/ECE544_Final_Project_v4_sw/src/midi.c69-1-1variable 'rc' set but not used [-Wunused-but-set-variable]1-../src/midi.c:69:6: warning: variable 'rc' set but not used [-Wunused-but-set-variable]
-000-  int rc;
-000-      ^~
-000-../src/midi.c: In function 'sendMidiModulation':
-000/ECE544_Final_Project_v4_sw/src/midi.c82-1-1variable 'rc' set but not used [-Wunused-but-set-variable]1-../src/midi.c:82:6: warning: variable 'rc' set but not used [-Wunused-but-set-variable]
-000-  int rc;
-000-      ^~
-000-'Finished building: ../src/midi.c'
-000-' '
-000-'Building file: ../src/sequencer.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/sequencer.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/sequencer.d" -MT"src/sequencer.o" -o "src/sequencer.o" "../src/sequencer.c"
-000-'Finished building: ../src/sequencer.c'
-000-' '
-000-'Building file: ../src/signal_generator.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/signal_generator.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/signal_generator.d" -MT"src/signal_generator.o" -o "src/signal_generator.o" "../src/signal_generator.c"
-000-'Finished building: ../src/signal_generator.c'
-000-' '
-000-'Building file: ../src/system.c'
-000-'Invoking: MicroBlaze gcc compiler'
-000-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/system.o" -IC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/system.d" -MT"src/system.o" -o "src/system.o" "../src/system.c"
-000-../src/system.c: In function 'quiet_note':
-000/ECE544_Final_Project_v4_sw/src/system.c157-1-1unused variable 'sequencer' [-Wunused-variable]1-../src/system.c:157:14: warning: unused variable 'sequencer' [-Wunused-variable]
-000-  sequencer_t sequencer = seq_system->active_sequence;
-000-              ^~~~~~~~~
-000-../src/system.c: In function 'next_step':
-000/ECE544_Final_Project_v4_sw/src/system.c199-1-1unused variable 'midi_note' [-Wunused-variable]1-../src/system.c:199:10: warning: unused variable 'midi_note' [-Wunused-variable]
-000-  uint8_t midi_note;
-000-          ^~~~~~~~~
-000-'Finished building: ../src/system.c'
-000-' '
-000-'Building target: ECE544_Final_Project_v4_sw.elf'
-000-'Invoking: MicroBlaze gcc linker'
-000-mb-gcc -Wl,-T -Wl,../src/lscript.ld -LC:/Work/Vitis_Workspace/ECE544_Final_Project_v4/export/ECE544_Final_Project_v4/sw/ECE544_Final_Project_v4/freertos10_xilinx_domain/bsplib/lib -mlittle-endian -mxl-barrel-shift -mxl-pattern-compare -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mxl-multiply-high -mhard-float -mxl-float-convert -mxl-float-sqrt -Wl,--no-relax -Wl,--gc-sections -o "ECE544_Final_Project_v4_sw.elf"  ./src/control.o ./src/display.o ./src/initialization.o ./src/interrupts.o ./src/luts.o ./src/main.o ./src/menu.o ./src/midi.o ./src/sequencer.o ./src/signal_generator.o ./src/system.o   -Wl,--start-group,-lxil,-lfreertos,-lgcc,-lc,--end-group
-000-'Finished building target: ECE544_Final_Project_v4_sw.elf'
-000-' '
-000-'Invoking: MicroBlaze Print Size'
-000-mb-size ECE544_Final_Project_v4_sw.elf  |tee "ECE544_Final_Project_v4_sw.elf.size"
-000-   text	   data	    bss	    dec	    hex	filename
-000-  70516	   2216	  39700	 112432	  1b730	ECE544_Final_Project_v4_sw.elf
-000-'Finished building: ECE544_Final_Project_v4_sw.elf.size'
-000-' '
-00255-
-22:53:08 Build Finished (took 4s.540ms)
-
